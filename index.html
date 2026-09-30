@@ -29,15 +29,14 @@
         body {
             font-family: 'Noto Sans SC', sans-serif;
             color: var(--text-dark);
-            /* 设置背景图片 */
-            background: url('背景图2.jpg') no-repeat center center fixed;
+            /* 这里修改为纯英文名的背景图 bg.jpg */
+            background: url('bg.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* 画面柔光叠加层 */
         .overlay {
             position: fixed;
             top: 0;
@@ -62,7 +61,6 @@
             justify-content: space-between;
         }
 
-        /* 1. 顶部艺术标题栏 */
         header {
             text-align: center;
             margin-bottom: 40px;
@@ -89,7 +87,6 @@
             margin-top: 6px;
         }
 
-        /* 2. 桌面 5 个设计感文件夹网格 */
         .desktop-folders {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -99,7 +96,6 @@
             max-width: 960px;
         }
 
-        /* 文件夹卡片基本样式 */
         .folder-card {
             background: var(--folder-bg);
             backdrop-filter: blur(16px);
@@ -117,7 +113,6 @@
             align-items: center;
         }
 
-        /* 错落旋转角度 - 制造手帐贴纸随性感 */
         .folder-card:nth-child(1) { transform: rotate(-2deg); }
         .folder-card:nth-child(2) { transform: rotate(3deg); }
         .folder-card:nth-child(3) { transform: rotate(-1deg); }
@@ -130,7 +125,6 @@
             background: rgba(255, 255, 255, 0.9);
         }
 
-        /* 和纸胶带元素 (Washi Tape) */
         .washi-tape {
             position: absolute;
             top: -10px;
@@ -143,7 +137,6 @@
             transform: rotate(-3deg);
         }
 
-        /* 安全别针/小花朵饰品图标 */
         .pin-badge {
             position: absolute;
             top: 10px;
@@ -152,7 +145,6 @@
             opacity: 0.8;
         }
 
-        /* SVG文件夹图标造型 */
         .folder-icon-svg {
             width: 64px;
             height: 64px;
@@ -181,7 +173,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* 3. 铁盒/拍立得风格 弹框Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -197,11 +188,8 @@
             padding: 20px;
         }
 
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay.active { display: flex; }
 
-        /* 铁盒拍立得卡片主体 */
         .scrapbook-card {
             background: var(--paper-bg);
             width: 100%;
@@ -212,7 +200,7 @@
             padding: 35px 30px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
             position: relative;
-            border: 12px solid #ffffff; /* 拍立得白边 */
+            border: 12px solid #ffffff;
             animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -236,20 +224,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: 0.2s;
         }
 
-        .close-btn:hover { background: #e2e8f0; color: #000; }
-
-        /* 拍立得复古印章与手写元素 */
         .card-header-tag {
             font-family: 'Caveat', cursive;
             font-size: 1.8rem;
             color: #be123c;
             margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .card-stamp {
@@ -264,7 +245,6 @@
             margin-bottom: 20px;
         }
 
-        /* 占位图区（拍立得相框） */
         .polaroid-frame {
             background: #fff;
             padding: 12px 12px 25px;
@@ -319,29 +299,25 @@
     <div class="overlay"></div>
 
     <div class="main-wrapper">
-        <!-- 1. 顶部标题栏 -->
         <header>
             <h1 class="header-title">Curated by [你的名字] ✿</h1>
             <div class="header-subtitle">✦ MY TIN BOX PORTFOLIO & LIFE VIBES ✦</div>
         </header>
 
-        <!-- 2. 5个专属文件夹（桌面图标形式） -->
         <main class="desktop-folders">
-
-            <!-- 文件夹 1: About Me -->
+            <!-- 1. About Me -->
             <div class="folder-card" onclick="openModal('about')">
                 <div class="washi-tape"></div>
                 <span class="pin-badge">🧷</span>
                 <svg class="folder-icon-svg" viewBox="0 0 64 64" fill="none">
                     <path d="M8 18C8 14.6863 10.6863 12 14 12H24.5858C25.6466 12 26.664 12.4214 27.4142 13.1716L31.4142 17.1716C32.1644 17.9219 33.1818 18.3431 34.2426 18.3431H50C53.3137 18.3431 56 21.0294 56 24.3431V46C56 49.3137 53.3137 52 50 52H14C10.6863 52 8 49.3137 8 46V18Z" fill="#FCE7F3"/>
                     <path d="M8 26C8 22.6863 10.6863 20 14 20H50C53.3137 20 56 22.6863 56 26V46C56 49.3137 53.3137 52 50 52H14C10.6863 52 8 49.3137 8 46V26Z" fill="#F472B6" fill-opacity="0.6" stroke="#FFFFFF" stroke-width="2"/>
-                    <circle cx="46" cy="36" r="4" fill="#FFFFFF"/>
                 </svg>
                 <div class="folder-title">About Me</div>
                 <div class="folder-sub">[关于我 / 简介]</div>
             </div>
 
-            <!-- 文件夹 2: My Internship -->
+            <!-- 2. My Internship -->
             <div class="folder-card" onclick="openModal('internship')">
                 <div class="washi-tape" style="background: rgba(224,242,254,0.8);"></div>
                 <span class="pin-badge">✿</span>
@@ -353,7 +329,7 @@
                 <div class="folder-sub">[实习与经历]</div>
             </div>
 
-            <!-- 文件夹 3: My School -->
+            <!-- 3. My School -->
             <div class="folder-card" onclick="openModal('school')">
                 <div class="washi-tape" style="background: rgba(254,240,138,0.7);"></div>
                 <span class="pin-badge">📎</span>
@@ -365,7 +341,7 @@
                 <div class="folder-sub">[校园与学术]</div>
             </div>
 
-            <!-- 文件夹 4: My Life -->
+            <!-- 4. My Life -->
             <div class="folder-card" onclick="openModal('life')">
                 <div class="washi-tape" style="background: rgba(220,252,231,0.8);"></div>
                 <span class="pin-badge">📷</span>
@@ -377,129 +353,88 @@
                 <div class="folder-sub">[日常与Vlog]</div>
             </div>
 
-            <!-- 文件夹 5: Contact Me -->
+            <!-- 5. Contact Me -->
             <div class="folder-card" onclick="openModal('contact')">
                 <div class="washi-tape" style="background: rgba(243,232,255,0.8);"></div>
                 <span class="pin-badge">✉️</span>
                 <svg class="folder-icon-svg" viewBox="0 0 64 64" fill="none">
-                    <path d="M8 18C8 14.6863 10.6863 12 14 12H24.5858C25.6466 12 26.664 12.4214 27.4142 13.1716L31.4142 17.1716C32.1644 17.9219 33.1818 18.3431 34.2426 18.3431H50C53.3137 18.3431 56 21.0294 56 24.3431V46C56 49.3137 53.3137 52 50 52H14C10.6863 52 8 49.3137 8 46V18Z" fill="#F3E8FF"/>
+                    <path d="M8 18C8 14.6863 10.6863 12 14 12H24.5858C25.6466 12 26.664 12.4214 27.4142 13.1716L31.4142 17.1716C32.1644 17.3219 33.1818 18.3431 34.2426 18.3431H50C53.3137 18.3431 56 21.0294 56 24.3431V46C56 49.3137 53.3137 52 50 52H14C10.6863 52 8 49.3137 8 46V18Z" fill="#F3E8FF"/>
                     <path d="M8 26C8 22.6863 10.6863 20 14 20H50C53.3137 20 56 22.6863 56 26V46C56 49.3137 53.3137 52 50 52H14C10.6863 52 8 49.3137 8 46V26Z" fill="#C084FC" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="2"/>
                 </svg>
                 <div class="folder-title">Contact Me</div>
                 <div class="folder-sub">[联系方式]</div>
             </div>
-
         </main>
 
-        <!-- 页脚 -->
         <div style="text-align: center;">
             <footer>© 2026 [你的名字] • Built with Love & GitHub Pages</footer>
         </div>
     </div>
 
-    <!-- 3. 铁盒拼贴 弹窗 Modal -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
         <div class="scrapbook-card" id="scrapbookCard">
             <button class="close-btn" onclick="closeModal()">✕</button>
-            <div id="modalContent">
-                <!-- 动态内容填充区域 -->
-            </div>
+            <div id="modalContent"></div>
         </div>
     </div>
 
-    <!-- JS 逻辑: 5个文件夹内容模板 -->
     <script>
         const contentMap = {
             'about': `
                 <div class="card-header-tag">✿ About Me *</div>
                 <div class="card-stamp">FILE NO. 001 / INTRO</div>
                 <div class="polaroid-frame">
-                    <div class="polaroid-img-placeholder">📷 [这里可以放入你的宝丽来个人照/生活照]</div>
+                    <div class="polaroid-img-placeholder">📷 [这里可放入照片]</div>
                     <div class="polaroid-caption">"Stay curious and create lovely things."</div>
                 </div>
                 <p class="content-text">
                     <strong>你好，我是 [你的名字] 👋</strong><br>
-                    • 求职方向：市场运营 / 品牌策划 / 视觉设计 / 内容创作<br>
-                    • 个人风格：追求美学质感、注重细节执行、喜欢探索新鲜事物。<br>
-                    在这里，我用铁盒拼贴与桌面文件夹的形式记录我的成长轨迹与代表作品。
+                    • 求职方向：市场运营 / 品牌策划 / 视觉设计<br>
+                    • 个人风格：追求美学质感、注重细节执行。
                 </p>
             `,
             'internship': `
                 <div class="card-header-tag">💼 My Internship *</div>
-                <div class="card-stamp">EXPERIENCE / 2025-2026</div>
-                <div class="polaroid-frame">
-                    <div class="polaroid-img-placeholder">📂 [放置实习项目海报/数据成果截图]</div>
-                    <div class="polaroid-caption">EP.01 某某公司 - 市场运营实习生</div>
-                </div>
+                <div class="card-stamp">EXPERIENCE</div>
                 <p class="content-text">
-                    <strong>主要的实习收获与项目：</strong><br>
-                    1. 负责小红书/新媒体内容企划，单篇爆款获得 10w+ 浏览量。<br>
-                    2. 协助跨部门沟通，推进某品牌线上营销活动的策划与落地。<br>
-                    3. 具备良好的数据分析意识与敏锐的视觉审美捕捉能力。
+                    <strong>实习经历展示...</strong>
                 </p>
             `,
             'school': `
                 <div class="card-header-tag">🎓 My School *</div>
-                <div class="card-stamp">EDUCATION / ACADEMIC</div>
-                <div class="polaroid-frame">
-                    <div class="polaroid-img-placeholder">🏫 [放置校园风景图/毕业照/毕业设计]</div>
-                    <div class="polaroid-caption">"Life at University"</div>
-                </div>
+                <div class="card-stamp">EDUCATION</div>
                 <p class="content-text">
-                    <strong>教育背景：</strong><br>
-                    • 某某大学 | 专业名称 (202X - 2026)<br>
-                    • 核心课程：品牌学、媒体传播、数据统计、视觉设计。<br>
-                    • 校园活动：曾任社团部长 / 参与课题研究与社会实践。
+                    <strong>校园经历展示...</strong>
                 </p>
             `,
             'life': `
-                <div class="card-header-tag">📷 My Life & Vlog *</div>
-                <div class="card-stamp">MEMORIES / CREATIVE</div>
-                <div class="polaroid-frame">
-                    <div class="polaroid-img-placeholder">🌸 [放置你的日常Vlog封面/摄影作品集]</div>
-                    <div class="polaroid-caption">"Catching light and good vibes."</div>
-                </div>
+                <div class="card-header-tag">📷 My Life *</div>
+                <div class="card-stamp">MEMORIES</div>
                 <p class="content-text">
-                    <strong>生活与特长：</strong><br>
-                    • 喜欢拍摄 Vlog 记录审美与日常。<br>
-                    • 熟练使用 PS / PR / Figma / Canvas 进行图片美化与视频剪辑。<br>
-                    • 喜欢探索铁盒美学、手帐拼贴与色彩搭配。
+                    <strong>日常与生活纪录...</strong>
                 </p>
             `,
             'contact': `
                 <div class="card-header-tag">✉️ Contact Me *</div>
-                <div class="card-stamp">SAY HELLO / GET IN TOUCH</div>
-                <div class="polaroid-frame">
-                    <div class="polaroid-img-placeholder">📮 [欢迎沟通与交流]</div>
-                    <div class="polaroid-caption">"Let's work together!"</div>
-                </div>
+                <div class="card-stamp">GET IN TOUCH</div>
                 <p class="content-text">
-                    如果你对我的经历或作品感兴趣，欢迎通过以下方式联系我：<br><br>
-                    📧 <strong>邮箱：</strong>your_email@example.com<br>
-                    📱 <strong>微信/电话：</strong>13X-XXXX-XXXX<br>
-                    🔗 <strong>小红书/INS：</strong>@your_handle<br>
-                    📄 <strong>完整简历下载：</strong><a href="#" style="color: #be123c;">[点击这里下载PDF简历]</a>
+                    📧 <strong>邮箱：</strong>your_email@example.com
                 </p>
             `
         };
 
         function openModal(type) {
-            const modal = document.getElementById('modalOverlay');
-            const content = document.getElementById('modalContent');
-            content.innerHTML = contentMap[type] || '';
-            modal.classList.add('active');
+            document.getElementById('modalContent').innerHTML = contentMap[type] || '';
+            document.getElementById('modalOverlay').classList.add('active');
         }
 
         function closeModal() {
-            const modal = document.getElementById('modalOverlay');
-            modal.classList.remove('active');
+            document.getElementById('modalOverlay').classList.remove('active');
         }
 
         function closeModalOnBg(event) {
-            if (event.target.id === 'modalOverlay') {
-                closeModal();
-            }
+            if (event.target.id === 'modalOverlay') closeModal();
         }
     </script>
 </body>
-</html>
+</html>     
