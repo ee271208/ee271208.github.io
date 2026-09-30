@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio | 个人主页</title>
+    <!-- 引入优雅的 Google 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Ins柔美色彩基调 */
+            --glass-bg: rgba(255, 255, 255, 0.68);
+            --glass-border: rgba(255, 255, 255, 0.85);
+            --text-main: #2c3e50;
+            --text-sub: #5a6b7c;
+            --accent-color: #3b82f6;
+            --tag-bg: rgba(255, 255, 255, 0.85);
+            --radius-main: 22px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, sans-serif;
+            color: var(--text-main);
+            /* 绑定你的背景图片 */
+            background: url('背景图2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* 全局遮罩，让画面色彩更柔和 */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(245, 247, 250, 0.15);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        /* 1. 顶部导航栏 (Ins悬浮玻璃风格) */
+        header {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            margin-bottom: 40px;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 12px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.06);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #1e293b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-sub);
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        .contact-btn {
+            background: #1e293b;
+            color: white !important;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem !important;
+        }
+
+        /* 2. Hero 个人名片与氛围引言 */
+        .hero {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-main);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 35px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: var(--text-sub);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .filter-tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-tag {
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            cursor: pointer;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: 0.2s;
+        }
+
+        .filter-tag.active, .filter-tag:hover {
+            background: #1e293b;
+            color: #fff;
+        }
+
+        /* 3. 作品与经历展示区（网格卡片骨架） */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-main);
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        /* 占位图片容器（Ins拍立得相框感） */
+        .card-img-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(224,242,254,0.6));
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            border: 1px dashed rgba(148, 163, 184, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img-placeholder::after {
+            content: "📷 点击此处替换为作品图片/封面";
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .card-tag {
+            align-self: flex-start;
+            background: var(--tag-bg);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: #0284c7;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            flex-grow: 1;
+            margin-bottom: 14px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            border-top: 1px solid rgba(226, 232, 240, 0.6);
+            padding-top: 12px;
+        }
+
+        /* 跨列的大尺寸卡片（适合放核心作品/重要经历） */
+        .card.featured {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .card.featured {
+                grid-column: span 1;
+            }
+            .nav-links {
+                display: none; /* 移动端精简展示 */
+            }
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <!-- 1. 顶部导航 -->
+        <header>
+            <nav>
+                <div class="logo">YOUR NAME ✨</div>
+                <ul class="nav-links">
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#works">作品与经历</a></li>
+                    <li><a href="#skills">特长/风格</a></li>
+                    <li><a href="#contact" class="contact-btn">联系我</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- 2. 个人主页标语与氛围区块 -->
+        <section class="hero" id="about">
+            <span class="hero-tag">✨ PORTFOLIO & LIFE</span>
+            <h1>Create with Passion, Live in the Moment.</h1>
+            <p class="subtitle">这里是 [你的名字] 的个人主页 | 求职方向 / 视觉表达 / 记录生活与创作</p>
+            <div class="filter-tags">
+                <span class="filter-tag active">全部 (All)</span>
+                <span class="filter-tag">🎨 视觉/设计作品</span>
+                <span class="filter-tag">💼 工作/实习经历</span>
+                <span class="filter-tag">📸 企划/Vlog/生活</span>
+            </div>
+        </section>
+
+        <!-- 3. 卡片展示区（占位骨架） -->
+        <main class="grid-container" id="works">
+
+            <!-- 卡片 1：核心特色作品（横向大卡片） -->
+            <article class="card featured">
+                <div class="card-img-placeholder" style="height: 240px;"></div>
+                <span class="card-tag">✨ 重点推荐项目 / 毕业设计</span>
+                <h3 class="card-title">主打项目标题占位（例如：某某品牌视觉企划 / 策划案）</h3>
+                <p class="card-desc">
+                    这里填写这个项目的核心亮点介绍。用简短一两句话说明背景、你扮演的角色以及达成的成果（例如：获得了多少浏览量、提升了多少效率或设计亮点）。
+                </p>
+                <div class="card-footer">
+                    <span>2026.03</span>
+                    <span>点击查看详情 ➔</span>
+                </div>
+            </article>
+
+            <!-- 卡片 2：常规卡片（作品/经历） -->
+            <article class="card">
+                <div class="card-img-placeholder"></div>
+                <span class="card-tag">💼 实习经历</span>
+                <h3 class="card-title">某某公司 - 运营/设计实习生</h3>
+                <p class="card-desc">
+                    负责某某板块的内容创作、社群搭建或视觉呈现。积累了良好的跨部门沟通与项目落地能力。
+                </p>
+                <div class="card-footer">
+                    <span>2025.09 - 2026.01</span>
+                    <span>查看总结</span>
+                </div>
+            </article>
+
+            <!-- 卡片 3：常规卡片（视频/Vlog/内容策划） -->
+            <article class="card">
+                <div class="card-img-placeholder"></div>
+                <span class="card-tag">📹 媒体/内容制作</span>
+                <h3 class="card-title">个人审美 Vlog / 摄影集展示</h3>
+                <p class="card-desc">
+                    记录生活中的闪光时刻，包含色彩搭配、剪辑节奏与视觉风格调优。
+                </p>
+                <div class="card-footer">
+                    <span>小红书 / B站</span>
+                    <span>播放量 10w+</span>
+                </div>
+            </article>
+
+            <!-- 卡片 4：专业技能 / 论文研究 -->
+            <article class="card">
+                <div class="card-img-placeholder"></div>
+                <span class="card-tag">🎓 学术与研究</span>
+                <h3 class="card-title">课题研究 / 报告撰写</h3>
+                <p class="card-desc">
+                    关于某领域的深入分析报告，具备扎实的数据收集、归纳与文字表达能力。
+                </p>
+                <div class="card-footer">
+                    <span>2025.06</span>
+                    <span>PDF 浏览</span>
+                </div>
+            </article>
+
+            <!-- 卡片 5：技能标签与风格特长 -->
+            <article class="card">
+                <span class="card-tag" style="color: #8b5cf6;">⚡ 技能与特长</span>
+                <h3 class="card-title">我的技能图谱</h3>
+                <p class="card-desc">
+                    • 软件工具：Photoshop / Figma / Premiere / Office<br>
+                    • 核心特长：视觉审美、文案策划、数据分析、英语沟通<br>
+                    • 个人风格：自然亲和、追求细节、高执行力
+                </p>
+                <div class="card-footer">
+                    <span>Skills</span>
+                    <span>持续更新中</span>
+                </div>
+            </article>
+
+        </main>
+
+        <!-- 页脚 -->
+        <footer id="contact">
+            <p>© 2026 [你的名字] | Made with ❤ & GitHub Pages</p>
+            <p style="margin-top: 6px; font-size: 0.8rem; opacity: 0.8;">📮 联系邮箱：your_email@example.com | 小红书 / Ins: @yourhandle</p>
+        </footer>
+    </div>
+
+</body>
+</html>
