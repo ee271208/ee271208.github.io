@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Irene Wang's Universe</title>
-    <!-- 引入欧阳娜娜同款连笔耳机线条手写体 (Sacramento) 与高级衬线体 -->
+    <!-- 引入优雅衬线体与无衬线字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -19,7 +19,6 @@
         body {
             font-family: 'Poppins', 'Noto Sans SC', sans-serif;
             color: #ffffff;
-            /* 原图高清呈现，无模糊遮挡 */
             background: url('bj.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
@@ -28,10 +27,10 @@
             position: relative;
         }
 
-        /* 顶栏标题：高挂置顶，完全避开额头 */
+        /* 顶栏标题 */
         header {
             position: absolute;
-            top: 18px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -42,85 +41,97 @@
 
         .universe-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: 2px;
             color: #ffffff;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
         }
 
         .universe-sub {
-            font-family: 'Sacramento', cursive;
-            font-size: 1.6rem;
-            color: rgba(255, 255, 255, 0.95);
-            margin-top: -6px;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 2px;
+            margin-top: 2px;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
         }
 
         /* --------------------------------------------------
-           欧阳娜娜同款：耳机线条字体组件 (Wire Earphone Text)
+           方案二：拟真写实鸡蛋花组件 (Realistic Plumeria Button)
         -------------------------------------------------- */
-        .wire-item {
+        .plumeria-btn {
             position: absolute;
             z-index: 20;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            /* 给耳机线和字体叠加阴影，保证在湖水波光上清晰可见 */
-            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
-            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            /* 随水波轻微飘动 */
-            animation: wireFloat 4s ease-in-out infinite;
+            padding: 6px 18px 6px 10px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 24px rgba(2, 30, 40, 0.25);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* 模仿水面轻柔浮动 */
+            animation: flowerFloat 4.5s ease-in-out infinite;
         }
 
-        @keyframes wireFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
+        @keyframes flowerFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-7px) rotate(1.5deg); }
         }
 
-        .wire-item:hover {
-            transform: scale(1.2) translateY(-3px) !important;
-            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.95)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
-            animation-play-state: paused;
+        .plumeria-btn:hover {
+            transform: scale(1.1) translateY(-4px) !important;
+            background: rgba(255, 255, 255, 0.42);
+            border-color: #ffffff;
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 255, 255, 0.6);
         }
 
-        /* 连笔耳机线手写英文 */
-        .wire-text {
-            font-family: 'Sacramento', cursive;
-            font-size: 2.6rem;
-            color: #ffffff;
-            line-height: 1;
-            white-space: nowrap;
-            margin: 0 -3px; /* 极窄缝隙，让文字与两端耳机线自然接合 */
-            letter-spacing: 0.5px;
-            user-select: none;
-        }
-
-        /* 左右耳机线与耳塞 SVG 图标 */
-        .headphone-wire-svg {
-            width: 50px;
-            height: 28px;
+        /* 写实鸡蛋花 SVG */
+        .plumeria-svg {
+            width: 38px;
+            height: 38px;
+            margin-right: 10px;
             flex-shrink: 0;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .plumeria-btn:hover .plumeria-svg {
+            transform: rotate(45deg) scale(1.12);
+        }
+
+        /* 模块文字 */
+        .plumeria-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: 0.8px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+            white-space: nowrap;
         }
 
         /* --------------------------------------------------
-           5个模块在湖面上的位置分布（精准避开人物身体）
+           5个鸡蛋花在湖水区域的精准定位
         -------------------------------------------------- */
-        /* 1. About Me (左下湖面) */
-        #wire-about { top: 62%; left: 10%; animation-delay: 0s; }
+        /* 1. About Me (左下水面) */
+        #flower-about { top: 62%; left: 11%; animation-delay: 0s; }
         
-        /* 2. My Internship (左中湖面) */
-        #wire-internship { top: 48%; left: 20%; animation-delay: 0.8s; }
+        /* 2. My Internship (左中水面) */
+        #flower-internship { top: 48%; left: 21%; animation-delay: 0.9s; }
         
-        /* 3. My School (移至左侧上方空白湖面，绝不挡锁骨) */
-        #wire-school { top: 32%; left: 26%; animation-delay: 1.6s; }
+        /* 3. My School (左上空白水面，绝不挡锁骨与人像) */
+        #flower-school { top: 32%; left: 27%; animation-delay: 1.8s; }
         
-        /* 4. My Life (右上空白湖面) */
-        #wire-life { top: 38%; right: 12%; animation-delay: 0.4s; }
+        /* 4. My Life (右上水面) */
+        #flower-life { top: 38%; right: 13%; animation-delay: 0.4s; }
         
-        /* 5. Contact Me (右下湖面) */
-        #wire-contact { top: 56%; right: 8%; animation-delay: 1.2s; }
+        /* 5. Contact Me (右下水面) */
+        #flower-contact { top: 56%; right: 9%; animation-delay: 1.3s; }
 
         /* 详情弹窗 */
         .modal-overlay {
@@ -206,16 +217,17 @@
             z-index: 10;
         }
 
-        /* 移动端自适应 */
+        /* 移动端兼容 */
         @media (max-width: 768px) {
             .universe-title { font-size: 1.7rem; }
-            .wire-text { font-size: 1.8rem; }
-            .headphone-wire-svg { width: 35px; height: 20px; }
-            #wire-about { top: 62%; left: 3%; }
-            #wire-internship { top: 48%; left: 4%; }
-            #wire-school { top: 32%; left: 5%; }
-            #wire-life { top: 38%; right: 3%; }
-            #wire-contact { top: 54%; right: 3%; }
+            .plumeria-btn { padding: 4px 14px 4px 8px; }
+            .plumeria-svg { width: 30px; height: 30px; margin-right: 6px; }
+            .plumeria-text { font-size: 0.9rem; }
+            #flower-about { top: 62%; left: 3%; }
+            #flower-internship { top: 48%; left: 4%; }
+            #flower-school { top: 32%; left: 5%; }
+            #flower-life { top: 38%; right: 3%; }
+            #flower-contact { top: 54%; right: 3%; }
         }
     </style>
 </head>
@@ -224,76 +236,107 @@
     <!-- 顶栏标题 -->
     <header>
         <h1 class="universe-title">Irene Wang's Universe</h1>
-        <p class="universe-sub">The Playlist of My Life & Portfolio</p>
+        <p class="universe-sub">Welcome to My Personal Space</p>
     </header>
 
-    <!-- 5个纯正“耳机线连笔字体”组件 -->
-    
+    <!-- 可复用的写实鸡蛋花 SVG 模板（包含拟真重叠花瓣、渐变与水面暗影） -->
+    <svg style="display: none;">
+        <defs>
+            <!-- 水面写实阴影 -->
+            <filter id="plumeriaShadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="2" dy="5" stdDeviation="3.5" flood-color="#03222d" flood-opacity="0.45"/>
+            </filter>
+            <!-- 柔和乳白花瓣渐变 -->
+            <linearGradient id="petalGrad" x1="0%" y1="100%" x2="30%" y2="0%">
+                <stop offset="0%" stop-color="#f2f0eb"/>
+                <stop offset="60%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#ffffff"/>
+            </linearGradient>
+            <!-- 鲜艳拟真鸡蛋花黄色花芯晕染 -->
+            <radialGradient id="centerYellow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ff9d00"/>
+                <stop offset="35%" stop-color="#ffca00"/>
+                <stop offset="70%" stop-color="#ffe97d" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </radialGradient>
+        </defs>
+    </svg>
+
+    <!-- 5个写实水漂鸡蛋花按钮 -->
+
     <!-- 1. About Me -->
-    <div class="wire-item" id="wire-about" onclick="openModal('about')">
-        <!-- 左侧耳塞与连线 -->
-        <svg class="headphone-wire-svg" viewBox="0 0 60 30">
-            <path d="M 6 12 C 3 12, 1 15, 4 19 C 7 23, 12 19, 9 15 Z" fill="#ffffff"/>
-            <path d="M 7 19 C 7 26, 22 25, 60 16" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    <div class="plumeria-btn" id="flower-about" onclick="openModal('about')">
+        <svg class="plumeria-svg" viewBox="0 0 100 100">
+            <g filter="url(#plumeriaShadow)">
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(72 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(144 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(216 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(288 50 50)"/>
+                <circle cx="50" cy="50" r="23" fill="url(#centerYellow)"/>
+            </g>
         </svg>
-        <span class="wire-text">About Me</span>
-        <!-- 右侧连线与耳塞/插头 -->
-        <svg class="headphone-wire-svg" viewBox="0 0 60 30">
-            <path d="M 0 16 C 38 7, 53 25, 53 17" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M 53 17 C 49 13, 53 9, 57 9 C 61 13, 57 21, 53 17 Z" fill="#ffffff"/>
-        </svg>
+        <span class="plumeria-text">About Me</span>
     </div>
 
     <!-- 2. My Internship -->
-    <div class="wire-item" id="wire-internship" onclick="openModal('internship')">
-        <svg class="headphone-wire-svg" viewBox="0 0 60 30">
-            <path d="M 6 12 C 3 12, 1 15, 4 19 C 7 23, 12 19, 9 15 Z" fill="#ffffff"/>
-            <path d="M 7 19 C 7 26, 22 25, 60 16" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    <div class="plumeria-btn" id="flower-internship" onclick="openModal('internship')">
+        <svg class="plumeria-svg" viewBox="0 0 100 100">
+            <g filter="url(#plumeriaShadow)">
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(72 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(144 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(216 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(288 50 50)"/>
+                <circle cx="50" cy="50" r="23" fill="url(#centerYellow)"/>
+            </g>
         </svg>
-        <span class="wire-text">My Internship</span>
-        <svg class="headphone-wire-svg" viewBox="0 0 60 30">
-            <path d="M 0 16 C 38 7, 53 25, 53 17" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M 53 17 C 49 13, 53 9, 57 9 C 61 13, 57 21, 53 17 Z" fill="#ffffff"/>
-        </svg>
+        <span class="plumeria-text">My Internship</span>
     </div>
 
     <!-- 3. My School -->
-    <div class="wire-item" id="wire-school" onclick="openModal('school')">
-        <svg class="headphone-wire-svg" viewBox="0 0 60 30">
-            <path d="M 6 12 C 3 12, 1 15, 4 19 C 7 23, 12 19, 9 15 Z" fill="#ffffff"/>
-            <path d="M 7 19 C 7 26, 22 25, 60 16" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    <div class="plumeria-btn" id="flower-school" onclick="openModal('school')">
+        <svg class="plumeria-svg" viewBox="0 0 100 100">
+            <g filter="url(#plumeriaShadow)">
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(72 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(144 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(216 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(288 50 50)"/>
+                <circle cx="50" cy="50" r="23" fill="url(#centerYellow)"/>
+            </g>
         </svg>
-        <span class="wire-text">My School</span>
-        <svg class="headphone-wire-svg" viewBox="0 0 60 30">
-            <path d="M 0 16 C 38 7, 53 25, 53 17" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M 53 17 C 49 13, 53 9, 57 9 C 61 13, 57 21, 53 17 Z" fill="#ffffff"/>
-        </svg>
+        <span class="plumeria-text">My School</span>
     </div>
 
     <!-- 4. My Life -->
-    <div class="wire-item" id="wire-life" onclick="openModal('life')">
-        <svg class="headphone-wire-svg" viewBox="0 0 60 30">
-            <path d="M 6 12 C 3 12, 1 15, 4 19 C 7 23, 12 19, 9 15 Z" fill="#ffffff"/>
-            <path d="M 7 19 C 7 26, 22 25, 60 16" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    <div class="plumeria-btn" id="flower-life" onclick="openModal('life')">
+        <svg class="plumeria-svg" viewBox="0 0 100 100">
+            <g filter="url(#plumeriaShadow)">
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(72 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(144 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(216 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(288 50 50)"/>
+                <circle cx="50" cy="50" r="23" fill="url(#centerYellow)"/>
+            </g>
         </svg>
-        <span class="wire-text">My Life</span>
-        <svg class="headphone-wire-svg" viewBox="0 0 60 30">
-            <path d="M 0 16 C 38 7, 53 25, 53 17" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M 53 17 C 49 13, 53 9, 57 9 C 61 13, 57 21, 53 17 Z" fill="#ffffff"/>
-        </svg>
+        <span class="plumeria-text">My Life</span>
     </div>
 
     <!-- 5. Contact Me -->
-    <div class="wire-item" id="wire-contact" onclick="openModal('contact')">
-        <svg class="headphone-wire-svg" viewBox="0 0 60 30">
-            <path d="M 6 12 C 3 12, 1 15, 4 19 C 7 23, 12 19, 9 15 Z" fill="#ffffff"/>
-            <path d="M 7 19 C 7 26, 22 25, 60 16" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    <div class="plumeria-btn" id="flower-contact" onclick="openModal('contact')">
+        <svg class="plumeria-svg" viewBox="0 0 100 100">
+            <g filter="url(#plumeriaShadow)">
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(72 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(144 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(216 50 50)"/>
+                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#petalGrad)" stroke="#e3ded5" stroke-width="0.6" transform="rotate(288 50 50)"/>
+                <circle cx="50" cy="50" r="23" fill="url(#centerYellow)"/>
+            </g>
         </svg>
-        <span class="wire-text">Contact Me</span>
-        <svg class="headphone-wire-svg" viewBox="0 0 60 30">
-            <path d="M 0 16 C 38 7, 53 25, 53 17" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M 53 17 C 49 13, 53 9, 57 9 C 61 13, 57 21, 53 17 Z" fill="#ffffff"/>
-        </svg>
+        <span class="plumeria-text">Contact Me</span>
     </div>
 
     <!-- 页脚 -->
@@ -311,10 +354,10 @@
 
     <script>
         const contentMap = {
-            'about': `<div class="modal-title">🎧 About Me</div><div class="modal-body"><strong>关于我 / 个人简介</strong><br><br>在此处写入你的自我介绍、求职方向与核心优势...</div>`,
-            'internship': `<div class="modal-title">💼 My Internship</div><div class="modal-body"><strong>实习与工作经历</strong><br><br>在此处写入你的实习公司、负责工作及成果总结...</div>`,
-            'school': `<div class="modal-title">🎓 My School</div><div class="modal-body"><strong>校园与学术背景</strong><br><br>在此处写入你的大学专业、学术课题或社团经验...</div>`,
-            'life': `<div class="modal-title">📷 My Life</div><div class="modal-body"><strong>日常与生活记录</strong><br><br>在此处写入你的日常随笔、摄影集或 Vlog 分享...</div>`,
+            'about': `<div class="modal-title">🌸 About Me</div><div class="modal-body"><strong>关于我 / 个人简介</strong><br><br>在此处写入你的自我介绍、核心优势与个人亮点...</div>`,
+            'internship': `<div class="modal-title">💼 My Internship</div><div class="modal-body"><strong>实习与工作经历</strong><br><br>在此处写入你的实习公司、项目职责与主要成果...</div>`,
+            'school': `<div class="modal-title">🎓 My School</div><div class="modal-body"><strong>校园与学术背景</strong><br><br>在此处写入你的大学专业、课程项目或学术经验...</div>`,
+            'life': `<div class="modal-title">📷 My Life</div><div class="modal-body"><strong>日常与生活记录</strong><br><br>在此处写入你的摄影相册、生活随笔或 Vlog 链接...</div>`,
             'contact': `<div class="modal-title">✉️ Contact Me</div><div class="modal-body"><strong>联系方式</strong><br><br>📧 邮箱：your_email@example.com<br>📱 微信：your_wechat_id</div>`
         };
 
