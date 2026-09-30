@@ -3,20 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio | Ins Vibe</title>
-    <!-- 引入 reference 中的 "vibe coding" 复古打字机字体与 Ins 极简字体 -->
+    <title>Irene Wang's Universe</title>
+    <!-- 引入 Louis QIN 同款复古高级衬线字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --card-bg: rgba(255, 255, 255, 0.82);
-            --card-border: rgba(255, 255, 255, 0.95);
-            --text-main: #18181b;
-            --text-sub: #71717a;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -24,143 +17,136 @@
         }
 
         body {
-            font-family: 'Inter', 'Noto Sans SC', sans-serif;
-            color: var(--text-main);
-            /* 读取你在 GitHub 上传的真实文件名 bj.jpg */
+            font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+            color: #ffffff;
+            /* 读取你的照片，绝对不加任何 blur 模糊滤镜！ */
             background: url('bj.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
-            position: relative;
+            width: 100vw;
             overflow-x: hidden;
-        }
-
-        /* 磨砂滤镜遮罩：提升图片整体的 Ins 柔光质感 */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(248, 249, 250, 0.3);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 0;
-        }
-
-        .container {
             position: relative;
-            z-index: 1;
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 50px 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-        /* 标题部分：vibe coding 风格 */
+        /* 顶部文字区域：Louis QIN 同款高级衬线体 */
         header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .typewriter-tag {
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--text-sub);
-            margin-bottom: 12px;
-        }
-
-        .main-title {
-            font-family: 'Courier Prime', monospace;
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: -1px;
-            line-height: 1.2;
-        }
-
-        .sub-vibe {
-            font-family: 'Courier Prime', monospace;
-            font-size: 1.15rem;
-            color: #3f3f46;
-            margin-top: 12px;
-            letter-spacing: 1px;
-        }
-
-        /* 卡片网格：纯白极简磨砂 Ins 风 */
-        .folder-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 24px;
-            margin: 30px 0;
-        }
-
-        .folder-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 28px 20px 22px;
-            text-align: center;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-        }
-
-        .folder-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .tape {
             position: absolute;
-            top: -8px;
+            top: 6%;
             left: 50%;
             transform: translateX(-50%);
-            width: 48px;
-            height: 14px;
-            background: rgba(228, 228, 231, 0.6);
-            border-left: 1px dashed rgba(255, 255, 255, 0.8);
-            border-right: 1px dashed rgba(255, 255, 255, 0.8);
+            text-align: center;
+            z-index: 10;
+            width: 90%;
+            pointer-events: none;
         }
 
-        .folder-icon {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-            opacity: 0.8;
-        }
-
-        .folder-title {
-            font-family: 'Courier Prime', monospace;
-            font-size: 1.15rem;
+        .universe-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
             font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 4px;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
         }
 
-        .folder-sub {
-            font-size: 0.78rem;
-            color: var(--text-sub);
-            letter-spacing: 0.5px;
+        .universe-sub {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 6px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* 弹窗部分 */
+        /* 5个花朵悬浮互动图层 */
+        .flower-hotspot {
+            position: absolute;
+            z-index: 20;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            /* 花朵轻微浮动动画 */
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(3deg); }
+        }
+
+        .flower-hotspot:hover {
+            transform: scale(1.25) rotate(15deg) !important;
+            animation-play-state: paused;
+        }
+
+        /* 白花朵 SVG 图标 */
+        .flower-svg {
+            width: 58px;
+            height: 58px;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
+            transition: filter 0.3s;
+        }
+
+        .flower-hotspot:hover .flower-svg {
+            filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.9));
+        }
+
+        /* 花朵下方的名字标签 */
+        .flower-label {
+            margin-top: 8px;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(4px);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .flower-hotspot:hover .flower-label {
+            background: rgba(255, 255, 255, 0.9);
+            color: #111111;
+            border-color: #ffffff;
+        }
+
+        /* --------------------------------------------------
+           花朵在屏幕上的初始分布位置 (你可以轻松微调下面的 percentage)
+        -------------------------------------------------- */
+        /* 1. About Me (左下手部附近) */
+        #flower-about { top: 58%; left: 16%; animation-delay: 0s; }
+        
+        /* 2. My Internship (左上手部附近) */
+        #flower-internship { top: 44%; left: 25%; animation-delay: 0.8s; }
+        
+        /* 3. My School (头部上方/中央) */
+        #flower-school { top: 38%; left: 50%; transform: translateX(-50%); animation-delay: 1.5s; }
+        
+        /* 4. My Life (右上手部附近) */
+        #flower-life { top: 44%; right: 25%; animation-delay: 0.4s; }
+        
+        /* 5. Contact Me (右下手部附近) */
+        #flower-contact { top: 58%; right: 16%; animation-delay: 1.2s; }
+
+
+        /* 简约半透明磨砂弹窗 */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(8px);
-            z-index: 1000;
+            z-index: 999;
             display: none;
             justify-content: center;
             align-items: center;
@@ -170,15 +156,23 @@
         .modal-overlay.active { display: flex; }
 
         .modal-card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.92);
+            color: #1c1917;
             width: 100%;
-            max-width: 560px;
-            max-height: 85vh;
+            max-width: 520px;
+            max-height: 80vh;
             overflow-y: auto;
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 36px 30px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
             position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8) translateY(20px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
         }
 
         .close-btn {
@@ -187,90 +181,149 @@
             right: 20px;
             background: #f4f4f5;
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             cursor: pointer;
             color: #71717a;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .modal-tag {
-            font-family: 'Courier Prime', monospace;
-            font-size: 1.25rem;
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
             font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 15px;
+            color: #0f172a;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
         }
 
         .modal-body {
-            font-size: 0.92rem;
-            line-height: 1.7;
-            color: #3f3f46;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #334155;
         }
 
         footer {
+            position: absolute;
+            bottom: 3%;
+            width: 100%;
             text-align: center;
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.78rem;
-            color: var(--text-sub);
-            padding: 20px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+            z-index: 10;
+        }
+
+        /* 移动端兼容性适应 */
+        @media (max-width: 768px) {
+            .universe-title { font-size: 2.2rem; }
+            .flower-svg { width: 46px; height: 46px; }
+            .flower-label { font-size: 0.8rem; padding: 2px 8px; }
+            #flower-about { top: 55%; left: 8%; }
+            #flower-internship { top: 42%; left: 10%; }
+            #flower-school { top: 32%; left: 50%; }
+            #flower-life { top: 42%; right: 10%; }
+            #flower-contact { top: 55%; right: 8%; }
         }
     </style>
 </head>
 <body>
 
-    <div class="overlay"></div>
+    <!-- 顶栏标题 -->
+    <header>
+        <h1 class="universe-title">Irene Wang's Universe</h1>
+        <p class="universe-sub">✦ Welcome to my portfolio & life vibes ✦</p>
+    </header>
 
-    <div class="container">
-        <header>
-            <div class="typewriter-tag">* CREATIVE PORTFOLIO *</div>
-            <h1 class="main-title">Curated by [你的名字]</h1>
-            <div class="sub-vibe">* vibe * coding *</div>
-        </header>
-
-        <main class="folder-grid">
-            <div class="folder-card" onclick="openModal('about')">
-                <div class="tape"></div>
-                <div class="folder-icon">✦</div>
-                <div class="folder-title">About Me</div>
-                <div class="folder-sub">[关于我]</div>
-            </div>
-
-            <div class="folder-card" onclick="openModal('internship')">
-                <div class="tape"></div>
-                <div class="folder-icon">💼</div>
-                <div class="folder-title">Works</div>
-                <div class="folder-sub">[实习与经历]</div>
-            </div>
-
-            <div class="folder-card" onclick="openModal('school')">
-                <div class="tape"></div>
-                <div class="folder-icon">🎓</div>
-                <div class="folder-title">School</div>
-                <div class="folder-sub">[校园与学术]</div>
-            </div>
-
-            <div class="folder-card" onclick="openModal('life')">
-                <div class="tape"></div>
-                <div class="folder-icon">📷</div>
-                <div class="folder-title">Life</div>
-                <div class="folder-sub">[日常与记录]</div>
-            </div>
-
-            <div class="folder-card" onclick="openModal('contact')">
-                <div class="tape"></div>
-                <div class="folder-icon">✉️</div>
-                <div class="folder-title">Contact</div>
-                <div class="folder-sub">[联系方式]</div>
-            </div>
-        </main>
-
-        <footer>
-            © 2026 [你的名字] • ALL RIGHTS RESERVED
-        </footer>
+    <!-- 5朵纯白小花交互按钮 -->
+    
+    <!-- 1. About Me -->
+    <div class="flower-hotspot" id="flower-about" onclick="openModal('about')">
+        <svg class="flower-svg" viewBox="0 0 100 100">
+            <g fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2">
+                <circle cx="50" cy="24" r="20"/>
+                <circle cx="75" cy="42" r="20"/>
+                <circle cx="65" cy="72" r="20"/>
+                <circle cx="35" cy="72" r="20"/>
+                <circle cx="25" cy="42" r="20"/>
+                <circle cx="50" cy="50" r="13" fill="#FEF08A" stroke="none"/>
+            </g>
+        </svg>
+        <div class="flower-label">About Me</div>
     </div>
 
+    <!-- 2. My Internship -->
+    <div class="flower-hotspot" id="flower-internship" onclick="openModal('internship')">
+        <svg class="flower-svg" viewBox="0 0 100 100">
+            <g fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2">
+                <circle cx="50" cy="24" r="20"/>
+                <circle cx="75" cy="42" r="20"/>
+                <circle cx="65" cy="72" r="20"/>
+                <circle cx="35" cy="72" r="20"/>
+                <circle cx="25" cy="42" r="20"/>
+                <circle cx="50" cy="50" r="13" fill="#FEF08A" stroke="none"/>
+            </g>
+        </svg>
+        <div class="flower-label">My Internship</div>
+    </div>
+
+    <!-- 3. My School -->
+    <div class="flower-hotspot" id="flower-school" onclick="openModal('school')">
+        <svg class="flower-svg" viewBox="0 0 100 100">
+            <g fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2">
+                <circle cx="50" cy="24" r="20"/>
+                <circle cx="75" cy="42" r="20"/>
+                <circle cx="65" cy="72" r="20"/>
+                <circle cx="35" cy="72" r="20"/>
+                <circle cx="25" cy="42" r="20"/>
+                <circle cx="50" cy="50" r="13" fill="#FEF08A" stroke="none"/>
+            </g>
+        </svg>
+        <div class="flower-label">My School</div>
+    </div>
+
+    <!-- 4. My Life -->
+    <div class="flower-hotspot" id="flower-life" onclick="openModal('life')">
+        <svg class="flower-svg" viewBox="0 0 100 100">
+            <g fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2">
+                <circle cx="50" cy="24" r="20"/>
+                <circle cx="75" cy="42" r="20"/>
+                <circle cx="65" cy="72" r="20"/>
+                <circle cx="35" cy="72" r="20"/>
+                <circle cx="25" cy="42" r="20"/>
+                <circle cx="50" cy="50" r="13" fill="#FEF08A" stroke="none"/>
+            </g>
+        </svg>
+        <div class="flower-label">My Life</div>
+    </div>
+
+    <!-- 5. Contact Me -->
+    <div class="flower-hotspot" id="flower-contact" onclick="openModal('contact')">
+        <svg class="flower-svg" viewBox="0 0 100 100">
+            <g fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2">
+                <circle cx="50" cy="24" r="20"/>
+                <circle cx="75" cy="42" r="20"/>
+                <circle cx="65" cy="72" r="20"/>
+                <circle cx="35" cy="72" r="20"/>
+                <circle cx="25" cy="42" r="20"/>
+                <circle cx="50" cy="50" r="13" fill="#FEF08A" stroke="none"/>
+            </g>
+        </svg>
+        <div class="flower-label">Contact Me</div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        © 2026 Irene Wang • All Rights Reserved
+    </footer>
+
+    <!-- 弹窗 -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
         <div class="modal-card">
             <button class="close-btn" onclick="closeModal()">✕</button>
@@ -280,11 +333,11 @@
 
     <script>
         const contentMap = {
-            'about': `<div class="modal-tag">* ABOUT ME</div><div class="modal-body">在这里写入个人介绍、求职意向与个人亮点...</div>`,
-            'internship': `<div class="modal-tag">* WORKS & INTERNSHIP</div><div class="modal-body">在这里写入实习经历、具体工作项目与成果...</div>`,
-            'school': `<div class="modal-tag">* EDUCATION & SCHOOL</div><div class="modal-body">在这里写入学校、专业背景与学术项目...</div>`,
-            'life': `<div class="modal-tag">* LIFE & VIBE</div><div class="modal-body">在这里写入你的生活记录、摄影与Vlog...</div>`,
-            'contact': `<div class="modal-tag">* CONTACT</div><div class="modal-body">邮箱：your_email@example.com<br>微信：your_wechat</div>`
+            'about': `<div class="modal-title">✿ About Me</div><div class="modal-body"><strong>关于我 / 个人简介</strong><br><br>在此处填入你的个人自我介绍、求职方向与核心亮点...</div>`,
+            'internship': `<div class="modal-title">💼 My Internship</div><div class="modal-body"><strong>实习与工作经历</strong><br><br>在此处填入你的实习经验、核心负责项目及成果数据...</div>`,
+            'school': `<div class="modal-title">🎓 My School</div><div class="modal-body"><strong>校园与学术经历</strong><br><br>在此处填入毕业院校、专业背景、学术论文或社团活动...</div>`,
+            'life': `<div class="modal-title">📷 My Life</div><div class="modal-body"><strong>日常与生活记录</strong><br><br>在此处填入个人爱好、摄影照片、Vlog或生活小确幸...</div>`,
+            'contact': `<div class="modal-title">✉️ Contact Me</div><div class="modal-body"><strong>联系方式</strong><br><br>📧 邮箱：your_email@example.com<br>📱 微信：your_wechat_id</div>`
         };
 
         function openModal(type) {
