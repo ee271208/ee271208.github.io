@@ -1,619 +1,340 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Irene Wang's Universe</title>
-    <!-- 引入 Special Elite (vibe coding 风格打字机字体) & Gaegu (Naive 稚拙手绘字体) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Gaegu:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Irene Wang - Welcome to my portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #FFFDF9;
+      --card-bg: #FAF6F0;
+      --red-primary: #C82323;
+      --red-light: #FFECEC;
+      --pink-badge: #FFD2DA;
+      --text-dark: #2B2121;
+      --text-red: #A81B1B;
+      --border-red: #C82323;
+    }
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            font-family: 'Noto Sans SC', sans-serif;
-            color: #ffffff;
-            background: url('bj.jpg') no-repeat center center fixed;
-            background-size: cover;
-            min-height: 100vh;
-            width: 100vw;
-            overflow-x: hidden;
-            position: relative;
-        }
+    body {
+      background-color: #F3ECE2;
+      background-image: 
+        radial-gradient(#E5D5C5 1px, transparent 1px);
+      background-size: 20px 20px;
+      font-family: 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-        /* 顶栏标题 (vibe coding 特别款打字机油墨字体) */
-        header {
-            position: absolute;
-            top: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            z-index: 10;
-            width: 90%;
-            pointer-events: none;
-        }
+    /* 主卡片容器：红白蕾丝花边风格 */
+    .portfolio-card {
+      position: relative;
+      background: var(--card-bg);
+      border: 3px solid var(--border-red);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 860px;
+      padding: 32px 36px;
+      box-shadow: 
+        0 12px 32px rgba(200, 35, 35, 0.12),
+        6px 6px 0px var(--border-red);
+      overflow: hidden;
+    }
 
-        .universe-title {
-            font-family: 'Special Elite', monospace;
-            font-size: 2.3rem;
-            font-weight: 400;
-            letter-spacing: 3px;
-            color: #ffffff;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
+    /* 角落爱心贴纸装饰 */
+    .bear-sticker {
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--red-light);
+      border: 2px solid var(--red-primary);
+      border-radius: 50%;
+      box-shadow: 2px 2px 0 var(--red-primary);
+    }
 
-        .universe-sub {
-            font-family: 'Special Elite', monospace;
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.9);
-            letter-spacing: 2px;
-            margin-top: 4px;
-            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
-        }
+    /* Header 区域 */
+    .card-header {
+      border-bottom: 2px dashed #E5C4C4;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
 
-        /* --------------------------------------------------
-           写实鸡蛋花纯图标按钮
-        -------------------------------------------------- */
-        .plumeria-btn {
-            position: absolute;
-            z-index: 20;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px;
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 50%;
-            border: 1.5px solid rgba(255, 255, 255, 0.85);
-            box-shadow: 0 8px 24px rgba(2, 30, 40, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: flowerFloat 4.5s ease-in-out infinite;
-        }
+    .title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
 
-        @keyframes flowerFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-7px) rotate(1.5deg); }
-        }
+    .name-en {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: -0.5px;
+    }
 
-        .plumeria-btn:hover {
-            transform: scale(1.15) translateY(-4px) !important;
-            background: rgba(255, 255, 255, 0.65);
-            border-color: #ffffff;
-            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.7);
-        }
+    .name-cn-badge {
+      background: var(--pink-badge);
+      color: var(--text-red);
+      border: 1.5px solid var(--red-primary);
+      padding: 2px 12px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: 1px 1px 0 var(--red-primary);
+    }
 
-        /* 悬停气泡提示 */
-        .plumeria-btn::after {
-            content: attr(data-title);
-            position: absolute;
-            bottom: -38px;
-            left: 50%;
-            transform: translateX(-50%) translateY(6px);
-            background: #fffdfa;
-            backdrop-filter: blur(8px);
-            color: #292524;
-            font-family: 'Gaegu', 'Special Elite', cursive;
-            font-size: 1.05rem;
-            font-weight: 700;
-            padding: 3px 14px;
-            border-radius: 20px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 3px 3px 0px #292524;
-            border: 2px solid #292524;
-        }
+    .slogan {
+      font-family: 'Caveat', cursive, sans-serif;
+      font-size: 20px;
+      color: var(--text-red);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
 
-        .plumeria-btn:hover::after {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
+    .sub-welcome {
+      font-size: 13px;
+      color: #885555;
+      font-weight: 500;
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+      text-transform: lowercase;
+    }
 
-        .plumeria-svg {
-            width: 42px;
-            height: 42px;
-            flex-shrink: 0;
-            filter: drop-shadow(2px 4px 5px rgba(3, 34, 45, 0.35));
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
+    /* 主体网格布局 */
+    .card-body {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 28px;
+    }
 
-        .plumeria-btn:hover .plumeria-svg {
-            transform: rotate(45deg) scale(1.1);
-        }
+    /* 左侧照片贴纸框 */
+    .photo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        /* 5个模块精准定位 */
-        #flower-about { top: 62%; left: 12%; animation-delay: 0s; }
-        #flower-internship { top: 48%; left: 22%; animation-delay: 0.9s; }
-        #flower-school { top: 32%; left: 28%; animation-delay: 1.8s; }
-        #flower-life { top: 38%; right: 14%; animation-delay: 0.4s; }
-        #flower-contact { top: 56%; right: 10%; animation-delay: 1.3s; }
+    .photo-frame {
+      position: relative;
+      background: #FFFFFF;
+      border: 2.5px solid var(--border-red);
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: 3px 4px 0px var(--border-red);
+      width: 100%;
+    }
 
-        /* --------------------------------------------------
-           Modal 弹窗容器
-        -------------------------------------------------- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(30, 27, 26, 0.45);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 999;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+    .photo-tape {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--red-light);
+      border: 1.5px solid var(--red-primary);
+      color: var(--text-red);
+      font-size: 12px;
+      font-weight: bold;
+      padding: 2px 14px;
+      border-radius: 8px;
+      box-shadow: 1px 1px 0 var(--red-primary);
+    }
 
-        .modal-overlay.active { display: flex; }
+    .photo-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+    }
 
-        /* --------------------------------------------------
-           Naive Aesthetic (天真稚拙风) Heart 卡片
-        -------------------------------------------------- */
-        .modal-card-naive {
-            background: #fffdfa;
-            color: #292524;
-            width: 100%;
-            max-width: 820px;
-            max-height: 88vh;
-            overflow-y: auto;
-            border-radius: 28px 20px 26px 22px;
-            padding: 32px;
-            border: 2.5px solid #292524;
-            box-shadow: 6px 6px 0px #fb7185, 12px 12px 0px #292524;
-            position: relative;
-            animation: popNaive 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+    /* 右侧信息区 */
+    .info-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-        @keyframes popNaive {
-            from { transform: scale(0.88) translateY(20px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
-        }
+    /* 气泡介绍框 */
+    .bio-box {
+      background: #FFF5F5;
+      border: 2px solid var(--border-red);
+      border-radius: 16px;
+      padding: 14px 18px;
+      position: relative;
+      box-shadow: 2px 2px 0 var(--border-red);
+    }
 
-        /* 顶部关闭按钮 (手绘心形/圆点) */
-        .naive-close-btn {
-            position: absolute;
-            top: 18px;
-            right: 22px;
-            width: 32px;
-            height: 32px;
-            background: #ffe4e6;
-            border: 2px solid #292524;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.1rem;
-            box-shadow: 2px 2px 0px #292524;
-            transition: all 0.2s ease;
-        }
+    .bio-title {
+      font-weight: 700;
+      color: var(--text-red);
+      font-size: 15px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        .naive-close-btn:hover {
-            transform: scale(1.15) rotate(90deg);
-            background: #f43f5e;
-            color: #fff;
-        }
+    .bio-text {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #4A3A3A;
+    }
 
-        /* About Me 标题与天真涂鸦风格 */
-        .naive-header-block {
-            margin-bottom: 22px;
-            border-bottom: 2px dashed #f43f5e;
-            padding-bottom: 14px;
-        }
+    /* 模块分类 */
+    .section-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-        .naive-name {
-            font-family: 'Special Elite', monospace;
-            font-size: 2rem;
-            color: #1c1917;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    .section-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--text-red);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        .naive-cn-name {
-            font-family: 'Gaegu', cursive;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #f43f5e;
-            background: #ffe4e6;
-            padding: 2px 10px;
-            border-radius: 12px;
-            border: 1.5px solid #292524;
-            transform: rotate(-2deg);
-            display: inline-block;
-        }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
-        .naive-quote {
-            font-family: 'Gaegu', cursive;
-            font-size: 1.25rem;
-            color: #78716c;
-            margin-top: 4px;
-        }
+    /* 复古贴纸胶囊标签 */
+    .tag-item {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-red);
+      color: var(--text-dark);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 1.5px 1.5px 0 var(--border-red);
+      transition: transform 0.1s ease;
+    }
 
-        /* 布局：左侧照片，右侧信息 */
-        .naive-grid {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 28px;
-            align-items: start;
-        }
+    .tag-item:hover {
+      transform: translateY(-1px);
+    }
 
-        /* 拍立得手绘相框 */
-        .naive-photo-frame {
-            background: #ffffff;
-            padding: 10px 10px 18px 10px;
-            border: 2px solid #292524;
-            border-radius: 16px 20px 14px 18px;
-            box-shadow: 4px 4px 0px #fef08a, 6px 6px 0px #292524;
-            transform: rotate(-1.5deg);
-            position: relative;
-        }
+    .tag-item.highlight {
+      background: var(--red-light);
+    }
 
-        /* 相框顶部遮罩胶带纸 */
-        .naive-photo-frame::before {
-            content: "♥ Irene ♥";
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%) rotate(1deg);
-            background: #fef08a;
-            border: 1.5px solid #292524;
-            color: #292524;
-            font-family: 'Gaegu', cursive;
-            font-size: 0.95rem;
-            font-weight: 700;
-            padding: 1px 16px;
-            border-radius: 4px;
-        }
-
-        .about-avatar {
-            width: 100%;
-            height: 310px;
-            object-fit: cover;
-            border-radius: 10px;
-            border: 1.5px solid #292524;
-        }
-
-        .naive-info {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        /* 温馨手绘风卡片对话框 */
-        .naive-intro-box {
-            font-family: 'Noto Sans SC', sans-serif;
-            font-size: 0.9rem;
-            line-height: 1.75;
-            color: #292524;
-            background: #ffe4e6;
-            padding: 14px 18px;
-            border-radius: 18px;
-            border: 2px solid #292524;
-            box-shadow: 3px 3px 0px #292524;
-            position: relative;
-        }
-
-        .naive-section-title {
-            font-family: 'Gaegu', cursive;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #f43f5e;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* 稚拙风贴纸胶囊标签 */
-        .naive-pill-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .naive-pill {
-            font-family: 'Noto Sans SC', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 500;
-            padding: 5px 12px;
-            border-radius: 14px;
-            border: 1.5px solid #292524;
-            color: #292524;
-            box-shadow: 2px 2px 0px #292524;
-            transition: all 0.2s ease;
-        }
-
-        /* Pastel Heart 调色盘配色 */
-        .pill-pink { background: #ffe4e6; }
-        .pill-yellow { background: #fef08a; }
-        .pill-blue { background: #e0f2fe; }
-        .pill-green { background: #dcfce7; }
-        .pill-purple { background: #f3e8ff; }
-
-        .naive-pill:hover {
-            transform: translateY(-2deg) scale(1.03);
-        }
-
-        .naive-footer-note {
-            font-family: 'Gaegu', cursive;
-            font-size: 1.2rem;
-            color: #292524;
-            background: #fffbeb;
-            border: 1.5px dashed #292524;
-            padding: 8px 14px;
-            border-radius: 12px;
-            margin-top: 4px;
-            text-align: center;
-        }
-
-        footer {
-            position: absolute;
-            bottom: 2%;
-            width: 100%;
-            text-align: center;
-            font-family: 'Special Elite', monospace;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
-            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-            z-index: 10;
-        }
-
-        /* 移动端自适应 */
-        @media (max-width: 768px) {
-            .universe-title { font-size: 1.6rem; }
-            .naive-grid { grid-template-columns: 1fr; gap: 20px; }
-            .about-avatar { height: 260px; }
-            #flower-about { top: 62%; left: 4%; }
-            #flower-internship { top: 48%; left: 5%; }
-            #flower-school { top: 32%; left: 6%; }
-            #flower-life { top: 38%; right: 4%; }
-            #flower-contact { top: 54%; right: 4%; }
-        }
-    </style>
+    /* 响应式调整 */
+    @media (max-width: 680px) {
+      .card-body {
+        grid-template-columns: 1fr;
+      }
+      .portfolio-card {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- 顶栏标题 (vibe coding 特别款打字机油墨字体) -->
-    <header>
-        <h1 class="universe-title">* Irene Wang's Universe *</h1>
-        <p class="universe-sub">* welcome to my vibe coding space *</p>
-    </header>
-
-    <!-- 5个写实水漂鸡蛋花纯图标按钮 -->
-
-    <!-- 1. About Me -->
-    <div class="plumeria-btn" id="flower-about" data-title="About Me" onclick="openModal('about')">
-        <svg class="plumeria-svg" viewBox="0 0 100 100">
-            <defs>
-                <linearGradient id="pGrad1" x1="0%" y1="100%" x2="30%" y2="0%">
-                    <stop offset="0%" stop-color="#f2efe9"/>
-                    <stop offset="100%" stop-color="#ffffff"/>
-                </linearGradient>
-                <radialGradient id="cYellow1" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ff9800"/>
-                    <stop offset="40%" stop-color="#ffca28"/>
-                    <stop offset="75%" stop-color="#ffee55" stop-opacity="0.9"/>
-                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-                </radialGradient>
-            </defs>
-            <g>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad1)" stroke="#e2ded4" stroke-width="0.8"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad1)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(72 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad1)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(144 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad1)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(216 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad1)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(288 50 50)"/>
-                <circle cx="50" cy="50" r="22" fill="url(#cYellow1)"/>
-            </g>
-        </svg>
+  <div class="portfolio-card">
+    <!-- 右上角小熊爱心印章 -->
+    <div class="bear-sticker" title="bear love">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C82323" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#FFECEC"/>
+      </svg>
     </div>
 
-    <!-- 2. My Internship -->
-    <div class="plumeria-btn" id="flower-internship" data-title="My Internship" onclick="openModal('internship')">
-        <svg class="plumeria-svg" viewBox="0 0 100 100">
-            <defs>
-                <linearGradient id="pGrad2" x1="0%" y1="100%" x2="30%" y2="0%">
-                    <stop offset="0%" stop-color="#f2efe9"/>
-                    <stop offset="100%" stop-color="#ffffff"/>
-                </linearGradient>
-                <radialGradient id="cYellow2" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ff9800"/>
-                    <stop offset="40%" stop-color="#ffca28"/>
-                    <stop offset="75%" stop-color="#ffee55" stop-opacity="0.9"/>
-                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-                </radialGradient>
-            </defs>
-            <g>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad2)" stroke="#e2ded4" stroke-width="0.8"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad2)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(72 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad2)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(144 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad2)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(216 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad2)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(288 50 50)"/>
-                <circle cx="50" cy="50" r="22" fill="url(#cYellow2)"/>
-            </g>
-        </svg>
+    <!-- Header 区域 -->
+    <div class="card-header">
+      <div class="title-row">
+        <span class="name-en">Irene Wang</span>
+        <span class="name-cn-badge">王卓楠</span>
+      </div>
+      <div class="slogan">
+        ♥ "Connecting global perspectives with empathic insight." ♥
+      </div>
+      <div class="sub-welcome">welcome to my portfolio</div>
     </div>
 
-    <!-- 3. My School -->
-    <div class="plumeria-btn" id="flower-school" data-title="My School" onclick="openModal('school')">
-        <svg class="plumeria-svg" viewBox="0 0 100 100">
-            <defs>
-                <linearGradient id="pGrad3" x1="0%" y1="100%" x2="30%" y2="0%">
-                    <stop offset="0%" stop-color="#f2efe9"/>
-                    <stop offset="100%" stop-color="#ffffff"/>
-                </linearGradient>
-                <radialGradient id="cYellow3" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ff9800"/>
-                    <stop offset="40%" stop-color="#ffca28"/>
-                    <stop offset="75%" stop-color="#ffee55" stop-opacity="0.9"/>
-                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-                </radialGradient>
-            </defs>
-            <g>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad3)" stroke="#e2ded4" stroke-width="0.8"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad3)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(72 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad3)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(144 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad3)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(216 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad3)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(288 50 50)"/>
-                <circle cx="50" cy="50" r="22" fill="url(#cYellow3)"/>
-            </g>
-        </svg>
-    </div>
-
-    <!-- 4. My Life -->
-    <div class="plumeria-btn" id="flower-life" data-title="My Life" onclick="openModal('life')">
-        <svg class="plumeria-svg" viewBox="0 0 100 100">
-            <defs>
-                <linearGradient id="pGrad4" x1="0%" y1="100%" x2="30%" y2="0%">
-                    <stop offset="0%" stop-color="#f2efe9"/>
-                    <stop offset="100%" stop-color="#ffffff"/>
-                </linearGradient>
-                <radialGradient id="cYellow4" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ff9800"/>
-                    <stop offset="40%" stop-color="#ffca28"/>
-                    <stop offset="75%" stop-color="#ffee55" stop-opacity="0.9"/>
-                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-                </radialGradient>
-            </defs>
-            <g>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad4)" stroke="#e2ded4" stroke-width="0.8"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad4)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(72 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad4)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(144 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad4)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(216 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad4)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(288 50 50)"/>
-                <circle cx="50" cy="50" r="22" fill="url(#cYellow4)"/>
-            </g>
-        </svg>
-    </div>
-
-    <!-- 5. Contact Me -->
-    <div class="plumeria-btn" id="flower-contact" data-title="Contact Me" onclick="openModal('contact')">
-        <svg class="plumeria-svg" viewBox="0 0 100 100">
-            <defs>
-                <linearGradient id="pGrad5" x1="0%" y1="100%" x2="30%" y2="0%">
-                    <stop offset="0%" stop-color="#f2efe9"/>
-                    <stop offset="100%" stop-color="#ffffff"/>
-                </linearGradient>
-                <radialGradient id="cYellow5" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ff9800"/>
-                    <stop offset="40%" stop-color="#ffca28"/>
-                    <stop offset="75%" stop-color="#ffee55" stop-opacity="0.9"/>
-                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-                </radialGradient>
-            </defs>
-            <g>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad5)" stroke="#e2ded4" stroke-width="0.8"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad5)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(72 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad5)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(144 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad5)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(216 50 50)"/>
-                <path d="M50 50 C30 35 24 10 46 5 C64 0 68 22 50 50 Z" fill="url(#pGrad5)" stroke="#e2ded4" stroke-width="0.8" transform="rotate(288 50 50)"/>
-                <circle cx="50" cy="50" r="22" fill="url(#cYellow5)"/>
-            </g>
-        </svg>
-    </div>
-
-    <!-- 页脚 -->
-    <footer>
-        * © 2026 Irene Wang • All Rights Reserved *
-    </footer>
-
-    <!-- Naive Aesthetic 奶油黑框手绘弹窗 -->
-    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
-        <div class="modal-card-naive">
-            <div class="naive-close-btn" onclick="closeModal()" title="关闭">✕</div>
-            <div id="modalContent"></div>
+    <!-- 主体区域 -->
+    <div class="card-body">
+      <!-- 左侧个人照片贴纸 -->
+      <div class="photo-section">
+        <div class="photo-frame">
+          <div class="photo-tape">♥ Irene ♥</div>
+          <!-- 替换为您的实际照片链接 -->
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Irene" class="photo-img">
         </div>
+      </div>
+
+      <!-- 右侧详细信息 -->
+      <div class="info-section">
+        <!-- 个人简介气泡 -->
+        <div class="bio-box">
+          <div class="bio-title">🧸 Hii, 这里是 Irene!</div>
+          <p class="bio-text">
+            一个兼具全球政治经济视野与深厚财税底蕴的跨界探索者。热衷于用敏锐的社会洞察与温暖的人情味，连接品牌、内容与人心。
+          </p>
+        </div>
+
+        <!-- BACKGROUND -->
+        <div class="section-group">
+          <div class="section-label">☁ BACKGROUND</div>
+          <div class="tag-list">
+            <div class="tag-item">香港中文大学 · 全球政治经济学 硕士 🎓</div>
+            <div class="tag-item highlight">浙江财经大学 · 税务学 本科 🎓</div>
+          </div>
+        </div>
+
+        <!-- CAPABILITIES -->
+        <div class="section-group">
+          <div class="section-label">✨ CAPABILITIES</div>
+          <div class="tag-list">
+            <div class="tag-item">宏观洞察 & 跨学科思考 ✦</div>
+            <div class="tag-item">品牌营销 & 内容策划 ✦</div>
+            <div class="tag-item">数据敏感度 & 商业分析 ✦</div>
+          </div>
+        </div>
+
+        <!-- LIFE & PERSONA -->
+        <div class="section-group">
+          <div class="section-label">🧸 LIFE & PERSONA</div>
+          <div class="tag-list">
+            <div class="tag-item">INFJ 绿老头 🧙‍♂️</div>
+            <div class="tag-item highlight">超强共情力 💗</div>
+            <div class="tag-item">Fitness 🏋️‍♀️</div>
+            <div class="tag-item">Kpop 🎵</div>
+            <div class="tag-item">旅游 ✈️</div>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </div>
 
-    <script>
-        const contentMap = {
-            'about': `
-                <!-- 顶部姓名与金句 -->
-                <div class="naive-header-block">
-                    <div class="naive-name">
-                        Irene Wang <span class="naive-cn-name">王卓楠</span>
-                    </div>
-                    <div class="naive-quote">♡ "Connecting global perspectives with empathic insight." ♡</div>
-                </div>
-
-                <!-- 稚拙美学双栏布局：左拍立得相框（顶部与文字对齐） -->
-                <div class="naive-grid">
-                    <div class="naive-photo-frame">
-                        <img src="图片1.jpg" alt="Irene Wang" class="about-avatar" onerror="this.src='https://via.placeholder.com/250x310?text=Irene+Wang'">
-                    </div>
-
-                    <div class="naive-info">
-                        <div class="naive-intro-box">
-                            👋 <strong>Hii, 这里是 Irene！</strong><br>
-                            一个兼具全球政治经济视野与深厚财税底蕴的跨界探索者。热衷于用敏锐的社会洞察与温暖的人情味，连接品牌、内容与人心。
-                        </div>
-
-                        <div>
-                            <div class="naive-section-title">☁️ BACKGROUND</div>
-                            <div class="naive-pill-group">
-                                <span class="naive-pill pill-pink">香港中文大学 · 全球政治经济学 硕士 🎓</span>
-                                <span class="naive-pill pill-yellow">浙江财经大学 · 税收学 本科 🎓</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="naive-section-title">✨ CAPABILITIES</div>
-                            <div class="naive-pill-group">
-                                <span class="naive-pill pill-blue">宏观洞察 & 跨学科思考 ✦</span>
-                                <span class="naive-pill pill-green">品牌营销 & 内容企划 ✦</span>
-                                <span class="naive-pill pill-purple">数据敏锐度 & 商业分析 ✦</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="naive-section-title">🧸 LIFE & PERSONA</div>
-                            <div class="naive-pill-group">
-                                <span class="naive-pill pill-pink">INFJ 绿老头 🧙‍♂️</span>
-                                <span class="naive-pill pill-yellow">超强共情力 💗</span>
-                                <span class="naive-pill pill-blue">Fitness 🏋️‍♀️</span>
-                                <span class="naive-pill pill-green">Kpop 🎵</span>
-                                <span class="naive-pill pill-purple">旅游 ✈️</span>
-                            </div>
-                        </div>
-
-                        <div class="naive-footer-note">
-                            ☕ Coffee or Drink? 随时欢迎交流！
-                        </div>
-                    </div>
-                </div>
-            `,
-            'internship': `<div style="padding: 10px;"><h2 style="font-family:'Special Elite'; color:#1c1917; margin-bottom:15px;">💼 My Internship</h2><p style="color:#57534e; line-height:1.8;">这里是你的实习经历介绍模块，可以补充具体的实习岗位与主要成果！</p></div>`,
-            'school': `<div style="padding: 10px;"><h2 style="font-family:'Special Elite'; color:#1c1917; margin-bottom:15px;">🎓 My School</h2><p style="color:#57534e; line-height:1.8;">这里是你的校园背景与学术活动展示模块！</p></div>`,
-            'life': `<div style="padding: 10px;"><h2 style="font-family:'Special Elite'; color:#1c1917; margin-bottom:15px;">📷 My Life</h2><p style="color:#57534e; line-height:1.8;">这里是你的日常记录、摄影作品与生活片段展示！</p></div>`,
-            'contact': `<div style="padding: 10px;"><h2 style="font-family:'Special Elite'; color:#1c1917; margin-bottom:15px;">✉️ Contact Me</h2><p style="color:#57534e; line-height:1.8;">📧 Email: your_email@example.com<br>📱 WeChat: your_wechat_id</p></div>`
-        };
-
-        function openModal(type) {
-            document.getElementById('modalContent').innerHTML = contentMap[type] || '';
-            document.getElementById('modalOverlay').classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('active');
-        }
-
-        function closeModalOnBg(event) {
-            if (event.target.id === 'modalOverlay') closeModal();
-        }
-    </script>
 </body>
 </html>
