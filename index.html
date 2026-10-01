@@ -268,7 +268,7 @@
 
         .slogan {
             font-family: 'Playfair Display', serif;
-            font-style: normal; /* 取消斜体，与全站字体保持一致 */
+            font-style: normal;
             font-size: 1.08rem;
             color: var(--theme-red);
             margin-top: 6px;
@@ -460,13 +460,13 @@
         }
 
         /* --------------------------------------------------
-           爆款内容案例卡片 (直观嵌入 Capabilities 区域)
+           爆款内容案例卡片 (弹窗内部样式)
         -------------------------------------------------- */
         .article-card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 18px;
-            margin-top: 6px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
+            margin-top: 10px;
         }
 
         .article-card {
@@ -493,7 +493,7 @@
         .article-cover-box {
             position: relative;
             width: 100%;
-            height: 160px;
+            height: 200px;
             overflow: hidden;
             background: #f3f4f6;
         }
@@ -511,13 +511,13 @@
 
         .platform-badge {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.65);
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.68);
             backdrop-filter: blur(8px);
             color: #ffffff;
-            font-size: 0.72rem;
-            padding: 3px 9px;
+            font-size: 0.75rem;
+            padding: 4px 11px;
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -525,7 +525,7 @@
         }
 
         .article-body {
-            padding: 14px 16px 18px 16px;
+            padding: 16px 18px 20px 18px;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -539,7 +539,7 @@
             background: rgba(254, 226, 226, 0.85);
             color: var(--theme-red);
             border: 1px solid rgba(244, 63, 94, 0.3);
-            font-size: 0.76rem;
+            font-size: 0.78rem;
             font-weight: 700;
             padding: 3px 10px;
             border-radius: 12px;
@@ -547,22 +547,22 @@
         }
 
         .article-title {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--text-dark);
             line-height: 1.4;
         }
 
         .article-desc {
-            font-size: 0.82rem;
+            font-size: 0.83rem;
             color: var(--text-sub);
-            line-height: 1.55;
+            line-height: 1.6;
         }
 
         .jump-btn-link {
             margin-top: auto;
-            padding-top: 8px;
-            font-size: 0.82rem;
+            padding-top: 10px;
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--theme-red);
             display: flex;
@@ -818,7 +818,7 @@
         </div>
     </div>
 
-    <!-- 二级校园与生活照片弹窗 -->
+    <!-- 二级校园、照片及爆款内容弹窗 -->
     <div class="sub-modal-overlay" id="subModalOverlay" onclick="closeSubModalOnBg(event)">
         <div class="portfolio-card-airy" style="max-width: 900px;">
             <button class="close-btn" onclick="closeSubModal()" title="关闭">✕</button>
@@ -841,7 +841,7 @@
                 </div>
 
                 <div class="card-body-grid">
-                    <!-- 左侧纯净照片相框 (已去除去胶带文字与爱心) -->
+                    <!-- 左侧纯净照片相框 -->
                     <div class="photo-frame-airy">
                         <img src="图片1.jpg" alt="Irene Wang" class="photo-img" onerror="this.onerror=null; console.log('图片加载失败');">
                     </div>
@@ -851,11 +851,11 @@
                         <div class="bio-box-airy">
                             <div class="bio-title">🌷 Hii, 这里是 Irene 王卓楠!</div>
                             <p class="bio-text">
-                                兼具<b>左脑严密商业逻辑</b>与<b>右脑敏锐内容感官审美</b>的黄金复合型天赋者。深耕财税底蕴与全球政治经济视野，擅长将纷繁现象降维结构化，并以深刻的消费者洞察与高质感审美打动人心。
+                                兼具<b>严密商业逻辑</b>与<b>敏锐内容感官审美</b>的复合型选手。深耕财税底蕴与全球政治经济视野，擅长将纷繁现象降维结构化，并以深刻的消费者洞察与高质感审美打动人心。
                             </p>
                         </div>
 
-                        <!-- BACKGROUND (已删除浙财后面的 GPA 绩点括号) -->
+                        <!-- BACKGROUND -->
                         <div class="section-group">
                             <div class="section-label">☁ BACKGROUND</div>
                             <div class="tag-list">
@@ -868,57 +868,17 @@
                             </div>
                         </div>
 
-                        <!-- CAPABILITIES & CORE STRENGTHS (爆款内容卡片嵌入在此处) -->
+                        <!-- CAPABILITIES & CORE STRENGTHS (将推送爆款收纳进专属点击标签) -->
                         <div class="section-group">
-                            <div class="section-label">✨ CAPABILITIES & CORE STRENGTHS</div>
-                            <div class="tag-list" style="margin-bottom: 4px;">
+                            <div class="section-label">✨ CAPABILITIES & CORE STRENGTHS (点击高亮标签查看作品)</div>
+                            <div class="tag-list">
                                 <div class="tag-item-airy">逻辑降维 & 结构化商业分析 ✦</div>
-                                <div class="tag-item-airy highlight">品牌感官直觉 & 消费者洞察 ✦</div>
+                                <div class="tag-item-airy highlight clickable" onclick="openSubModal('articles')" title="点击查看爆款推送作品">
+                                    爆款内容创作 & 公众号运营 📲
+                                </div>
+                                <div class="tag-item-airy">品牌感官直觉 & 消费者洞察 ✦</div>
                                 <div class="tag-item-airy">方法论驱动的极佳执行力 ✦</div>
                                 <div class="tag-item-airy">跨学科视野 & 中英双语沟通 ✦</div>
-                            </div>
-
-                            <!-- 可视化爆款内容案例卡片 -->
-                            <div class="article-card-grid">
-
-                                <!-- 卡片 1：指导学妹 3300+ 阅读爆款 -->
-                                <a href="https://mp.weixin.qq.com/s/jd0SWaArm-3E_xZ61jtehg" target="_blank" class="article-card" title="点击跳转阅读原文">
-                                    <div class="article-cover-box">
-                                        <img src="推送1.jpg" alt="viva la vida 人生万岁" class="article-cover-img" onerror="this.onerror=null; this.src='图片1.jpg';">
-                                        <span class="platform-badge">💬 微信公众号</span>
-                                    </div>
-                                    <div class="article-body">
-                                        <div class="metrics-pill">🔥 3,300+ 爆款阅读 | 独立策划指导</div>
-                                        <div class="article-title">viva la vida 人生万岁</div>
-                                        <div class="article-desc">
-                                            抓取年轻亚文化流行语与韩剧情感共鸣，设计选题与图文转译逻辑，打破传统社团号阅读瓶颈，单篇达成 3,300+ 爆款阅读。
-                                        </div>
-                                        <div class="jump-btn-link">
-                                            <span>阅读原文</span>
-                                            <span>➔</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <!-- 卡片 2：原创 1500+ 深度好文 -->
-                                <a href="https://mp.weixin.qq.com/s/bqBupSlAtyZzdV_wYEBNcA" target="_blank" class="article-card" title="点击跳转阅读原文">
-                                    <div class="article-cover-box">
-                                        <img src="推送2.jpg" alt="让我们从凌晨三点的梦境中逃离吧" class="article-cover-img" onerror="this.onerror=null; this.src='图片1.jpg';">
-                                        <span class="platform-badge">💬 微信公众号</span>
-                                    </div>
-                                    <div class="article-body">
-                                        <div class="metrics-pill">🔥 1,500+ 深度好文 | 原创撰写</div>
-                                        <div class="article-title">让我们从凌晨三点的梦境中逃离吧</div>
-                                        <div class="article-desc">
-                                            精准洞察当代年轻人晚睡与“发疯文学”背后的情感避难需求，结合质感图文排版与叙事，引发高热度转发与评论。
-                                        </div>
-                                        <div class="jump-btn-link">
-                                            <span>阅读原文</span>
-                                            <span>➔</span>
-                                        </div>
-                                    </div>
-                                </a>
-
                             </div>
                         </div>
 
@@ -1078,8 +1038,57 @@
             `
         };
 
-        /* 二级相册弹窗内容 (CUHK / ZUFE / 旅游 / 运动) */
+        /* 二级弹窗内容 (CUHK / ZUFE / 旅游 / 运动 / 爆款文章推送) */
         const subContentMap = {
+            'articles': `
+                <div class="gallery-container">
+                    <div class="gallery-header">
+                        <div class="gallery-title">🔥 爆款内容传播案例 (点击卡片直达文章)</div>
+                    </div>
+
+                    <div class="article-card-grid">
+
+                        <!-- 卡片 1：海报2 -> vivalavida (3,300+ 爆款) -->
+                        <a href="https://mp.weixin.qq.com/s/jd0SWaArm-3E_xZ61jtehg" target="_blank" class="article-card" title="点击跳转阅读原文">
+                            <div class="article-cover-box">
+                                <img src="海报2.jpg" alt="viva la vida 人生万岁" class="article-cover-img" onerror="this.onerror=null; this.src='推送1.jpg';">
+                                <span class="platform-badge">💬 微信公众号</span>
+                            </div>
+                            <div class="article-body">
+                                <div class="metrics-pill">🔥 3,300+ 爆款阅读 | 独立策划指导</div>
+                                <div class="article-title">viva la vida 人生万岁</div>
+                                <div class="article-desc">
+                                    抓取年轻亚文化流行语与韩剧情感共鸣，设计选题与图文转译逻辑，打破传统社团号阅读瓶颈，单篇达成 3,300+ 爆款阅读。
+                                </div>
+                                <div class="jump-btn-link">
+                                    <span>阅读原文</span>
+                                    <span>➔</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- 卡片 2：海报1 -> 原创 (1,500+ 深度好文) -->
+                        <a href="https://mp.weixin.qq.com/s/bqBupSlAtyZzdV_wYEBNcA" target="_blank" class="article-card" title="点击跳转阅读原文">
+                            <div class="article-cover-box">
+                                <img src="海报1.jpg" alt="让我们从凌晨三点的梦境中逃离吧" class="article-cover-img" onerror="this.onerror=null; this.src='推送2.jpg';">
+                                <span class="platform-badge">💬 微信公众号</span>
+                            </div>
+                            <div class="article-body">
+                                <div class="metrics-pill">🔥 1,500+ 深度好文 | 原创撰写</div>
+                                <div class="article-title">让我们从凌晨三点的梦境中逃离吧</div>
+                                <div class="article-desc">
+                                    精准洞察当代年轻人晚睡与“发疯文学”背后的情感避难需求，结合质感图文排版与叙事，引发高热度转发与评论。
+                                </div>
+                                <div class="jump-btn-link">
+                                    <span>阅读原文</span>
+                                    <span>➔</span>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            `,
             'cuhk': `
                 <div class="gallery-container">
                     <div class="gallery-header">
