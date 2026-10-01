@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Irene Wang's Universe</title>
-    <!-- 引入 Ins 惬意质感英文字体与无衬线体 -->
+    <!-- 引入 Special Elite (vibe coding 风格打字机字体) & Gaegu (Naive 稚拙手绘字体) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Gaegu:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -17,7 +17,7 @@
         }
 
         body {
-            font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+            font-family: 'Noto Sans SC', sans-serif;
             color: #ffffff;
             background: url('bj.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -27,7 +27,7 @@
             position: relative;
         }
 
-        /* 顶栏标题 */
+        /* 顶栏标题 (vibe coding 特别款打字机油墨字体) */
         header {
             position: absolute;
             top: 24px;
@@ -40,26 +40,25 @@
         }
 
         .universe-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-family: 'Special Elite', monospace;
+            font-size: 2.3rem;
+            font-weight: 400;
+            letter-spacing: 3px;
             color: #ffffff;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .universe-sub {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Special Elite', monospace;
             font-size: 0.95rem;
-            font-weight: 300;
             color: rgba(255, 255, 255, 0.9);
             letter-spacing: 2px;
-            margin-top: 2px;
+            margin-top: 4px;
             text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
         }
 
         /* --------------------------------------------------
-           写实鸡蛋花纯图标按钮 (悬停显示 Ins 奶油色气泡)
+           写实鸡蛋花纯图标按钮
         -------------------------------------------------- */
         .plumeria-btn {
             position: absolute;
@@ -91,29 +90,28 @@
             box-shadow: 0 12px 30px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.7);
         }
 
-        /* 悬停气泡提示 (Ins 柔和气泡) */
+        /* 悬停气泡提示 */
         .plumeria-btn::after {
             content: attr(data-title);
             position: absolute;
             bottom: -38px;
             left: 50%;
             transform: translateX(-50%) translateY(6px);
-            background: rgba(253, 251, 247, 0.92);
+            background: #fffdfa;
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            color: #44403c;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            padding: 4px 14px;
+            color: #292524;
+            font-family: 'Gaegu', 'Special Elite', cursive;
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 3px 14px;
             border-radius: 20px;
             white-space: nowrap;
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 3px 3px 0px #292524;
+            border: 2px solid #292524;
         }
 
         .plumeria-btn:hover::after {
@@ -122,7 +120,6 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* 写实鸡蛋花 SVG 图标 */
         .plumeria-svg {
             width: 42px;
             height: 42px;
@@ -143,7 +140,7 @@
         #flower-contact { top: 56%; right: 10%; animation-delay: 1.3s; }
 
         /* --------------------------------------------------
-           Ins 欧阳娜娜风 · 奶油燕麦色卡片弹窗
+           Modal 弹窗容器
         -------------------------------------------------- */
         .modal-overlay {
             position: fixed;
@@ -151,9 +148,9 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(30, 27, 26, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index: 999;
             display: none;
             justify-content: center;
@@ -163,151 +160,205 @@
 
         .modal-overlay.active { display: flex; }
 
-        /* Ins 风格奶油卡片 */
-        .modal-card-ins {
-            background: rgba(253, 251, 247, 0.95);
+        /* --------------------------------------------------
+           Naive Aesthetic (天真稚拙风) Heart 卡片
+        -------------------------------------------------- */
+        .modal-card-naive {
+            background: #fffdfa;
             color: #292524;
             width: 100%;
             max-width: 820px;
             max-height: 88vh;
             overflow-y: auto;
-            border-radius: 24px;
+            border-radius: 28px 20px 26px 22px;
             padding: 32px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1);
+            border: 2.5px solid #292524;
+            box-shadow: 6px 6px 0px #fb7185, 12px 12px 0px #292524;
             position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: popNaive 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        @keyframes popIn {
-            from { transform: scale(0.9) translateY(20px); opacity: 0; }
+        @keyframes popNaive {
+            from { transform: scale(0.88) translateY(20px); opacity: 0; }
             to { transform: scale(1) translateY(0); opacity: 1; }
         }
 
-        /* 顶部小红点关闭按钮 */
-        .close-dot {
+        /* 顶部关闭按钮 (手绘心形/圆点) */
+        .naive-close-btn {
             position: absolute;
-            top: 20px;
+            top: 18px;
             right: 22px;
-            width: 13px;
-            height: 13px;
-            background: #ff5f56;
+            width: 32px;
+            height: 32px;
+            background: #ffe4e6;
+            border: 2px solid #292524;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 6px rgba(255, 95, 86, 0.4);
-            transition: transform 0.2s ease;
+            font-size: 1.1rem;
+            box-shadow: 2px 2px 0px #292524;
+            transition: all 0.2s ease;
         }
 
-        .close-dot:hover {
-            transform: scale(1.25);
+        .naive-close-btn:hover {
+            transform: scale(1.15) rotate(90deg);
+            background: #f43f5e;
+            color: #fff;
         }
 
-        /* About Me 双栏布局 */
-        .about-grid {
+        /* About Me 标题与天真涂鸦风格 */
+        .naive-header-block {
+            margin-bottom: 22px;
+            border-bottom: 2px dashed #f43f5e;
+            padding-bottom: 14px;
+        }
+
+        .naive-name {
+            font-family: 'Special Elite', monospace;
+            font-size: 2rem;
+            color: #1c1917;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .naive-cn-name {
+            font-family: 'Gaegu', cursive;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #f43f5e;
+            background: #ffe4e6;
+            padding: 2px 10px;
+            border-radius: 12px;
+            border: 1.5px solid #292524;
+            transform: rotate(-2deg);
+            display: inline-block;
+        }
+
+        .naive-quote {
+            font-family: 'Gaegu', cursive;
+            font-size: 1.25rem;
+            color: #78716c;
+            margin-top: 4px;
+        }
+
+        /* 布局：左侧照片，右侧信息 */
+        .naive-grid {
             display: grid;
-            grid-template-columns: 260px 1fr;
+            grid-template-columns: 250px 1fr;
             gap: 28px;
             align-items: start;
         }
 
-        .about-avatar {
-            width: 100%;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 18px;
-            box-shadow: 0 10px 25px rgba(68, 64, 60, 0.12);
-            border: 3px solid #ffffff;
+        /* 拍立得手绘相框 */
+        .naive-photo-frame {
+            background: #ffffff;
+            padding: 10px 10px 18px 10px;
+            border: 2px solid #292524;
+            border-radius: 16px 20px 14px 18px;
+            box-shadow: 4px 4px 0px #fef08a, 6px 6px 0px #292524;
+            transform: rotate(-1.5deg);
+            position: relative;
         }
 
-        .about-info {
+        /* 相框顶部遮罩胶带纸 */
+        .naive-photo-frame::before {
+            content: "♥ Irene ♥";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(1deg);
+            background: #fef08a;
+            border: 1.5px solid #292524;
+            color: #292524;
+            font-family: 'Gaegu', cursive;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 1px 16px;
+            border-radius: 4px;
+        }
+
+        .about-avatar {
+            width: 100%;
+            height: 310px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1.5px solid #292524;
+        }
+
+        .naive-info {
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
 
-        .about-header-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.85rem;
-            font-weight: 700;
-            color: #1c1917;
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-        }
-
-        .about-header-cn {
+        /* 温馨手绘风卡片对话框 */
+        .naive-intro-box {
             font-family: 'Noto Sans SC', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 400;
-            color: #78716c;
-        }
-
-        .about-quote {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
             font-size: 0.9rem;
-            color: #a8a29e;
-            margin-top: -6px;
-        }
-
-        /* 自我介绍温馨黄底卡片 */
-        .about-intro {
-            font-size: 0.88rem;
             line-height: 1.75;
-            color: #44403c;
-            background: #f5f0e6;
-            padding: 12px 16px;
-            border-radius: 12px;
-            border-left: 3px solid #d97706;
+            color: #292524;
+            background: #ffe4e6;
+            padding: 14px 18px;
+            border-radius: 18px;
+            border: 2px solid #292524;
+            box-shadow: 3px 3px 0px #292524;
+            position: relative;
         }
 
-        .section-label {
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            color: #a8a29e;
-            text-transform: uppercase;
-            margin-bottom: 8px;
+        .naive-section-title {
+            font-family: 'Gaegu', cursive;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f43f5e;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        /* Ins 奶油感胶囊标签 */
-        .pill-group {
+        /* 稚拙风贴纸胶囊标签 */
+        .naive-pill-group {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
-        .pill {
-            background: #f5f0e6;
-            border: 1px solid #e7dfd3;
-            color: #44403c;
+        .naive-pill {
+            font-family: 'Noto Sans SC', sans-serif;
             font-size: 0.82rem;
-            padding: 5px 14px;
-            border-radius: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
+            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 14px;
+            border: 1.5px solid #292524;
+            color: #292524;
+            box-shadow: 2px 2px 0px #292524;
             transition: all 0.2s ease;
         }
 
-        .pill:hover {
-            background: #eae2d4;
-            border-color: #d6cebe;
-            transform: translateY(-1px);
+        /* Pastel Heart 调色盘配色 */
+        .pill-pink { background: #ffe4e6; }
+        .pill-yellow { background: #fef08a; }
+        .pill-blue { background: #e0f2fe; }
+        .pill-green { background: #dcfce7; }
+        .pill-purple { background: #f3e8ff; }
+
+        .naive-pill:hover {
+            transform: translateY(-2deg) scale(1.03);
         }
 
-        .about-footer-note {
-            margin-top: 10px;
-            font-size: 0.84rem;
-            color: #78716c;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border-top: 1px solid #e7dfd3;
-            padding-top: 14px;
+        .naive-footer-note {
+            font-family: 'Gaegu', cursive;
+            font-size: 1.2rem;
+            color: #292524;
+            background: #fffbeb;
+            border: 1.5px dashed #292524;
+            padding: 8px 14px;
+            border-radius: 12px;
+            margin-top: 4px;
+            text-align: center;
         }
 
         footer {
@@ -315,17 +366,17 @@
             bottom: 2%;
             width: 100%;
             text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.75);
+            font-family: 'Special Elite', monospace;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
             text-shadow: 0 1px 4px rgba(0,0,0,0.5);
             z-index: 10;
         }
 
         /* 移动端自适应 */
         @media (max-width: 768px) {
-            .universe-title { font-size: 1.7rem; }
-            .about-grid { grid-template-columns: 1fr; gap: 20px; }
+            .universe-title { font-size: 1.6rem; }
+            .naive-grid { grid-template-columns: 1fr; gap: 20px; }
             .about-avatar { height: 260px; }
             #flower-about { top: 62%; left: 4%; }
             #flower-internship { top: 48%; left: 5%; }
@@ -337,10 +388,10 @@
 </head>
 <body>
 
-    <!-- 顶栏标题 -->
+    <!-- 顶栏标题 (vibe coding 特别款打字机油墨字体) -->
     <header>
-        <h1 class="universe-title">Irene Wang's Universe</h1>
-        <p class="universe-sub">Welcome to My Personal Space</p>
+        <h1 class="universe-title">* Irene Wang's Universe *</h1>
+        <p class="universe-sub">* welcome to my vibe coding space *</p>
     </header>
 
     <!-- 5个写实水漂鸡蛋花纯图标按钮 -->
@@ -477,13 +528,13 @@
 
     <!-- 页脚 -->
     <footer>
-        © 2026 Irene Wang • All Rights Reserved
+        * © 2026 Irene Wang • All Rights Reserved *
     </footer>
 
-    <!-- Ins 奶油质感弹窗 -->
+    <!-- Naive Aesthetic 奶油黑框手绘弹窗 -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
-        <div class="modal-card-ins">
-            <div class="close-dot" onclick="closeModal()" title="关闭"></div>
+        <div class="modal-card-naive">
+            <div class="naive-close-btn" onclick="closeModal()" title="关闭">✕</div>
             <div id="modalContent"></div>
         </div>
     </div>
@@ -491,59 +542,64 @@
     <script>
         const contentMap = {
             'about': `
-                <div class="about-grid">
-                    <img src="图片1.jpg" alt="Irene Wang" class="about-avatar" onerror="this.src='https://via.placeholder.com/260x380?text=Irene+Wang'">
-                    <div class="about-info">
-                        <div>
-                            <div class="about-header-name">
-                                Irene Wang <span class="about-header-cn">王卓楠</span>
-                            </div>
-                            <div class="about-quote">"Connecting global perspectives with empathic insight."</div>
-                        </div>
+                <!-- 顶部姓名与金句 -->
+                <div class="naive-header-block">
+                    <div class="naive-name">
+                        Irene Wang <span class="naive-cn-name">王卓楠</span>
+                    </div>
+                    <div class="naive-quote">♡ "Connecting global perspectives with empathic insight." ♡</div>
+                </div>
 
-                        <div class="about-intro">
+                <!-- 稚拙美学双栏布局：左拍立得相框（顶部与文字对齐） -->
+                <div class="naive-grid">
+                    <div class="naive-photo-frame">
+                        <img src="图片1.jpg" alt="Irene Wang" class="about-avatar" onerror="this.src='https://via.placeholder.com/250x310?text=Irene+Wang'">
+                    </div>
+
+                    <div class="naive-info">
+                        <div class="naive-intro-box">
                             👋 <strong>Hii, 这里是 Irene！</strong><br>
                             一个兼具全球政治经济视野与深厚财税底蕴的跨界探索者。热衷于用敏锐的社会洞察与温暖的人情味，连接品牌、内容与人心。
                         </div>
 
                         <div>
-                            <div class="section-label">📍 BACKGROUND</div>
-                            <div class="pill-group">
-                                <span class="pill">香港中文大学 · 全球政治经济学 硕士 🎓</span>
-                                <span class="pill">浙江财经大学 · 税收学 本科 🎓</span>
+                            <div class="naive-section-title">☁️ BACKGROUND</div>
+                            <div class="naive-pill-group">
+                                <span class="naive-pill pill-pink">香港中文大学 · 全球政治经济学 硕士 🎓</span>
+                                <span class="naive-pill pill-yellow">浙江财经大学 · 税收学 本科 🎓</span>
                             </div>
                         </div>
 
                         <div>
-                            <div class="section-label">⚡ CAPABILITIES</div>
-                            <div class="pill-group">
-                                <span class="pill">宏观洞察 & 跨学科思考 ✦</span>
-                                <span class="pill">品牌营销 & 内容企划 ✦</span>
-                                <span class="pill">数据敏锐度 & 商业分析 ✦</span>
+                            <div class="naive-section-title">✨ CAPABILITIES</div>
+                            <div class="naive-pill-group">
+                                <span class="naive-pill pill-blue">宏观洞察 & 跨学科思考 ✦</span>
+                                <span class="naive-pill pill-green">品牌营销 & 内容企划 ✦</span>
+                                <span class="naive-pill pill-purple">数据敏锐度 & 商业分析 ✦</span>
                             </div>
                         </div>
 
                         <div>
-                            <div class="section-label">🍸 LIFE & PERSONA</div>
-                            <div class="pill-group">
-                                <span class="pill">INFJ 绿老头 🧙‍♂️</span>
-                                <span class="pill">超强共情力 💗</span>
-                                <span class="pill">Fitness 🏋️‍♀️</span>
-                                <span class="pill">Kpop 🎵</span>
-                                <span class="pill">旅游 ✈️️</span>
+                            <div class="naive-section-title">🧸 LIFE & PERSONA</div>
+                            <div class="naive-pill-group">
+                                <span class="naive-pill pill-pink">INFJ 绿老头 🧙‍♂️</span>
+                                <span class="naive-pill pill-yellow">超强共情力 💗</span>
+                                <span class="naive-pill pill-blue">Fitness 🏋️‍♀️</span>
+                                <span class="naive-pill pill-green">Kpop 🎵</span>
+                                <span class="naive-pill pill-purple">旅游 ✈️</span>
                             </div>
                         </div>
 
-                        <div class="about-footer-note">
+                        <div class="naive-footer-note">
                             ☕ Coffee or Drink? 随时欢迎交流！
                         </div>
                     </div>
                 </div>
             `,
-            'internship': `<div style="padding: 10px;"><h2 style="font-family:'Playfair Display'; color:#1c1917; margin-bottom:15px;">💼 My Internship</h2><p style="color:#57534e; line-height:1.8;">这里是你的实习经历介绍模块，可以补充具体的实习岗位与主要成果！</p></div>`,
-            'school': `<div style="padding: 10px;"><h2 style="font-family:'Playfair Display'; color:#1c1917; margin-bottom:15px;">🎓 My School</h2><p style="color:#57534e; line-height:1.8;">这里是你的校园背景与学术活动展示模块！</p></div>`,
-            'life': `<div style="padding: 10px;"><h2 style="font-family:'Playfair Display'; color:#1c1917; margin-bottom:15px;">📷 My Life</h2><p style="color:#57534e; line-height:1.8;">这里是你的日常记录、摄影作品与生活片段展示！</p></div>`,
-            'contact': `<div style="padding: 10px;"><h2 style="font-family:'Playfair Display'; color:#1c1917; margin-bottom:15px;">✉️ Contact Me</h2><p style="color:#57534e; line-height:1.8;">📧 Email: your_email@example.com<br>📱 WeChat: your_wechat_id</p></div>`
+            'internship': `<div style="padding: 10px;"><h2 style="font-family:'Special Elite'; color:#1c1917; margin-bottom:15px;">💼 My Internship</h2><p style="color:#57534e; line-height:1.8;">这里是你的实习经历介绍模块，可以补充具体的实习岗位与主要成果！</p></div>`,
+            'school': `<div style="padding: 10px;"><h2 style="font-family:'Special Elite'; color:#1c1917; margin-bottom:15px;">🎓 My School</h2><p style="color:#57534e; line-height:1.8;">这里是你的校园背景与学术活动展示模块！</p></div>`,
+            'life': `<div style="padding: 10px;"><h2 style="font-family:'Special Elite'; color:#1c1917; margin-bottom:15px;">📷 My Life</h2><p style="color:#57534e; line-height:1.8;">这里是你的日常记录、摄影作品与生活片段展示！</p></div>`,
+            'contact': `<div style="padding: 10px;"><h2 style="font-family:'Special Elite'; color:#1c1917; margin-bottom:15px;">✉️ Contact Me</h2><p style="color:#57534e; line-height:1.8;">📧 Email: your_email@example.com<br>📱 WeChat: your_wechat_id</p></div>`
         };
 
         function openModal(type) {
