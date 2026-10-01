@@ -7,7 +7,7 @@
     <!-- 引入 Playfair Display (优雅衬线体), Special Elite (打字机体) & 辅助手绘字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Special+Elite&family=Gaegu:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Special+Elite&family=Gaegu:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -121,7 +121,7 @@
             color: #ffffff;
             font-family: 'Playfair Display', serif;
             font-size: 1.15rem;
-            font-style: italic;
+            font-style: normal;
             font-weight: 400;
             white-space: nowrap;
             opacity: 0;
@@ -156,7 +156,7 @@
         #flower-contact { top: 56%; right: 10%; animation-delay: 1.3s; }
 
         /* --------------------------------------------------
-           弹窗蒙版及横向加宽卡片 (max-width 提升至 1050px)
+           弹窗蒙版及横向加宽卡片 (max-width 1050px)
         -------------------------------------------------- */
         .modal-overlay, .sub-modal-overlay {
             position: fixed;
@@ -191,7 +191,7 @@
             border: 1.5px solid rgba(255, 255, 255, 0.92);
             border-radius: 28px;
             width: 100%;
-            max-width: 1050px; /* 横向加宽，空间更广阔舒展 */
+            max-width: 1050px;
             max-height: 90vh;
             overflow-y: auto;
             padding: 38px 44px;
@@ -268,8 +268,8 @@
 
         .slogan {
             font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.1rem;
+            font-style: normal; /* 取消斜体，与全站字体保持一致 */
+            font-size: 1.08rem;
             color: var(--theme-red);
             margin-top: 6px;
         }
@@ -295,24 +295,10 @@
             background: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 16px;
-            padding: 10px 10px 18px 10px;
+            padding: 10px 10px 14px 10px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             transform: rotate(-1.5deg);
             width: 100%;
-        }
-
-        .photo-tape {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%) rotate(1deg);
-            background: rgba(254, 243, 199, 0.85);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            color: #92400e;
-            font-family: 'Gaegu', cursive;
-            font-size: 0.95rem;
-            padding: 1px 14px;
-            border-radius: 6px;
         }
 
         .photo-img {
@@ -422,11 +408,11 @@
         .section-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .section-label {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 700;
             letter-spacing: 1px;
             color: var(--theme-red);
@@ -474,22 +460,22 @@
         }
 
         /* --------------------------------------------------
-           爆款内容案例卡片 (参考 KOL 卡片跳转设计)
+           爆款内容案例卡片 (直观嵌入 Capabilities 区域)
         -------------------------------------------------- */
         .article-card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 22px;
-            margin-top: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+            margin-top: 6px;
         }
 
         .article-card {
             position: relative;
             background: #ffffff;
-            border: 1.5px solid rgba(244, 63, 94, 0.2);
+            border: 1.5px solid rgba(244, 63, 94, 0.22);
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
             transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             color: var(--text-dark);
@@ -499,15 +485,15 @@
         }
 
         .article-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 16px 35px rgba(244, 63, 94, 0.18);
+            transform: translateY(-5px) scale(1.015);
+            box-shadow: 0 16px 32px rgba(244, 63, 94, 0.18);
             border-color: var(--theme-red);
         }
 
         .article-cover-box {
             position: relative;
             width: 100%;
-            height: 180px;
+            height: 160px;
             overflow: hidden;
             background: #f3f4f6;
         }
@@ -525,13 +511,13 @@
 
         .platform-badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 10px;
+            right: 10px;
             background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(8px);
             color: #ffffff;
             font-size: 0.72rem;
-            padding: 3px 10px;
+            padding: 3px 9px;
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -539,7 +525,7 @@
         }
 
         .article-body {
-            padding: 16px 18px 20px 18px;
+            padding: 14px 16px 18px 16px;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -550,10 +536,10 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(254, 226, 226, 0.8);
+            background: rgba(254, 226, 226, 0.85);
             color: var(--theme-red);
             border: 1px solid rgba(244, 63, 94, 0.3);
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             font-weight: 700;
             padding: 3px 10px;
             border-radius: 12px;
@@ -561,7 +547,7 @@
         }
 
         .article-title {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--text-dark);
             line-height: 1.4;
@@ -570,12 +556,12 @@
         .article-desc {
             font-size: 0.82rem;
             color: var(--text-sub);
-            line-height: 1.6;
+            line-height: 1.55;
         }
 
         .jump-btn-link {
             margin-top: auto;
-            padding-top: 10px;
+            padding-top: 8px;
             font-size: 0.82rem;
             font-weight: 700;
             color: var(--theme-red);
@@ -584,9 +570,7 @@
             gap: 4px;
         }
 
-        /* --------------------------------------------------
-           二级相册弹窗
-        -------------------------------------------------- */
+        /* 二级相册弹窗 */
         .gallery-container {
             display: flex;
             flex-direction: column;
@@ -857,9 +841,8 @@
                 </div>
 
                 <div class="card-body-grid">
-                    <!-- 左侧拍立得相框 -->
+                    <!-- 左侧纯净照片相框 (已去除去胶带文字与爱心) -->
                     <div class="photo-frame-airy">
-                        <div class="photo-tape">♥ Irene ♥</div>
                         <img src="图片1.jpg" alt="Irene Wang" class="photo-img" onerror="this.onerror=null; console.log('图片加载失败');">
                     </div>
 
@@ -872,7 +855,7 @@
                             </p>
                         </div>
 
-                        <!-- BACKGROUND -->
+                        <!-- BACKGROUND (已删除浙财后面的 GPA 绩点括号) -->
                         <div class="section-group">
                             <div class="section-label">☁ BACKGROUND</div>
                             <div class="tag-list">
@@ -880,22 +863,66 @@
                                     香港中文大学 · 全球政治经济学 硕士 🎓
                                 </div>
                                 <div class="tag-item-airy highlight clickable" onclick="openSubModal('zufe')">
-                                    浙江财经大学 · 税收学 经济学学士 (GPA 4.48/5.0, 前3.2%) 🎓
+                                    浙江财经大学 · 税收学 经济学学士 🎓
                                 </div>
                             </div>
                         </div>
 
+                        <!-- CAPABILITIES & CORE STRENGTHS (爆款内容卡片嵌入在此处) -->
                         <div class="section-group">
                             <div class="section-label">✨ CAPABILITIES & CORE STRENGTHS</div>
-                            <div class="tag-list">
+                            <div class="tag-list" style="margin-bottom: 4px;">
                                 <div class="tag-item-airy">逻辑降维 & 结构化商业分析 ✦</div>
                                 <div class="tag-item-airy highlight">品牌感官直觉 & 消费者洞察 ✦</div>
                                 <div class="tag-item-airy">方法论驱动的极佳执行力 ✦</div>
                                 <div class="tag-item-airy">跨学科视野 & 中英双语沟通 ✦</div>
                             </div>
+
+                            <!-- 可视化爆款内容案例卡片 -->
+                            <div class="article-card-grid">
+
+                                <!-- 卡片 1：指导学妹 3300+ 阅读爆款 -->
+                                <a href="https://mp.weixin.qq.com/s/jd0SWaArm-3E_xZ61jtehg" target="_blank" class="article-card" title="点击跳转阅读原文">
+                                    <div class="article-cover-box">
+                                        <img src="推送1.jpg" alt="viva la vida 人生万岁" class="article-cover-img" onerror="this.onerror=null; this.src='图片1.jpg';">
+                                        <span class="platform-badge">💬 微信公众号</span>
+                                    </div>
+                                    <div class="article-body">
+                                        <div class="metrics-pill">🔥 3,300+ 爆款阅读 | 独立策划指导</div>
+                                        <div class="article-title">viva la vida 人生万岁</div>
+                                        <div class="article-desc">
+                                            抓取年轻亚文化流行语与韩剧情感共鸣，设计选题与图文转译逻辑，打破传统社团号阅读瓶颈，单篇达成 3,300+ 爆款阅读。
+                                        </div>
+                                        <div class="jump-btn-link">
+                                            <span>阅读原文</span>
+                                            <span>➔</span>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- 卡片 2：原创 1500+ 深度好文 -->
+                                <a href="https://mp.weixin.qq.com/s/bqBupSlAtyZzdV_wYEBNcA" target="_blank" class="article-card" title="点击跳转阅读原文">
+                                    <div class="article-cover-box">
+                                        <img src="推送2.jpg" alt="让我们从凌晨三点的梦境中逃离吧" class="article-cover-img" onerror="this.onerror=null; this.src='图片1.jpg';">
+                                        <span class="platform-badge">💬 微信公众号</span>
+                                    </div>
+                                    <div class="article-body">
+                                        <div class="metrics-pill">🔥 1,500+ 深度好文 | 原创撰写</div>
+                                        <div class="article-title">让我们从凌晨三点的梦境中逃离吧</div>
+                                        <div class="article-desc">
+                                            精准洞察当代年轻人晚睡与“发疯文学”背后的情感避难需求，结合质感图文排版与叙事，引发高热度转发与评论。
+                                        </div>
+                                        <div class="jump-btn-link">
+                                            <span>阅读原文</span>
+                                            <span>➔</span>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
                         </div>
 
-                        <!-- LIFE & PERSONA (已删除Aesop，加入点击查看旅游与Fitness照片) -->
+                        <!-- LIFE & PERSONA -->
                         <div class="section-group">
                             <div class="section-label">🧸 LIFE & PERSONA (点击标签查看照片)</div>
                             <div class="tag-list">
@@ -1009,59 +1036,26 @@
 
             'life': `
                 <div class="inner-section">
-                    <div class="inner-title">🔥 Featured Content & Viral Growth (点击卡片直达文章)</div>
-                    
-                    <!-- 可视化爆款文章卡片区 -->
-                    <div class="article-card-grid">
+                    <div class="inner-title">📷 Life, Trend & Persona</div>
 
-                        <!-- 卡片 1：指导学妹 3300+ 阅读爆款 -->
-                        <a href="https://mp.weixin.qq.com/s/jd0SWaArm-3E_xZ61jtehg" target="_blank" class="article-card" title="点击跳转阅读原文">
-                            <div class="article-cover-box">
-                                <img src="推送1.jpg" alt="viva la vida 人生万岁" class="article-cover-img" onerror="this.onerror=null; this.src='图片1.jpg';">
-                                <span class="platform-badge">💬 微信公众号</span>
-                            </div>
-                            <div class="article-body">
-                                <div class="metrics-pill">🔥 3,300+ 爆款阅读 | 独立策划指导</div>
-                                <div class="article-title">viva la vida 人生万岁</div>
-                                <div class="article-desc">
-                                    抓取年轻亚文化流行语与韩剧情感共鸣，设计选题与图文转译逻辑，打破传统社团号阅读瓶颈，单篇达成 3,300+ 爆款阅读。
-                                </div>
-                                <div class="jump-btn-link">
-                                    <span>阅读原文</span>
-                                    <span>➔</span>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- 卡片 2：原创 1500+ 深度好文 -->
-                        <a href="https://mp.weixin.qq.com/s/bqBupSlAtyZzdV_wYEBNcA" target="_blank" class="article-card" title="点击跳转阅读原文">
-                            <div class="article-cover-box">
-                                <img src="推送2.jpg" alt="让我们从凌晨三点的梦境中逃离吧" class="article-cover-img" onerror="this.onerror=null; this.src='图片1.jpg';">
-                                <span class="platform-badge">💬 微信公众号</span>
-                            </div>
-                            <div class="article-body">
-                                <div class="metrics-pill">🔥 1,500+ 深度好文 | 原创撰写</div>
-                                <div class="article-title">让我们从凌晨三点的梦境中逃离吧</div>
-                                <div class="article-desc">
-                                    精准洞察当代年轻人晚睡与“发疯文学”背后的情感避难需求，结合质感图文排版与叙事，引发高热度转发与评论。
-                                </div>
-                                <div class="jump-btn-link">
-                                    <span>阅读原文</span>
-                                    <span>➔</span>
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-
-                    <!-- 校园摆摊趋势实践 -->
-                    <div class="experience-card" style="margin-top: 10px;">
+                    <div class="experience-card">
                         <div class="exp-header">
                             <span class="exp-role">🍡 校园趋势选品与增长实战</span>
                             <span class="exp-company">“热奶宝” 商业闭环</span>
                         </div>
                         <ul class="exp-bullet">
                             <li>捕捉小红书“热奶宝”冬季校园潮流，设计“血糯米+奶油+饼干脆+DIY”差异化组合，4天创社团单次活动最高营收纪录 1,600 元，验证从趋势洞察到落地的闭环。</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="exp-header">
+                            <span class="exp-role">🌟 浙财创业者协会 · “创趣汇”</span>
+                            <span class="exp-company">内容运营负责人</span>
+                            <span class="exp-time">2023.09 - 2025.09</span>
+                        </div>
+                        <ul class="exp-bullet">
+                            <li>统筹 3 个部门约 30 名成员，组织 3 场技能培训并维持每周例会机制；运营官方公众号，独立产出 20+ 篇原创内容，带领社团获评“年度十佳社团”。</li>
                         </ul>
                     </div>
                 </div>
