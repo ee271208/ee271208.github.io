@@ -156,7 +156,7 @@
         #flower-contact { top: 56%; right: 10%; animation-delay: 1.3s; }
 
         /* --------------------------------------------------
-           主弹窗蒙版及内页
+           弹窗蒙版及横向加宽卡片 (max-width 提升至 1050px)
         -------------------------------------------------- */
         .modal-overlay, .sub-modal-overlay {
             position: fixed;
@@ -185,16 +185,16 @@
 
         .portfolio-card-airy {
             position: relative;
-            background: rgba(253, 250, 246, 0.86);
+            background: rgba(253, 250, 246, 0.88);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             border: 1.5px solid rgba(255, 255, 255, 0.92);
             border-radius: 28px;
             width: 100%;
-            max-width: 880px;
+            max-width: 1050px; /* 横向加宽，空间更广阔舒展 */
             max-height: 90vh;
             overflow-y: auto;
-            padding: 36px 40px;
+            padding: 38px 44px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.9);
             color: var(--text-dark);
             animation: popAiry 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -283,8 +283,8 @@
 
         .card-body-grid {
             display: grid;
-            grid-template-columns: 260px 1fr;
-            gap: 28px;
+            grid-template-columns: 280px 1fr;
+            gap: 32px;
             align-items: start;
             position: relative;
             z-index: 2;
@@ -317,7 +317,7 @@
 
         .photo-img {
             width: 100%;
-            height: 360px;
+            height: 380px;
             object-fit: cover;
             border-radius: 10px;
             display: block;
@@ -326,7 +326,7 @@
         .info-section {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 20px;
         }
 
         .bio-box-airy {
@@ -355,7 +355,7 @@
         .inner-section {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 20px;
             color: var(--text-dark);
         }
 
@@ -372,10 +372,10 @@
         }
 
         .experience-card {
-            background: rgba(255, 255, 255, 0.65);
-            border: 1px solid rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.68);
+            border: 1px solid rgba(255, 255, 255, 0.88);
             border-radius: 14px;
-            padding: 14px 18px;
+            padding: 16px 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.02);
             display: flex;
             flex-direction: column;
@@ -438,16 +438,16 @@
         .tag-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
 
         .tag-item-airy {
-            background: rgba(255, 255, 255, 0.78);
+            background: rgba(255, 255, 255, 0.8);
             border: 1px solid rgba(225, 200, 200, 0.5);
             color: var(--text-dark);
             padding: 6px 16px;
             border-radius: 20px;
-            font-size: 0.83rem;
+            font-size: 0.85rem;
             font-weight: 400;
             display: inline-flex;
             align-items: center;
@@ -464,7 +464,7 @@
         .tag-item-airy.clickable:hover {
             background: #ffffff;
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(244, 63, 94, 0.12);
+            box-shadow: 0 6px 16px rgba(244, 63, 94, 0.15);
             border-color: var(--theme-red);
         }
 
@@ -474,7 +474,118 @@
         }
 
         /* --------------------------------------------------
-           二级极简照片网格
+           爆款内容案例卡片 (参考 KOL 卡片跳转设计)
+        -------------------------------------------------- */
+        .article-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
+            margin-top: 10px;
+        }
+
+        .article-card {
+            position: relative;
+            background: #ffffff;
+            border: 1.5px solid rgba(244, 63, 94, 0.2);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 16px 35px rgba(244, 63, 94, 0.18);
+            border-color: var(--theme-red);
+        }
+
+        .article-cover-box {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            background: #f3f4f6;
+        }
+
+        .article-cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .article-card:hover .article-cover-img {
+            transform: scale(1.08);
+        }
+
+        .platform-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            font-size: 0.72rem;
+            padding: 3px 10px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .article-body {
+            padding: 16px 18px 20px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+
+        .metrics-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(254, 226, 226, 0.8);
+            color: var(--theme-red);
+            border: 1px solid rgba(244, 63, 94, 0.3);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            width: fit-content;
+        }
+
+        .article-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .article-desc {
+            font-size: 0.82rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+        }
+
+        .jump-btn-link {
+            margin-top: auto;
+            padding-top: 10px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--theme-red);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* --------------------------------------------------
+           二级相册弹窗
         -------------------------------------------------- */
         .gallery-container {
             display: flex;
@@ -496,7 +607,7 @@
 
         .photo-gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 20px;
             margin-top: 6px;
         }
@@ -505,27 +616,30 @@
             position: relative;
             background: #ffffff;
             border-radius: 14px;
-            padding: 10px;
+            padding: 10px 10px 16px 10px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.07);
             transition: all 0.3s ease;
         }
 
-        .polaroid-item:nth-child(1) { transform: rotate(-1.5deg); }
-        .polaroid-item:nth-child(2) { transform: rotate(1deg); }
-        .polaroid-item:nth-child(3) { transform: rotate(-0.8deg); }
-
         .polaroid-item:hover {
-            transform: translateY(-5px) scale(1.02) rotate(0deg) !important;
+            transform: translateY(-5px) scale(1.02);
             box-shadow: 0 14px 28px rgba(0,0,0,0.12);
-            z-index: 5;
         }
 
         .polaroid-img {
             width: 100%;
-            height: 290px;
+            height: 280px;
             object-fit: cover;
             border-radius: 8px;
             display: block;
+        }
+
+        .polaroid-caption {
+            font-family: 'Gaegu', cursive;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-top: 10px;
         }
 
         footer {
@@ -547,6 +661,7 @@
             .photo-img { height: 280px; }
             .name-cn-badge { font-size: 1.15rem; padding: 2px 12px; }
             .photo-gallery-grid { grid-template-columns: 1fr; }
+            .article-card-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -581,8 +696,6 @@
     </header>
 
     <!-- 主页：5个水漂鸡蛋花互动按钮 -->
-
-    <!-- 1. About Me -->
     <div class="plumeria-btn" id="flower-about" data-title="About Me" onclick="openModal('about')">
         <svg class="plumeria-svg" viewBox="0 0 100 100">
             <defs>
@@ -608,7 +721,6 @@
         </svg>
     </div>
 
-    <!-- 2. My Internship -->
     <div class="plumeria-btn" id="flower-internship" data-title="My Internship" onclick="openModal('internship')">
         <svg class="plumeria-svg" viewBox="0 0 100 100">
             <defs>
@@ -634,7 +746,6 @@
         </svg>
     </div>
 
-    <!-- 3. My School -->
     <div class="plumeria-btn" id="flower-school" data-title="My School" onclick="openModal('school')">
         <svg class="plumeria-svg" viewBox="0 0 100 100">
             <defs>
@@ -660,7 +771,6 @@
         </svg>
     </div>
 
-    <!-- 4. My Life -->
     <div class="plumeria-btn" id="flower-life" data-title="My Life" onclick="openModal('life')">
         <svg class="plumeria-svg" viewBox="0 0 100 100">
             <defs>
@@ -686,7 +796,6 @@
         </svg>
     </div>
 
-    <!-- 5. Contact Me -->
     <div class="plumeria-btn" id="flower-contact" data-title="Contact Me" onclick="openModal('contact')">
         <svg class="plumeria-svg" viewBox="0 0 100 100">
             <defs>
@@ -725,9 +834,9 @@
         </div>
     </div>
 
-    <!-- 二级校园照片弹窗 -->
+    <!-- 二级校园与生活照片弹窗 -->
     <div class="sub-modal-overlay" id="subModalOverlay" onclick="closeSubModalOnBg(event)">
-        <div class="portfolio-card-airy" style="max-width: 840px;">
+        <div class="portfolio-card-airy" style="max-width: 900px;">
             <button class="close-btn" onclick="closeSubModal()" title="关闭">✕</button>
             <div id="subModalContent"></div>
         </div>
@@ -757,13 +866,13 @@
                     <!-- 右侧个人资料 -->
                     <div class="info-section">
                         <div class="bio-box-airy">
-                            <div class="bio-title">🌷 Hii, 这里是 Irene!</div>
+                            <div class="bio-title">🌷 Hii, 这里是 Irene 王卓楠!</div>
                             <p class="bio-text">
-                                兼具<b>严密商业逻辑</b>与<b>敏锐内容感官审美</b>的复合型选手。深耕财税底蕴与全球政治经济视野，擅长将纷繁现象降维结构化，并以深刻的消费者洞察与高质感审美打动人心。
+                                兼具<b>左脑严密商业逻辑</b>与<b>右脑敏锐内容感官审美</b>的黄金复合型天赋者。深耕财税底蕴与全球政治经济视野，擅长将纷繁现象降维结构化，并以深刻的消费者洞察与高质感审美打动人心。
                             </p>
                         </div>
 
-                        <!-- BACKGROUND (干净且支持点击看图) -->
+                        <!-- BACKGROUND -->
                         <div class="section-group">
                             <div class="section-label">☁ BACKGROUND</div>
                             <div class="tag-list">
@@ -771,7 +880,7 @@
                                     香港中文大学 · 全球政治经济学 硕士 🎓
                                 </div>
                                 <div class="tag-item-airy highlight clickable" onclick="openSubModal('zufe')">
-                                    浙江财经大学 · 税收学 经济学学士 🎓
+                                    浙江财经大学 · 税收学 经济学学士 (GPA 4.48/5.0, 前3.2%) 🎓
                                 </div>
                             </div>
                         </div>
@@ -786,15 +895,19 @@
                             </div>
                         </div>
 
+                        <!-- LIFE & PERSONA (已删除Aesop，加入点击查看旅游与Fitness照片) -->
                         <div class="section-group">
-                            <div class="section-label">🧸 LIFE & PERSONA</div>
+                            <div class="section-label">🧸 LIFE & PERSONA (点击标签查看照片)</div>
                             <div class="tag-list">
                                 <div class="tag-item-airy">INFJ 绿老头 🧙‍♂️</div>
                                 <div class="tag-item-airy highlight">深度共情 & 倾听者 💗</div>
-                                <div class="tag-item-airy">Aesop感官避难所探究 🌿</div>
-                                <div class="tag-item-airy">Fitness 🏋️‍♀️</div>
+                                <div class="tag-item-airy clickable highlight" onclick="openSubModal('fitness')">
+                                    Fitness 🏋️‍♀️
+                                </div>
                                 <div class="tag-item-airy">Kpop 🎵</div>
-                                <div class="tag-item-airy">旅游 ✈️</div>
+                                <div class="tag-item-airy clickable" onclick="openSubModal('travel')">
+                                    旅游 ✈️
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -896,37 +1009,59 @@
 
             'life': `
                 <div class="inner-section">
-                    <div class="inner-title">📷 Content, Consumer Insight & Persona</div>
+                    <div class="inner-title">🔥 Featured Content & Viral Growth (点击卡片直达文章)</div>
+                    
+                    <!-- 可视化爆款文章卡片区 -->
+                    <div class="article-card-grid">
 
-                    <div class="experience-card">
-                        <div class="exp-header">
-                            <span class="exp-role">内容运营负责人 (20+ 篇原创爆款)</span>
-                            <span class="exp-company">浙财创业者协会 · “创趣汇”</span>
-                            <span class="exp-time">2023.09 - 2025.09</span>
-                        </div>
-                        <ul class="exp-bullet">
-                            <li>从年轻文化社群敏锐捕捉 vivalavida、站姐、美式复古、解压等流行议题策划栏目，单篇最高阅读 3,300+，多篇破 1,500（远超常规100-500量级），带领社团获评“年度十佳社团”。</li>
-                        </ul>
+                        <!-- 卡片 1：指导学妹 3300+ 阅读爆款 -->
+                        <a href="https://mp.weixin.qq.com/s/jd0SWaArm-3E_xZ61jtehg" target="_blank" class="article-card" title="点击跳转阅读原文">
+                            <div class="article-cover-box">
+                                <img src="推送1.jpg" alt="viva la vida 人生万岁" class="article-cover-img" onerror="this.onerror=null; this.src='图片1.jpg';">
+                                <span class="platform-badge">💬 微信公众号</span>
+                            </div>
+                            <div class="article-body">
+                                <div class="metrics-pill">🔥 3,300+ 爆款阅读 | 独立策划指导</div>
+                                <div class="article-title">viva la vida 人生万岁</div>
+                                <div class="article-desc">
+                                    抓取年轻亚文化流行语与韩剧情感共鸣，设计选题与图文转译逻辑，打破传统社团号阅读瓶颈，单篇达成 3,300+ 爆款阅读。
+                                </div>
+                                <div class="jump-btn-link">
+                                    <span>阅读原文</span>
+                                    <span>➔</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- 卡片 2：原创 1500+ 深度好文 -->
+                        <a href="https://mp.weixin.qq.com/s/bqBupSlAtyZzdV_wYEBNcA" target="_blank" class="article-card" title="点击跳转阅读原文">
+                            <div class="article-cover-box">
+                                <img src="推送2.jpg" alt="让我们从凌晨三点的梦境中逃离吧" class="article-cover-img" onerror="this.onerror=null; this.src='图片1.jpg';">
+                                <span class="platform-badge">💬 微信公众号</span>
+                            </div>
+                            <div class="article-body">
+                                <div class="metrics-pill">🔥 1,500+ 深度好文 | 原创撰写</div>
+                                <div class="article-title">让我们从凌晨三点的梦境中逃离吧</div>
+                                <div class="article-desc">
+                                    精准洞察当代年轻人晚睡与“发疯文学”背后的情感避难需求，结合质感图文排版与叙事，引发高热度转发与评论。
+                                </div>
+                                <div class="jump-btn-link">
+                                    <span>阅读原文</span>
+                                    <span>➔</span>
+                                </div>
+                            </div>
+                        </a>
+
                     </div>
 
-                    <div class="experience-card">
+                    <!-- 校园摆摊趋势实践 -->
+                    <div class="experience-card" style="margin-top: 10px;">
                         <div class="exp-header">
-                            <span class="exp-role">趋势选品与增长 (校园摆摊创业)</span>
-                            <span class="exp-company">“热奶宝” 趋势实践</span>
-                            <span class="exp-time">2023.09 - 2025.09</span>
+                            <span class="exp-role">🍡 校园趋势选品与增长实战</span>
+                            <span class="exp-company">“热奶宝” 商业闭环</span>
                         </div>
                         <ul class="exp-bullet">
-                            <li>敏锐捕捉小红书“热奶宝”冬季潮流，设计“血糯米+奶油+饼干脆+DIY”差异化组合，4天创造社团单次活动最高营收纪录 1,600 元，验证从趋势洞察到落地的闭环。</li>
-                        </ul>
-                    </div>
-
-                    <div class="experience-card">
-                        <div class="exp-header">
-                            <span class="exp-role">🌿 品牌审美与消费者洞察 (Aesop 案例拆解)</span>
-                            <span class="exp-company">独立品牌感官探究</span>
-                        </div>
-                        <ul class="exp-bullet">
-                            <li>洞察在算法过载时代现代人渴望“感官避难”与“独处”的社会心理；将 Aesop 的静默反向营销解读为“情感筛选门槛”，擅长将感官体验升华成深刻商业策略。</li>
+                            <li>捕捉小红书“热奶宝”冬季校园潮流，设计“血糯米+奶油+饼干脆+DIY”差异化组合，4天创社团单次活动最高营收纪录 1,600 元，验证从趋势洞察到落地的闭环。</li>
                         </ul>
                     </div>
                 </div>
@@ -949,24 +1084,17 @@
             `
         };
 
-        /* 极简照片弹窗内容 */
+        /* 二级相册弹窗内容 (CUHK / ZUFE / 旅游 / 运动) */
         const subContentMap = {
             'cuhk': `
                 <div class="gallery-container">
                     <div class="gallery-header">
                         <div class="gallery-title">香港中文大学</div>
                     </div>
-
                     <div class="photo-gallery-grid">
-                        <div class="polaroid-item">
-                            <img src="cuhk1.jpg" alt="CUHK 1" class="polaroid-img" onerror="this.onerror=null; this.src='cuhk3.jpg';">
-                        </div>
-                        <div class="polaroid-item">
-                            <img src="cuhk2.jpg" alt="CUHK 2" class="polaroid-img" onerror="this.onerror=null; this.src='cuhk3.jpg';">
-                        </div>
-                        <div class="polaroid-item">
-                            <img src="cuhk3.jpg" alt="CUHK 3" class="polaroid-img">
-                        </div>
+                        <div class="polaroid-item"><img src="cuhk1.jpg" alt="CUHK 1" class="polaroid-img" onerror="this.onerror=null; this.src='cuhk3.jpg';"></div>
+                        <div class="polaroid-item"><img src="cuhk2.jpg" alt="CUHK 2" class="polaroid-img" onerror="this.onerror=null; this.src='cuhk3.jpg';"></div>
+                        <div class="polaroid-item"><img src="cuhk3.jpg" alt="CUHK 3" class="polaroid-img"></div>
                     </div>
                 </div>
             `,
@@ -975,16 +1103,47 @@
                     <div class="gallery-header">
                         <div class="gallery-title">浙江财经大学</div>
                     </div>
-
+                    <div class="photo-gallery-grid">
+                        <div class="polaroid-item"><img src="zufe1.jpg" alt="ZUFE 1" class="polaroid-img" onerror="this.onerror=null; console.log('zufe1未找到');"></div>
+                        <div class="polaroid-item"><img src="zufe2.jpg" alt="ZUFE 2" class="polaroid-img" onerror="this.onerror=null; console.log('zufe2未找到');"></div>
+                        <div class="polaroid-item"><img src="zufe3.jpg" alt="ZUFE 3" class="polaroid-img" onerror="this.onerror=null; console.log('zufe3未找到');"></div>
+                    </div>
+                </div>
+            `,
+            'travel': `
+                <div class="gallery-container">
+                    <div class="gallery-header">
+                        <div class="gallery-title">✈️ Travel Memories</div>
+                    </div>
                     <div class="photo-gallery-grid">
                         <div class="polaroid-item">
-                            <img src="zufe1.jpg" alt="ZUFE 1" class="polaroid-img" onerror="this.onerror=null; console.log('zufe1未找到');">
+                            <img src="旅游2.jpg" alt="云南" class="polaroid-img">
+                            <div class="polaroid-caption">云南 🌸</div>
                         </div>
                         <div class="polaroid-item">
-                            <img src="zufe2.jpg" alt="ZUFE 2" class="polaroid-img" onerror="this.onerror=null; console.log('zufe2未找到');">
+                            <img src="旅游3.jpg" alt="首尔" class="polaroid-img">
+                            <div class="polaroid-caption">首尔 🇰🇷</div>
                         </div>
                         <div class="polaroid-item">
-                            <img src="zufe3.jpg" alt="ZUFE 3" class="polaroid-img" onerror="this.onerror=null; console.log('zufe3未找到');">
+                            <img src="旅游4.jpg" alt="镰仓" class="polaroid-img">
+                            <div class="polaroid-caption">镰仓 🌊</div>
+                        </div>
+                        <div class="polaroid-item">
+                            <img src="旅游5.jpg" alt="北京" class="polaroid-img">
+                            <div class="polaroid-caption">北京 ❄️</div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            'fitness': `
+                <div class="gallery-container">
+                    <div class="gallery-header">
+                        <div class="gallery-title">🏋️‍♀️ Fitness & Energy</div>
+                    </div>
+                    <div class="photo-gallery-grid" style="grid-template-columns: minmax(260px, 360px);">
+                        <div class="polaroid-item">
+                            <img src="运动1.jpg" alt="Fitness" class="polaroid-img" style="height: 360px;">
+                            <div class="polaroid-caption">Keep Moving 🏋️‍♀️</div>
                         </div>
                     </div>
                 </div>
@@ -1004,8 +1163,8 @@
             if (event.target.id === 'modalOverlay') closeModal();
         }
 
-        function openSubModal(school) {
-            document.getElementById('subModalContent').innerHTML = subContentMap[school] || '';
+        function openSubModal(key) {
+            document.getElementById('subModalContent').innerHTML = subContentMap[key] || '';
             document.getElementById('subModalOverlay').classList.add('active');
         }
 
