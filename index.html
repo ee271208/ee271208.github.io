@@ -156,7 +156,7 @@
         #flower-contact { top: 56%; right: 10%; animation-delay: 1.3s; }
 
         /* --------------------------------------------------
-           弹窗蒙版及横向加宽卡片 (max-width 1050px)
+           弹窗蒙版及加宽卡片
         -------------------------------------------------- */
         .modal-overlay, .sub-modal-overlay {
             position: fixed;
@@ -460,7 +460,7 @@
         }
 
         /* --------------------------------------------------
-           爆款内容案例卡片 (弹窗内部样式)
+           爆款内容案例卡片 (弹窗内部样式，海报顶部对齐)
         -------------------------------------------------- */
         .article-card-grid {
             display: grid;
@@ -502,6 +502,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top; /* 聚焦顶部/前半部分，防止截取到中间文字 */
             transition: transform 0.5s ease;
         }
 
@@ -868,23 +869,23 @@
                             </div>
                         </div>
 
-                        <!-- CAPABILITIES & CORE STRENGTHS (将推送爆款收纳进专属点击标签) -->
+                        <!-- CAPABILITIES & CORE STRENGTHS -->
                         <div class="section-group">
-                            <div class="section-label">✨ CAPABILITIES & CORE STRENGTHS (点击高亮标签查看作品)</div>
+                            <div class="section-label">✨ CAPABILITIES & CORE STRENGTHS</div>
                             <div class="tag-list">
                                 <div class="tag-item-airy">逻辑降维 & 结构化商业分析 ✦</div>
-                                <div class="tag-item-airy highlight clickable" onclick="openSubModal('articles')" title="点击查看爆款推送作品">
+                                <div class="tag-item-airy highlight clickable" onclick="openSubModal('articles')">
                                     爆款内容创作 & 公众号运营 📲
                                 </div>
                                 <div class="tag-item-airy">品牌感官直觉 & 消费者洞察 ✦</div>
                                 <div class="tag-item-airy">方法论驱动的极佳执行力 ✦</div>
-                                <div class="tag-item-airy">跨学科视野 & 中英双语沟通 ✦</div>
+                                <div class="tag-item-airy">跨学科视野 ✦</div>
                             </div>
                         </div>
 
                         <!-- LIFE & PERSONA -->
                         <div class="section-group">
-                            <div class="section-label">🧸 LIFE & PERSONA (点击标签查看照片)</div>
+                            <div class="section-label">🧸 LIFE & PERSONA</div>
                             <div class="tag-list">
                                 <div class="tag-item-airy">INFJ 绿老头 🧙‍♂️</div>
                                 <div class="tag-item-airy highlight">深度共情 & 倾听者 💗</div>
@@ -1038,18 +1039,18 @@
             `
         };
 
-        /* 二级弹窗内容 (CUHK / ZUFE / 旅游 / 运动 / 爆款文章推送) */
+        /* 二级弹窗内容 (链接与海报精细匹配) */
         const subContentMap = {
             'articles': `
                 <div class="gallery-container">
                     <div class="gallery-header">
-                        <div class="gallery-title">🔥 爆款内容传播案例 (点击卡片直达文章)</div>
+                        <div class="gallery-title">🔥 爆款内容传播案例</div>
                     </div>
 
                     <div class="article-card-grid">
 
-                        <!-- 卡片 1：海报2 -> vivalavida (3,300+ 爆款) -->
-                        <a href="https://mp.weixin.qq.com/s/jd0SWaArm-3E_xZ61jtehg" target="_blank" class="article-card" title="点击跳转阅读原文">
+                        <!-- 卡片 1：viva la vida -> 海报2 -> 链接 jd0SWaArm-3E_xZ61jtehg -->
+                        <a href="https://mp.weixin.qq.com/s/jd0SWaArm-3E_xZ61jtehg" target="_blank" class="article-card">
                             <div class="article-cover-box">
                                 <img src="海报2.jpg" alt="viva la vida 人生万岁" class="article-cover-img" onerror="this.onerror=null; this.src='推送1.jpg';">
                                 <span class="platform-badge">💬 微信公众号</span>
@@ -1067,8 +1068,8 @@
                             </div>
                         </a>
 
-                        <!-- 卡片 2：海报1 -> 原创 (1,500+ 深度好文) -->
-                        <a href="https://mp.weixin.qq.com/s/bqBupSlAtyZzdV_wYEBNcA" target="_blank" class="article-card" title="点击跳转阅读原文">
+                        <!-- 卡片 2：原创 -> 海报1 -> 链接 bqBupSlAtyZzdV_wYEBNcA -->
+                        <a href="https://mp.weixin.qq.com/s/bqBupSlAtyZzdV_wYEBNcA" target="_blank" class="article-card">
                             <div class="article-cover-box">
                                 <img src="海报1.jpg" alt="让我们从凌晨三点的梦境中逃离吧" class="article-cover-img" onerror="this.onerror=null; this.src='推送2.jpg';">
                                 <span class="platform-badge">💬 微信公众号</span>
