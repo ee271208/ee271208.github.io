@@ -7,7 +7,7 @@
     <!-- 引入 Playfair Display (优雅衬线体), Special Elite (打字机体) & 辅助手绘字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Special+Elite&family=Gaegu:wght@400;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Special+Elite&family=Gaegu:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -16,6 +16,7 @@
             --accent-pink: #f472b6;
             --soft-pink-bg: rgba(253, 242, 242, 0.85);
             --border-soft: rgba(225, 195, 195, 0.5);
+            --theme-red: #9f1239;
         }
 
         * {
@@ -35,7 +36,7 @@
             position: relative;
         }
 
-        /* 顶栏主标题 (两侧白色手绘花朵) */
+        /* 顶栏主标题 (两侧纯白色手绘小花) */
         header {
             position: absolute;
             top: 24px;
@@ -60,7 +61,6 @@
             gap: 16px;
         }
 
-        /* 白色手绘小花 SVG 样式 */
         .white-flower-svg {
             width: 30px;
             height: 30px;
@@ -166,7 +166,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.32);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             z-index: 999;
@@ -180,23 +180,23 @@
 
         .portfolio-card-airy {
             position: relative;
-            background: rgba(253, 250, 246, 0.82);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1.5px solid rgba(255, 255, 255, 0.9);
+            background: rgba(253, 250, 246, 0.85);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1.5px solid rgba(255, 255, 255, 0.92);
             border-radius: 28px;
             width: 100%;
-            max-width: 860px;
+            max-width: 880px;
             max-height: 90vh;
             overflow-y: auto;
             padding: 36px 40px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.9);
             color: var(--text-dark);
             animation: popAiry 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         @keyframes popAiry {
-            from { transform: scale(0.9) translateY(20px); opacity: 0; }
+            from { transform: scale(0.92) translateY(20px); opacity: 0; }
             to { transform: scale(1) translateY(0); opacity: 1; }
         }
 
@@ -238,34 +238,38 @@
 
         .title-row {
             display: flex;
-            align-items: baseline;
-            gap: 12px;
+            align-items: center;
+            gap: 14px;
             margin-bottom: 6px;
         }
 
         .name-en {
             font-family: 'Playfair Display', serif;
-            font-size: 2.1rem;
+            font-size: 2.2rem;
             font-weight: 600;
             color: var(--text-dark);
         }
 
+        /* 王卓楠 三个字加大 */
         .name-cn-badge {
-            background: rgba(254, 226, 226, 0.7);
-            color: #9f1239;
-            border: 1px solid rgba(244, 63, 94, 0.3);
-            padding: 2px 12px;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 500;
+            background: rgba(254, 226, 226, 0.85);
+            color: var(--theme-red);
+            border: 1.5px solid rgba(244, 63, 94, 0.35);
+            padding: 3px 18px;
+            border-radius: 16px;
+            font-size: 1.35rem; /* 字号显著放大 */
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(244, 63, 94, 0.1);
+            display: inline-block;
         }
 
         .slogan {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-size: 1.1rem;
-            color: #9f1239;
-            margin-top: 4px;
+            color: var(--theme-red);
+            margin-top: 6px;
         }
 
         .sub-welcome {
@@ -285,7 +289,7 @@
             z-index: 2;
         }
 
-        /* 左侧拍立得相框 (照片拉长至 360px) */
+        /* 左侧拍立得相框 (照片高度 360px，比例拉长) */
         .photo-frame-airy {
             position: relative;
             background: #ffffff;
@@ -326,69 +330,96 @@
             gap: 18px;
         }
 
-        /* 气泡介绍框：作为别针贴纸的相对定位容器 */
+        /* 气泡介绍框 */
         .bio-box-airy {
             position: relative;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.72);
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 16px;
-            padding: 14px 18px;
+            padding: 16px 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-            border-left: 3px solid #f43f5e;
+            border-left: 3.5px solid #f43f5e;
         }
 
         .bio-title {
             font-weight: 700;
-            color: #9f1239;
-            font-size: 0.98rem;
+            color: var(--theme-red);
+            font-size: 1.02rem;
             margin-bottom: 6px;
         }
 
         .bio-text {
             font-size: 0.88rem;
-            line-height: 1.7;
+            line-height: 1.75;
             color: var(--text-dark);
         }
 
-        /* --------------------------------------------------
-           别针摇摆爱心小熊贴纸 (别在 bio-box 右下方)
-        -------------------------------------------------- */
-        .pinned-sticker-wrapper {
-            position: absolute;
-            bottom: -55px;
-            right: 15px;
-            width: 120px;
-            height: 120px;
-            z-index: 15;
-            /* 左上角作为摇摆支点 */
-            transform-origin: 12px 12px;
-            animation: gentleSwing 3.8s ease-in-out infinite alternate;
-            pointer-events: none;
+        /* 通用内页样式排版 */
+        .inner-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            color: var(--text-dark);
         }
 
-        @keyframes gentleSwing {
-            0% { transform: rotate(-6deg); }
-            100% { transform: rotate(8deg); }
+        .inner-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--theme-red);
+            font-weight: 600;
+            border-bottom: 1px dashed rgba(200, 160, 160, 0.4);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* 别针 SVG */
-        .paperclip-icon {
-            position: absolute;
-            top: -2px;
-            left: 2px;
-            width: 20px;
-            height: 20px;
-            z-index: 20;
-            filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.25));
+        .experience-card {
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-radius: 14px;
+            padding: 14px 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        /* 贴纸图片本体 */
-        .sticker-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            opacity: 0.85; /* 保持柔和色彩与质感 */
-            filter: drop-shadow(2px 8px 12px rgba(0, 0, 0, 0.12));
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .exp-role {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--theme-red);
+        }
+
+        .exp-company {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .exp-time {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        .exp-bullet {
+            font-size: 0.85rem;
+            line-height: 1.65;
+            color: #4a3e3d;
+            margin-left: 14px;
+            list-style-type: disc;
+        }
+
+        .exp-bullet li {
+            margin-bottom: 4px;
         }
 
         /* 模块分类 */
@@ -402,7 +433,7 @@
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #9f1239;
+            color: var(--theme-red);
             display: flex;
             align-items: center;
             gap: 4px;
@@ -415,7 +446,7 @@
         }
 
         .tag-item-airy {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.78);
             border: 1px solid rgba(225, 200, 200, 0.5);
             color: var(--text-dark);
             padding: 5px 14px;
@@ -435,7 +466,7 @@
         }
 
         .tag-item-airy.highlight {
-            background: rgba(254, 226, 226, 0.6);
+            background: rgba(254, 226, 226, 0.65);
             border-color: rgba(244, 63, 94, 0.3);
         }
 
@@ -456,7 +487,7 @@
             .card-body-grid { grid-template-columns: 1fr; gap: 20px; }
             .portfolio-card-airy { padding: 24px; }
             .photo-img { height: 280px; }
-            .pinned-sticker-wrapper { width: 90px; height: 90px; bottom: -40px; }
+            .name-cn-badge { font-size: 1.15rem; padding: 2px 12px; }
         }
     </style>
 </head>
@@ -650,7 +681,7 @@
                 </div>
 
                 <div class="card-body-grid">
-                    <!-- 左侧拍立得相框 (照片高度 360px，比例更大) -->
+                    <!-- 左侧拍立得相框 (照片高度 360px) -->
                     <div class="photo-frame-airy">
                         <div class="photo-tape">♥ Irene ♥</div>
                         <img src="图片1.jpg" alt="Irene Wang" class="photo-img" onerror="this.onerror=null; console.log('图片加载失败');">
@@ -658,48 +689,28 @@
 
                     <!-- 右侧个人资料 -->
                     <div class="info-section">
-                        <!-- 自我介绍框 (附带别针摇摆小熊贴纸) -->
                         <div class="bio-box-airy">
-                            <div class="bio-title">🧸 Hii, 这里是 Irene!</div>
+                            <div class="bio-title">🌷 Hii, 这里是 Irene 王卓楠!</div>
                             <p class="bio-text">
-                                一个兼具全球政治经济视野与深厚财税底蕴的跨界探索者。热衷于用敏锐的社会洞察与温暖的人情味，连接品牌、内容与人心。
+                                兼具<b>左脑严密商业逻辑</b>与<b>右脑敏锐内容感官审美</b>的黄金复合型天赋者。深耕财税底蕴与全球政治经济视野，擅长将纷繁现象降维结构化，并以深刻的消费者洞察与高质感审美打动人心。
                             </p>
-
-                            <!-- 别针摇摆贴纸容器 (锚点固定在左上角别针处，前后小幅度摇摆) -->
-                            <div class="pinned-sticker-wrapper">
-                                <!-- 别针 SVG 图标 -->
-                                <svg class="paperclip-icon" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
-                                </svg>
-                                <!-- 读取 bear.png，若尚未上传则显示优雅手绘小熊爱心 -->
-                                <img src="bear.png" class="sticker-img" alt="bear heart sticker" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <svg style="display:none; width:100%; height:100%; filter:drop-shadow(2px 6px 10px rgba(0,0,0,0.12));" viewBox="0 0 100 100">
-                                    <path d="M50 88 C20 60 5 40 5 25 A 20 20 0 0 1 45 15 A 20 20 0 0 1 85 25 C85 40 70 60 50 88 Z" fill="#e11d48" opacity="0.82" />
-                                    <!-- 小熊耳朵与脸廓 -->
-                                    <circle cx="38" cy="42" r="10" fill="#ffffff" />
-                                    <circle cx="62" cy="42" r="10" fill="#ffffff" />
-                                    <ellipse cx="50" cy="52" rx="16" ry="12" fill="#ffffff" />
-                                    <circle cx="45" cy="50" r="1.5" fill="#333" />
-                                    <circle cx="55" cy="50" r="1.5" fill="#333" />
-                                    <path d="M48 53 Q50 56 52 53" stroke="#333" stroke-width="1.2" fill="none" />
-                                </svg>
-                            </div>
                         </div>
 
-                        <div class="section-group" style="margin-top: 15px;">
+                        <div class="section-group">
                             <div class="section-label">☁ BACKGROUND</div>
                             <div class="tag-list">
                                 <div class="tag-item-airy">香港中文大学 · 全球政治经济学 硕士 🎓</div>
-                                <div class="tag-item-airy highlight">浙江财经大学 · 税务学 本科 🎓</div>
+                                <div class="tag-item-airy highlight">浙江财经大学 · 税收学 经济学学士 (GPA 4.48/5.0, 前3.2%) 🎓</div>
                             </div>
                         </div>
 
                         <div class="section-group">
-                            <div class="section-label">✨ CAPABILITIES</div>
+                            <div class="section-label">✨ CAPABILITIES & CORE STRENGTHS</div>
                             <div class="tag-list">
-                                <div class="tag-item-airy">宏观洞察 & 跨学科思考 ✦</div>
-                                <div class="tag-item-airy">品牌营销 & 内容策划 ✦</div>
-                                <div class="tag-item-airy">数据敏感度 & 商业分析 ✦</div>
+                                <div class="tag-item-airy">逻辑降维 & 结构化商业分析 ✦</div>
+                                <div class="tag-item-airy highlight">品牌感官直觉 & 消费者洞察 ✦</div>
+                                <div class="tag-item-airy">方法论驱动的极佳执行力 ✦</div>
+                                <div class="tag-item-airy">跨学科视野 & 中英双语沟通 ✦</div>
                             </div>
                         </div>
 
@@ -707,7 +718,8 @@
                             <div class="section-label">🧸 LIFE & PERSONA</div>
                             <div class="tag-list">
                                 <div class="tag-item-airy">INFJ 绿老头 🧙‍♂️</div>
-                                <div class="tag-item-airy highlight">超强共情力 💗</div>
+                                <div class="tag-item-airy highlight">深度共情 & 倾听者 💗</div>
+                                <div class="tag-item-airy">Aesop感官避难所探究 🌿</div>
                                 <div class="tag-item-airy">Fitness 🏋️‍♀️</div>
                                 <div class="tag-item-airy">Kpop 🎵</div>
                                 <div class="tag-item-airy">旅游 ✈️</div>
@@ -716,10 +728,153 @@
                     </div>
                 </div>
             `,
-            'internship': `<div style="padding: 10px; color:var(--text-dark);"><h2 style="font-family:'Playfair Display'; color:#9f1239; margin-bottom:15px;">💼 My Internship</h2><p style="line-height:1.8;">这里是你的实习经历介绍模块，可以补充具体的实习岗位与主要成果！</p></div>`,
-            'school': `<div style="padding: 10px; color:var(--text-dark);"><h2 style="font-family:'Playfair Display'; color:#9f1239; margin-bottom:15px;">🎓 My School</h2><p style="line-height:1.8;">这里是你的校园背景与学术活动展示模块！</p></div>`,
-            'life': `<div style="padding: 10px; color:var(--text-dark);"><h2 style="font-family:'Playfair Display'; color:#9f1239; margin-bottom:15px;">📷 My Life</h2><p style="line-height:1.8;">这里是你的日常记录、摄影作品与生活片段展示！</p></div>`,
-            'contact': `<div style="padding: 10px; color:var(--text-dark);"><h2 style="font-family:'Playfair Display'; color:#9f1239; margin-bottom:15px;">✉️ Contact Me</h2><p style="line-height:1.8;">📧 Email: your_email@example.com<br>📱 WeChat: your_wechat_id</p></div>`
+
+            'internship': `
+                <div class="inner-section">
+                    <div class="inner-title">💼 My Internship Experience</div>
+                    
+                    <div class="experience-card">
+                        <div class="exp-header">
+                            <span class="exp-role">商业分析 / 财务实习生</span>
+                            <span class="exp-company">凌迪科技 (Style3D，拟IPO 3D时尚数字化软件)</span>
+                            <span class="exp-time">2026.04 - 2026.07</span>
+                        </div>
+                        <ul class="exp-bullet">
+                            <li><b>数据驱动与费用治理</b>：批量清洗多平台 2,500+ 条差旅明细，利用 MID/FIND 函数实现标准化；构建“报销单—平台账单—税务备查”证据链支撑 139 万元研发费用加计扣除。</li>
+                            <li><b>DeepSeek 智能稽核提效</b>：借助 DeepSeek 建立“标异—人工终审”比对机制交叉验证 CRM 与财务系统，替代全量复核，月度对账耗时降低约 40%。</li>
+                            <li><b>IPO 审计与收入确认</b>：配合 IPO 审计将 SaaS 合同按 CAS 14 重述为分期履约确认，整理 76 份穿行资料支撑尽调，深刻理解业务数据对经营与财务结果的驱动。</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="exp-header">
+                            <span class="exp-role">管理咨询（内控）实习生</span>
+                            <span class="exp-company">天健会计师事务所（杭州总所）</span>
+                            <span class="exp-time">2025.09 - 2025.12</span>
+                        </div>
+                        <ul class="exp-bullet">
+                            <li><b>芯片龙头 IPO 项目</b>：清洗归集 6 大主体、500+ 研发人员超 6,000 条跨项目工时记录，建立基于法定工时的标准化成本分摊模型，精细核算至“人-项目”维度（准确率100%）。</li>
+                            <li><b>国企内控与穿行测试</b>：访谈 5 大部门 20+ 员工梳理核心业务流，对某国企 2.8 亿元合同及 3,000+ 凭证执行全流程穿行测试；优化底稿模板使项目整理效率提效约 30%。</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="exp-header">
+                            <span class="exp-role">审计实习生</span>
+                            <span class="exp-company">中汇会计师事务所（杭州）</span>
+                            <span class="exp-time">2025.01 - 2025.02</span>
+                        </div>
+                        <ul class="exp-bullet">
+                            <li>抽验某生物化工公司 200+ 张凭证并执行应收/应付账款截止性测试；赴福建实地参与 2 家子公司现场盘点与在建工程审计底稿编制。</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="exp-header">
+                            <span class="exp-role">财税内容运营实习生</span>
+                            <span class="exp-company">杭州市果然财税科技有限公司</span>
+                            <span class="exp-time">2024.07 - 2024.08</span>
+                        </div>
+                        <ul class="exp-bullet">
+                            <li>收录整理 2024 杭州公积金指南并在公众号发布 5 篇干货长文，剪辑 3 支涉税短视频，将专业政策精准转译为通俗表达。</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+
+            'school': `
+                <div class="inner-section">
+                    <div class="inner-title">🎓 Academic Background & Honors</div>
+
+                    <div class="experience-card">
+                        <div class="exp-header">
+                            <span class="exp-role">硕士：全球政治经济学 (Global Political Economy)</span>
+                            <span class="exp-company">香港中文大学 (CUHK)</span>
+                            <span class="exp-time">2026.09 入学</span>
+                        </div>
+                        <ul class="exp-bullet">
+                            <li><b>主修课程</b>：全球政治经济理论、国际关系理论、社会科学方法论、国际金融与投资政策等。具备全球化宏观视野与跨文化双语沟通基础。</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="exp-header">
+                            <span class="exp-role">本科：税收学 (经济学学士)</span>
+                            <span class="exp-company">浙江财经大学 · 财政税务学院</span>
+                            <span class="exp-time">2022.09 - 2026.06</span>
+                        </div>
+                        <ul class="exp-bullet">
+                            <li><b>学术成绩</b>：<b>GPA 4.48 / 5.0</b>，专业排名 <b>11 / 402 (前 3.2%)</b>。</li>
+                            <li><b>核心高分科目</b>：计量经济学 95、中国税制 95、纳税评估 95、中级财务会计 93、统计学 91。</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="exp-header">
+                            <span class="exp-role">🏆 荣誉奖项与专业证书</span>
+                            <span class="exp-company">荣誉与技能</span>
+                        </div>
+                        <ul class="exp-bullet">
+                            <li><b>奖项荣誉</b>：浙江省政府奖学金 × 2 | 国家级大学生创新创业训练计划立项 | 浙江省“建行杯”创新创业大赛银奖 | 校优秀团干部 / 三好学生 / 优秀学生干部。</li>
+                            <li><b>证书与语言</b>：雅思 7.0 | GRE 329 | 税务师 (税法一、税法二已通过) | 初级会计职称 | CPA与税务师在读。</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+
+            'life': `
+                <div class="inner-section">
+                    <div class="inner-title">📷 Content, Consumer Insight & Persona</div>
+
+                    <div class="experience-card">
+                        <div class="exp-header">
+                            <span class="exp-role">内容运营负责人 (20+ 篇原创爆款)</span>
+                            <span class="exp-company">浙财创业者协会 · “创趣汇”</span>
+                            <span class="exp-time">2023.09 - 2025.09</span>
+                        </div>
+                        <ul class="exp-bullet">
+                            <li>从年轻文化社群敏锐捕捉 vivalavida、站姐、美式复古、解压等流行议题策划栏目，单篇最高阅读 3,300+，多篇破 1,500（远超常规100-500量级），带领社团获评“年度十佳社团”。</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="exp-header">
+                            <span class="exp-role">趋势选品与增长 (校园摆摊创业)</span>
+                            <span class="exp-company">“热奶宝” 趋势实践</span>
+                            <span class="exp-time">2023.09 - 2025.09</span>
+                        </div>
+                        <ul class="exp-bullet">
+                            <li>敏锐捕捉小红书“热奶宝”冬季潮流，设计“血糯米+奶油+饼干脆+DIY”差异化组合，4天创造社团单次活动最高营收纪录 1,600 元，验证从趋势洞察到落地的闭环。</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="exp-header">
+                            <span class="exp-role">🌿 品牌审美与消费者洞察 (Aesop 案例拆解)</span>
+                            <span class="exp-company">独立品牌感官探究</span>
+                        </div>
+                        <ul class="exp-bullet">
+                            <li>洞察在算法过载时代现代人渴望“感官避难”与“独处”的社会心理；将 Aesop 的静默反向营销解读为“情感筛选门槛”，擅长将感官体验升华为深刻商业策略。</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+
+            'contact': `
+                <div class="inner-section">
+                    <div class="inner-title">✉️ Contact Irene Wang</div>
+
+                    <div class="experience-card" style="gap: 12px; padding: 20px;">
+                        <p style="font-size:1.05rem;"><b>📞 电话 / 微信：</b> 190 3225 5732</p>
+                        <p style="font-size:1.05rem;"><b>📧 电子邮箱：</b> 13732221972@163.com</p>
+                        <p style="font-size:1.05rem;"><b>📍 意向城市：</b> 深圳 / 香港 / 上海</p>
+                        <p style="font-size:1.05rem;"><b>🎯 求职意向：</b> 市场管理培训生（品牌策略 / 消费者洞察） / 商业分析 / 财务控制管培生</p>
+                        <div style="margin-top: 10px; padding-top: 12px; border-top: 1px dashed #d1d5db; color: #6b7280; font-size: 0.9rem;">
+                            "带着清晰的逻辑、扎实的品质与出色的审美按部就班前行，欢迎随时与我联系！"
+                        </div>
+                    </div>
+                </div>
+            `
         };
 
         function openModal(type) {
