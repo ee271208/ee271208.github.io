@@ -429,7 +429,7 @@
             display: grid;
             grid-template-columns: 1fr 240px;
             gap: 24px;
-            align-items: start; /* 改为顶部对齐，防止图片过长影响整体 */
+            align-items: start;
 
             opacity: 0;
             visibility: hidden;
@@ -446,10 +446,11 @@
             position: relative;
         }
 
-        /* 右侧图片容器：调整高度为更修长的比例（例如 380px），视觉上更加大气优雅 */
+        /* 右侧图片容器：通过添加上边距使其顶部与“职位/实习生”行平齐 */
         .clip-img-box {
             width: 100%;
             height: 380px; 
+            margin-top: 56px; /* 使图片整体往下沉，顶部与“...实习生”齐平 */
             border-radius: 14px;
             overflow: hidden;
             background: #fffdfa;
@@ -467,9 +468,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 保证图片在区域内优雅填充 */
+            object-fit: cover; 
             border-radius: 14px;
             z-index: 2;
+        }
+
+        /* 针对凌迪科技图片单独调整对齐，确保能看到完整的 Style3D 艺术字 */
+        .clip-img.lingdi-img {
+            object-position: 75% center; /* 靠右展示，让左侧的 Style3D 完整显露出来 */
         }
 
         .clip-info {
@@ -844,7 +850,7 @@
             .photo-gallery-grid { grid-template-columns: 1fr; }
             .article-card-grid { grid-template-columns: 1fr; }
             .clip-card-panel { grid-template-columns: 1fr; }
-            .clip-img-box { height: 260px; }
+            .clip-img-box { height: 260px; margin-top: 16px; }
             .metrics-grid-4 { grid-template-columns: repeat(2, 1fr); }
             .metrics-grid-2 { grid-template-columns: 1fr; }
         }
@@ -1182,7 +1188,7 @@
                             </div>
 
                             <div class="clip-img-box">
-                                <img src="凌迪.png" alt="凌迪科技" class="clip-img" onerror="this.style.display='none';">
+                                <img src="凌迪.png" alt="凌迪科技" class="clip-img lingdi-img" onerror="this.style.display='none';">
                             </div>
                         </div>
 
