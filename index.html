@@ -354,7 +354,7 @@
             padding-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: space-between;
         }
 
         .experience-card {
@@ -368,114 +368,103 @@
             gap: 6px;
         }
 
-        .exp-header {
+        /* --------------------------------------------------
+           Codrops Ease-Reverse Clip-Reveal 风格实习模块
+        -------------------------------------------------- */
+        .clip-nav-bar {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
         }
 
-        .exp-role {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--theme-red);
-        }
-
-        .exp-company {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-
-        .exp-time {
-            font-family: 'Special Elite', monospace;
-            font-size: 0.8rem;
-            color: var(--text-sub);
-        }
-
-        .exp-bullet {
-            font-size: 0.85rem;
-            line-height: 1.65;
-            color: #4a3e3d;
-            margin-left: 14px;
-            list-style-type: disc;
-        }
-
-        .exp-bullet li {
-            margin-bottom: 4px;
-        }
-
-        /* --------------------------------------------------
-           实习经历：横向滑动卡片 (Scrollable Track)
-        -------------------------------------------------- */
-        .intern-scroll-container {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 8px 4px 18px 4px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .intern-scroll-container::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .intern-scroll-container::-webkit-scrollbar-thumb {
-            background: rgba(244, 63, 94, 0.35);
-            border-radius: 10px;
-        }
-
-        .intern-card {
-            flex: 0 0 540px;
-            scroll-snap-align: start;
-            background: #ffffff;
-            border: 1.5px solid rgba(244, 63, 94, 0.22);
+        .clip-nav-btn {
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(244, 63, 94, 0.25);
+            padding: 8px 18px;
             border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 18px;
-            align-items: start;
-            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
 
-        .intern-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 32px rgba(244, 63, 94, 0.14);
+        .clip-nav-btn.active, .clip-nav-btn:hover {
+            background: var(--theme-red);
+            color: #ffffff;
             border-color: var(--theme-red);
+            box-shadow: 0 6px 16px rgba(159, 18, 57, 0.25);
+            transform: translateY(-2px);
         }
 
-        .intern-img-box {
+        .clip-stage-container {
+            position: relative;
+            min-height: 280px;
             width: 100%;
-            height: 230px;
+        }
+
+        .clip-card-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            border: 1.5px solid rgba(244, 63, 94, 0.25);
+            border-radius: 20px;
+            padding: 22px 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            display: grid;
+            grid-template-columns: 210px 1fr;
+            gap: 24px;
+            align-items: center; /* 照片与右侧文字居中对齐 */
+            opacity: 0;
+            pointer-events: none;
+            /* Codrops 经典的逆向圆环剪切揭示动画 */
+            clip-path: circle(0% at 50% 50%);
+            transition: clip-path 0.65s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease;
+        }
+
+        .clip-card-panel.active {
+            opacity: 1;
+            pointer-events: auto;
+            clip-path: circle(150% at 50% 50%);
+            position: relative;
+        }
+
+        .clip-img-box {
+            width: 100%;
+            height: 220px;
             border-radius: 14px;
             overflow: hidden;
             background: #f8f8f8;
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .intern-img {
+        .clip-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center; /* 照片居中 */
         }
 
-        .intern-info {
+        .clip-info {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .intern-company {
-            font-size: 1.08rem;
+        .clip-company {
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--text-dark);
-            line-height: 1.35;
         }
 
-        .intern-role-row {
+        .clip-role-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -483,50 +472,47 @@
             gap: 6px;
         }
 
-        .intern-role {
-            font-size: 0.88rem;
+        .clip-role {
+            font-size: 0.92rem;
             color: var(--theme-red);
             font-weight: 700;
         }
 
-        .intern-time {
+        .clip-time {
             font-family: 'Special Elite', monospace;
-            font-size: 0.78rem;
+            font-size: 0.82rem;
             color: var(--text-sub);
         }
 
-        .intern-label {
-            font-size: 0.78rem;
+        .clip-label {
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--theme-red);
             margin-top: 4px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
 
-        .intern-desc-list {
-            font-size: 0.83rem;
-            line-height: 1.6;
+        .clip-desc-list {
+            font-size: 0.85rem;
+            line-height: 1.65;
             color: #4a3e3d;
-            margin-left: 14px;
+            margin-left: 16px;
             list-style-type: disc;
         }
 
-        .intern-desc-list li {
+        .clip-desc-list li {
             margin-bottom: 3px;
         }
 
-        .intern-contribution-box {
-            background: rgba(254, 226, 226, 0.65);
-            border: 1px solid rgba(244, 63, 94, 0.28);
+        .clip-contribution-box {
+            background: rgba(254, 226, 226, 0.7);
+            border: 1px solid rgba(244, 63, 94, 0.3);
             border-radius: 12px;
-            padding: 10px 12px;
-            font-size: 0.82rem;
+            padding: 10px 14px;
+            font-size: 0.84rem;
             line-height: 1.55;
             color: var(--theme-red);
             font-weight: 600;
-            margin-top: 4px;
+            margin-top: 6px;
         }
 
         .section-group {
@@ -769,8 +755,8 @@
             .name-cn-badge { font-size: 1.15rem; padding: 2px 12px; }
             .photo-gallery-grid { grid-template-columns: 1fr; }
             .article-card-grid { grid-template-columns: 1fr; }
-            .intern-card { flex: 0 0 85vw; grid-template-columns: 1fr; }
-            .intern-img-box { height: 160px; }
+            .clip-card-panel { grid-template-columns: 1fr; }
+            .clip-img-box { height: 180px; }
         }
     </style>
 </head>
@@ -1027,104 +1013,113 @@
             'internship': `
                 <div class="inner-section">
                     <div class="inner-title">
-                        💼 My Internship Experience
-                        <span style="font-size:0.85rem; font-weight:400; color:var(--text-sub); margin-left: auto;">👉 左右滑动查看更多卡片</span>
+                        <span>💼 My Internship Experience</span>
+                        <span style="font-size:0.85rem; font-weight:400; color:var(--text-sub);">点击下方导航平滑揭示卡片</span>
                     </div>
 
-                    <!-- 实习经历：横向滑动卡片轨道 -->
-                    <div class="intern-scroll-container">
+                    <!-- Codrops 剪切切页导航按钮栏 -->
+                    <div class="clip-nav-bar">
+                        <button class="clip-nav-btn active" onclick="switchClipIntern(0)">凌迪科技 (Style3D)</button>
+                        <button class="clip-nav-btn" onclick="switchClipIntern(1)">天健会计师事务所</button>
+                        <button class="clip-nav-btn" onclick="switchClipIntern(2)">中汇会计师事务所</button>
+                        <button class="clip-nav-btn" onclick="switchClipIntern(3)">果然财税科技</button>
+                    </div>
+
+                    <!-- Codrops Ease-Reverse Clip-Reveal 卡片舞台 -->
+                    <div class="clip-stage-container">
 
                         <!-- 卡片 1：凌迪科技 -->
-                        <div class="intern-card">
-                            <div class="intern-img-box">
-                                <img src="凌迪.png" alt="凌迪科技" class="intern-img" onerror="this.onerror=null; console.log('凌迪.png 未找到');">
+                        <div class="clip-card-panel active" id="clip-panel-0">
+                            <div class="clip-img-box">
+                                <img src="凌迪.png" alt="凌迪科技" class="clip-img" onerror="this.onerror=null; console.log('凌迪.png 未找到');">
                             </div>
-                            <div class="intern-info">
-                                <div class="intern-company">凌迪科技 (Style3D)</div>
-                                <div class="intern-role-row">
-                                    <span class="intern-role">商业分析 / 财务实习生</span>
-                                    <span class="intern-time">2026.04 - 2026.07</span>
+                            <div class="clip-info">
+                                <div class="clip-company">凌迪科技 (Style3D)</div>
+                                <div class="clip-role-row">
+                                    <span class="clip-role">商业分析 / 财务实习生</span>
+                                    <span class="clip-time">2026.04 - 2026.07</span>
                                 </div>
 
-                                <div class="intern-label">📌 核心工作内容</div>
-                                <ul class="intern-desc-list">
+                                <div class="clip-label">📌 核心工作内容</div>
+                                <ul class="clip-desc-list">
                                     <li>清洗多平台 2,500+ 条差旅明细，建立“报销单—账单—备查”标准化证据链。</li>
                                     <li>借助 DeepSeek 智能稽核建立对账机制，支撑 IPO 审计按 CAS 14 重述 SaaS 合同及整理穿行资料。</li>
                                 </ul>
 
-                                <div class="intern-contribution-box">
-                                    🌟 <b>成果/贡献：</b>支撑 <b>139 万元</b>研发费用加计扣除；月度对账耗时降低约 <b>40%</b>。
+                                <div class="clip-contribution-box">
+                                    🌟 <b>成果：</b>支撑 <b>139 万元</b>研发费用加计扣除；月度对账耗时降低约 <b>40%</b>。
                                 </div>
                             </div>
                         </div>
 
                         <!-- 卡片 2：天健会计师事务所 -->
-                        <div class="intern-card">
-                            <div class="intern-img-box">
-                                <img src="天健.jpg" alt="天健会计师事务所" class="intern-img" onerror="this.onerror=null; console.log('天健.jpg 未找到');">
+                        <div class="clip-card-panel" id="clip-panel-1">
+                            <div class="clip-img-box">
+                                <img src="天健.jpg" alt="天健会计师事务所" class="clip-img" onerror="this.onerror=null; console.log('天健.jpg 未找到');">
                             </div>
-                            <div class="intern-info">
-                                <div class="intern-company">天健会计师事务所（杭州总所）</div>
-                                <div class="intern-role-row">
-                                    <span class="intern-role">管理咨询（内控）实习生</span>
-                                    <span class="intern-time">2025.09 - 2025.12</span>
+                            <div class="clip-info">
+                                <div class="clip-company">天健会计师事务所（杭州总所）</div>
+                                <div class="clip-role-row">
+                                    <span class="clip-role">管理咨询（内控）实习生</span>
+                                    <span class="clip-time">2025.09 - 2025.12</span>
                                 </div>
 
-                                <div class="intern-label">📌 核心工作内容</div>
-                                <ul class="intern-desc-list">
-                                    <li>清洗归集 6 大主体、500+ 研发人员超 6,000 条跨项目工时，建立成本分摊模型。</li>
-                                    <li>访谈 5 大部门 20+ 员工梳理业务流，对 2.8 亿元合同及 3,000+ 凭证进行全流程穿行测试。</li>
+                                <div class="clip-label">📌 核心工作内容</div>
+                                <ul class="clip-desc-list">
+                                    <li>清洗归集 6 大主体、500+ 研发人员超 6,000 条跨项目工时，建立标准化成本分摊模型。</li>
+                                    <li>访谈 5 大部门 20+ 员工梳理核心业务流，对 2.8 亿元合同及 3,000+ 凭证进行全流程穿行测试。</li>
                                 </ul>
 
-                                <div class="intern-contribution-box">
-                                    🌟 <b>成果/贡献：</b>实现“人-项目”精细核算<b>准确率 100%</b>；优化底稿模板使项目整理<b>提效 30%</b>。
+                                <div class="clip-contribution-box">
+                                    🌟 <b>成果：</b>实现“人-项目”精细核算<b>准确率 100%</b>；优化底稿模板使项目整理<b>提效 30%</b>。
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 卡片 3：中汇会计师事务所 -->
-                        <div class="intern-card">
-                            <div class="intern-img-box">
-                                <img src="中汇.jpg" alt="中汇会计师事务所" class="intern-img" onerror="this.onerror=null; console.log('中汇.jpg 未找到');">
+                        <!-- 卡片 3：中汇会计师事务所 (全新技术语言重构) -->
+                        <div class="clip-card-panel" id="clip-panel-2">
+                            <div class="clip-img-box">
+                                <img src="中汇.jpg" alt="中汇会计师事务所" class="clip-img" onerror="this.onerror=null; console.log('中汇.jpg 未找到');">
                             </div>
-                            <div class="intern-info">
-                                <div class="intern-company">中汇会计师事务所（杭州）</div>
-                                <div class="intern-role-row">
-                                    <span class="intern-role">审计实习生</span>
-                                    <span class="intern-time">2025.01 - 2025.02</span>
+                            <div class="clip-info">
+                                <div class="clip-company">中汇会计师事务所（杭州）</div>
+                                <div class="clip-role-row">
+                                    <span class="clip-role">审计实习生</span>
+                                    <span class="clip-time">2025.01 - 2025.02</span>
                                 </div>
 
-                                <div class="intern-label">📌 核心工作内容</div>
-                                <ul class="intern-desc-list">
-                                    <li>抽验某生物化工公司 200+ 张凭证，执行应收/应付账款截止性测试。</li>
-                                    <li>赴福建实地参与 2 家子公司现场盘点与在建工程审计底稿编制。</li>
+                                <div class="clip-label">📌 核心工作内容</div>
+                                <ul class="clip-desc-list">
+                                    <li><b>截止性测试与大额资金核查</b>：抽验 200+ 张跨年度核心凭证，针对应收/应付账款精准执行截止性测试，核验大额资金发生真实性与会计区间匹配度。</li>
+                                    <li><b>实地盘点与资产类科目审定</b>：赴福建参与 2 家子公司外勤审计，独立完成在建工程、工程物资等高风险资产底稿编制及账实交叉核验。</li>
+                                    <li><b>高效函证攻坚与进度管控</b>：统筹外勤与邮寄函证，单日攻坚 5 家银行现场函证，实现 90% 超高回函率。</li>
                                 </ul>
 
-                                <div class="intern-contribution-box">
-                                    🌟 <b>成果/贡献：</b><b>100% 高效按时</b>交付现场盘点与底稿编制，助力团队零误差完成复核。
+                                <div class="clip-contribution-box">
+                                    🌟 <b>成果：</b>单日攻坚 5 家银行现场函证，实现 <b>90% 超高回函率</b>；零误差完成跨年度凭证截止性测试与在建工程底稿审定。
                                 </div>
                             </div>
                         </div>
 
                         <!-- 卡片 4：果然财税科技 -->
-                        <div class="intern-card">
-                            <div class="intern-img-box">
-                                <img src="果然.jpg" alt="果然财税科技" class="intern-img" onerror="this.onerror=null; console.log('果然.jpg 未找到');">
+                        <div class="clip-card-panel" id="clip-panel-3">
+                            <div class="clip-img-box">
+                                <img src="果然.jpg" alt="果然财税科技" class="clip-img" onerror="this.onerror=null; console.log('果然.jpg 未找到');">
                             </div>
-                            <div class="intern-info">
-                                <div class="intern-company">杭州市果然财税科技有限公司</div>
-                                <div class="intern-role-row">
-                                    <span class="intern-role">财税内容运营实习生</span>
-                                    <span class="intern-time">2024.07 - 2024.08</span>
+                            <div class="clip-info">
+                                <div class="clip-company">杭州市果然财税科技有限公司</div>
+                                <div class="clip-role-row">
+                                    <span class="clip-role">财税内容运营实习生</span>
+                                    <span class="clip-time">2024.07 - 2024.08</span>
                                 </div>
 
-                                <div class="intern-label">📌 核心工作内容</div>
-                                <ul class="intern-desc-list">
+                                <div class="clip-label">📌 核心工作内容</div>
+                                <ul class="clip-desc-list">
                                     <li>收录整理 2024 杭州公积金指南，发布干货长文，剪辑涉税科普短视频。</li>
                                 </ul>
 
-                                <div class="intern-contribution-box">
-                                    🌟 <b>成果/贡献：</b>独立发布 <b>5 篇</b>长文与 <b>3 支</b>视频，将专业政策精准转译为通俗表达。
+                                <div class="clip-contribution-box">
+                                    🌟 <b>成果：</b>独立发布 <b>5 篇</b>长文与 <b>3 支</b>视频，将专业政策精准转译为通俗表达。
                                 </div>
                             </div>
                         </div>
@@ -1356,6 +1351,20 @@
 
         function closeSubModalOnBg(event) {
             if (event.target.id === 'subModalOverlay') closeSubModal();
+        }
+
+        /* Codrops Ease-Reverse Clip-Reveal 动态切换逻辑 */
+        function switchClipIntern(index) {
+            const btns = document.querySelectorAll('.clip-nav-btn');
+            const panels = document.querySelectorAll('.clip-card-panel');
+
+            btns.forEach((btn, idx) => {
+                btn.classList.toggle('active', idx === index);
+            });
+
+            panels.forEach((panel, idx) => {
+                panel.classList.toggle('active', idx === index);
+            });
         }
     </script>
 </body>
