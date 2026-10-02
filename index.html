@@ -160,7 +160,7 @@
         #flower-life { top: 38%; right: 14%; animation-delay: 0.4s; }
         #flower-contact { top: 56%; right: 10%; animation-delay: 1.3s; }
 
-        /* 弹窗蒙版及卡片（米色/浅黄色/淡粉色结合的柔和主色调） */
+        /* 弹窗蒙版及卡片 */
         .modal-overlay, .sub-modal-overlay {
             position: fixed;
             top: 0;
@@ -684,7 +684,6 @@
             color: var(--text-sub);
         }
 
-        /* 上下全部文字展示的卡片板块样式 */
         .school-full-sections {
             display: flex;
             flex-direction: column;
@@ -734,7 +733,7 @@
         }
 
         /* -----------------------------------------
-           奖状与风采卡片：横向排布并增大尺寸
+           仅修改：学术部分的奖状与风采卡片（横向排列并适度美观）
            ----------------------------------------- */
         .academic-highlight-section {
             margin-top: 10px;
@@ -753,24 +752,23 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* 横向平铺容器，增大尺寸并让图片自然横向铺开 */
         .cert-focus-stage {
             display: flex;
             justify-content: center;
-            gap: 24px;
+            gap: 20px;
             align-items: center;
-            min-height: 220px;
+            min-height: 150px;
             perspective: 1000px;
-            padding: 15px 0;
-            flex-wrap: wrap; /* 确保在小屏幕下也能换行显示 */
+            padding: 10px 0;
+            flex-wrap: wrap;
         }
 
         .cert-card {
-            width: 210px;    /* 增大宽度 */
-            height: 145px;   /* 调整为横向比例高度 */
+            width: 175px;    
+            height: 120px;   
             background: #ffffff;
-            border-radius: 12px;
-            padding: 8px 8px 12px 8px;
+            border-radius: 10px;
+            padding: 6px 6px 10px 6px;
             box-shadow: 0 6px 18px rgba(180, 120, 90, 0.12);
             border: 1.5px solid rgba(240, 210, 185, 0.6);
             cursor: pointer;
@@ -782,22 +780,14 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 6px;
             display: block;
         }
 
-        /* 横向排列下的默认轻微立体错落感 */
-        .cert-card:nth-child(1) {
-            transform: rotate(-3deg) translateY(2px) scale(0.96);
-        }
-        .cert-card:nth-child(2) {
-            transform: translateY(-4px) scale(1);
-        }
-        .cert-card:nth-child(3) {
-            transform: rotate(3deg) translateY(2px) scale(0.96);
-        }
+        .cert-card:nth-child(1) { transform: rotate(-2deg) translateY(1px) scale(0.98); }
+        .cert-card:nth-child(2) { transform: translateY(-2px) scale(1); }
+        .cert-card:nth-child(3) { transform: rotate(2deg) translateY(1px) scale(0.98); }
 
-        /* 鼠标悬停在哪张图上，哪张图就归正、放大、浮起聚焦 */
         .cert-focus-stage:hover .cert-card {
             opacity: 0.6;
             filter: grayscale(20%);
@@ -806,13 +796,172 @@
         .cert-card:hover {
             opacity: 1 !important;
             filter: grayscale(0%) !important;
-            transform: translateY(-8px) scale(1.12) rotate(0deg) !important;
+            transform: translateY(-6px) scale(1.08) rotate(0deg) !important;
             z-index: 50;
-            box-shadow: 0 16px 35px rgba(217, 119, 6, 0.3);
+            box-shadow: 0 14px 30px rgba(217, 119, 6, 0.25);
             border-color: var(--accent-amber);
         }
 
-        /* 二级明细内容卡片容器样式（用于其他板块） */
+        /* -----------------------------------------
+           还原其他二级弹窗中的原始图片网格、宝丽来与公众号图文比例
+           ----------------------------------------- */
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .gallery-header {
+            border-bottom: 1px dashed rgba(200, 180, 160, 0.4);
+            padding-bottom: 8px;
+        }
+
+        .gallery-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--theme-primary);
+        }
+
+        /* 公众号文章卡片网格样式（完全恢复原比例） */
+        .article-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .article-card {
+            background: #ffffff;
+            border: 1px solid rgba(240, 215, 190, 0.7);
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(217, 119, 6, 0.15);
+            border-color: var(--accent-warm);
+        }
+
+        .article-cover-box {
+            width: 100%;
+            height: 160px; /* 恢复原版公众号封面高度 */
+            position: relative;
+            overflow: hidden;
+            background: #f7f4ef;
+        }
+
+        .article-cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .article-card:hover .article-cover-img {
+            transform: scale(1.05);
+        }
+
+        .platform-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            color: #ffffff;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .article-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .metrics-pill {
+            background: rgba(254, 243, 199, 0.8);
+            color: var(--accent-warm);
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .article-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .article-desc {
+            font-size: 0.82rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .jump-btn-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed rgba(230, 210, 190, 0.5);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent-warm);
+        }
+
+        /* 宝丽来相册网格比例恢复 */
+        .photo-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .polaroid-item {
+            background: #ffffff;
+            padding: 10px 10px 16px 10px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            border: 1px solid rgba(240, 215, 190, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid-item:hover {
+            transform: translateY(-4px) rotate(1deg);
+        }
+
+        .polaroid-img {
+            width: 100%;
+            height: 240px; /* 恢复原版学校/旅游照片比例 */
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .polaroid-caption {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-top: 10px;
+        }
+
         .sub-content-box {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 18px;
@@ -861,7 +1010,7 @@
             .portfolio-card-airy { padding: 24px; }
             .photo-img { height: 280px; }
             .name-cn-badge { font-size: 1.15rem; padding: 2px 12px; }
-            .cert-card { width: 140px; height: 100px; }
+            .cert-card { width: 130px; height: 95px; }
         }
     </style>
 </head>
@@ -1384,7 +1533,7 @@
                         </div>
                     </div>
 
-                    <!-- 奖状2、奖状9、风采1：横向铺开、尺寸增大展示区 -->
+                    <!-- 学术部分的奖状与风采图片横向铺开展示区 -->
                     <div class="academic-highlight-section">
                         <div class="academic-highlight-title">🏆 ACADEMIC HIGHLIGHTS (学术风采)</div>
                         <div class="cert-focus-stage">
