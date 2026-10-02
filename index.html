@@ -2,134 +2,350 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>实习经历总览</title>
-  <!-- 引入 GSAP -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人作品集 & 实习履历</title>
+  <!-- 引入 GSAP 动画库 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <style>
+    /* 全局样式重置与主题定义 */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #0b0b0e; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; }
-
-    h1 { margin-bottom: 40px; font-weight: 300; letter-spacing: 2px; }
-
-    /* 网格布局 */
-    .grid-container {
-      display: flex;
-      gap: 60px;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0b0b0e;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    .intern-icon {
-      width: 100px;
-      height: 100px;
-      border-radius: 24px;
-      background: #1a1a22;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    /* 顶部导航栏 */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 70px;
+      background: rgba(11, 11, 14, 0.8);
+      backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 8%;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .nav-logo { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 1px; }
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a { color: #a0aec0; text-decoration: none; font-size: 14px; transition: color 0.3s; }
+    .nav-links a:hover { color: #38bdf8; }
+
+    /* 主页 Hero Banner */
+    .hero-section {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+      background: radial-gradient(circle at 50% 30%, rgba(56, 189, 248, 0.1) 0%, rgba(11, 11, 14, 0) 70%);
+    }
+    .hero-title { font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 16px; letter-spacing: -1px; }
+    .hero-subtitle { font-size: 18px; color: #94a3b8; max-width: 600px; margin-bottom: 32px; }
+    .btn-primary {
+      display: inline-block;
+      padding: 12px 32px;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.25);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(56, 189, 248, 0.4); }
+
+    /* GSAP 磁性图标概览区（无大标题） */
+    .proximity-section {
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+    }
+    .icon-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 60px 80px;
+      max-width: 900px;
+      justify-content: center;
+      align-items: center;
+    }
+    .icon-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       user-select: none;
       will-change: transform;
     }
+    .icon-item svg { width: 70px; height: 70px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); pointer-events: none; }
+    .icon-item .label { margin-top: 12px; font-size: 14px; font-weight: 500; color: #cbd5e1; }
 
-    .intern-icon img { width: 40px; height: 40px; margin-bottom: 8px; pointer-events: none; }
-    .intern-icon span { font-size: 13px; color: #aaa; pointer-events: none; }
+    /* 实习详情版块设置 */
+    .section-container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+    .section-header { margin-bottom: 50px; }
+    .section-tag { font-size: 12px; text-transform: uppercase; color: #38bdf8; letter-spacing: 2px; font-weight: 700; margin-bottom: 8px; }
+    .section-title { font-size: 32px; color: #fff; font-weight: 700; }
+    .section-subtitle { font-size: 15px; color: #64748b; margin-top: 6px; }
+
+    /* 天健实习卡片样式 */
+    .tianjian-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+    .project-card {
+      background: #13131a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 32px;
+      transition: border-color 0.3s;
+    }
+    .project-card:hover { border-color: rgba(56, 189, 248, 0.4); }
+    .project-title { font-size: 20px; color: #f1f5f9; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .project-title::before { content: ""; display: inline-block; width: 8px; height: 8px; background: #38bdf8; border-radius: 50%; }
+    .task-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .task-item { font-size: 14px; color: #94a3b8; line-height: 1.7; }
+    .task-item strong { color: #e2e8f0; font-weight: 600; }
+
+    /* 凌迪 Style3D 卡片与照片布局 */
+    .style3d-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    @media (max-width: 868px) { .style3d-layout { grid-template-columns: 1fr; } }
+    
+    /* 照片构图控制：截取并居中 Style3D 文字 */
+    .photo-container {
+      width: 100%;
+      height: 380px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* 将镜头焦点右平移并聚焦于 Style3D 前台发光字 */
+      object-position: 18% 45%;
+      transform: scale(1.15); /* 微调放大以凸显 Logo */
+    }
 
     /* 弹窗样式 */
     .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
+      position: fixed; inset: 0;
+      background: rgba(11, 11, 14, 0.85);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 999;
     }
-
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
     .modal-card {
-      background: #16161c;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 16px;
-      padding: 32px;
-      max-width: 550px;
-      width: 90%;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-      position: relative;
+      background: #181824; border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px; padding: 36px; max-width: 600px; width: 90%;
+      position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.7);
     }
-
-    .close-btn { position: absolute; top: 16px; right: 20px; font-size: 24px; cursor: pointer; color: #888; }
+    .close-btn { position: absolute; top: 20px; right: 24px; font-size: 24px; cursor: pointer; color: #64748b; }
     .close-btn:hover { color: #fff; }
-    .modal-card h2 { margin-bottom: 16px; font-size: 20px; color: #4db8ff; }
-    .modal-card div { font-size: 14px; line-height: 1.6; color: #ccc; white-space: pre-line; }
+    .modal-card h3 { font-size: 20px; color: #fff; margin-bottom: 16px; }
+    .modal-card .content { font-size: 14px; color: #cbd5e1; line-height: 1.8; white-space: pre-line; }
+
+    footer { text-align: center; padding: 40px; color: #475569; font-size: 13px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
   </style>
 </head>
 <body>
 
-  <h1>实习经历总览</h1>
+  <!-- SVG 图标色彩定义 -->
+  <svg style="display: none;">
+    <defs>
+      <linearGradient id="grad-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#d8b4fe" /><stop offset="100%" stop-color="#818cf8" />
+      </linearGradient>
+      <linearGradient id="grad-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fde047" /><stop offset="50%" stop-color="#fb923c" /><stop offset="100%" stop-color="#f43f5e" />
+      </linearGradient>
+      <linearGradient id="grad-green" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#4ade80" /><stop offset="100%" stop-color="#22d3ee" />
+      </linearGradient>
+      <linearGradient id="grad-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f472b6" /><stop offset="100%" stop-color="#c084fc" />
+      </linearGradient>
+    </defs>
+  </svg>
 
-  <div class="grid-container" id="grid">
-    <!-- 天健实习图标 -->
-    <div class="intern-icon" 
-         data-title="天健会计师事务所 — 管理咨询实习" 
-         data-detail="【项目一：某国企内控评估】&#10;• 访谈 5 大部门与 20+ 员工，梳理核心业务流程&#10;• 核查 2.8 亿合同与 3000+ 凭证，识别潜在风险&#10;&#10;【项目二：芯片龙头 IPO 研发内控】&#10;• 清洗 500+ 研发人员工时，搭建模型确保 100% 准确率&#10;• 独立完成 6 地主体薪酬复核与底稿编制">
-      <span>天健</span>
+  <!-- 1. 顶部导航栏 -->
+  <nav>
+    <div class="nav-logo">PORTFOLIO</div>
+    <ul class="nav-links">
+      <li><a href="#hero">首页</a></li>
+      <li><a href="#overview">经历概览</a></li>
+      <li><a href="#tianjian">天健会计师事务所</a></li>
+      <li><a href="#style3d">凌迪 Style3D</a></li>
+    </ul>
+  </nav>
+
+  <!-- 2. 主页 Hero 区域 -->
+  <section class="hero-section" id="hero">
+    <h1 class="hero-title">个人实习与项目作品集</h1>
+    <p class="hero-subtitle">聚焦于管理咨询、内控体系评估、数字化项目与数据分析</p>
+    <a href="#overview" class="btn-primary">探索实习经历</a>
+  </section>
+
+  <!-- 3. GSAP 交互图标区（去掉标题，融入主页） -->
+  <section class="proximity-section" id="overview">
+    <div class="icon-grid">
+      <!-- 天健图标 -->
+      <div class="icon-item" 
+           data-title="天健会计师事务所 (杭州总所)" 
+           data-detail="【项目一：国企内控体系评估与优化】&#10;• 访谈 5 大部门与 20+ 员工，梳理核心流程&#10;• 穿行测试 2.8 亿合同与 3000+ 凭证，识别风险点&#10;• 独立编制 6 家公司底稿，提升整理效率 30%&#10;&#10;【项目二：芯片龙头 IPO 研发内控规范】&#10;• 匹配 ERP/OA 与进销存数据，诊断系统缺陷&#10;• 清洗分摊 500+ 人员工时，搭建 100% 准确率模型&#10;• 复核全国 6 地主体薪酬，编制明细底稿">
+        <svg viewBox="0 0 100 100">
+          <rect x="20" y="20" width="60" height="60" rx="12" transform="rotate(45 50 50)" fill="url(#grad-orange)" />
+        </svg>
+        <div class="label">天健会计师事务所</div>
+      </div>
+
+      <!-- Style3D 图标 -->
+      <div class="icon-item" 
+           data-title="凌迪 Style3D" 
+           data-detail="• 参与 3D 服装数字化解决方案与项目支持&#10;• 协助优化跨部门协同与内部管理流程">
+        <svg viewBox="0 0 100 100" fill="url(#grad-purple)">
+          <path d="M50 32 C42 18, 22 28, 32 42 C18 50, 28 70, 42 68 C50 82, 70 72, 68 58 C82 50, 72 30, 58 32 Z" />
+        </svg>
+        <div class="label">Style3D</div>
+      </div>
+
+      <!-- 预留图标 1 -->
+      <div class="icon-item" data-title="项目经历 C" data-detail="• 预留拓展项目 / 校园学术经历">
+        <svg viewBox="0 0 100 100" fill="url(#grad-pink)">
+          <path d="M50 15 Q50 50 85 50 Q50 50 50 85 Q50 50 15 50 Q50 50 50 15 Z" />
+        </svg>
+        <div class="label">项目经历 C</div>
+      </div>
+
+      <!-- 预留图标 2 -->
+      <div class="icon-item" data-title="项目经历 D" data-detail="• 预留拓展项目 / 其他实习">
+        <svg viewBox="0 0 100 100" fill="url(#grad-green)">
+          <path d="M20 25 L80 25 L50 48 Z M20 75 L80 75 L50 52 Z" />
+        </svg>
+        <div class="label">项目经历 D</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 天健实习（拆分为项目一、项目二） -->
+  <section class="section-container" id="tianjian">
+    <div class="section-header">
+      <div class="section-tag">2025.09 - 2025.12</div>
+      <h2 class="section-title">天健会计师事务所（杭州总所）</h2>
+      <p class="section-subtitle">管理咨询（偏内控）实习生</p>
     </div>
 
-    <!-- 凌迪实习图标 -->
-    <div class="intern-icon" 
-         data-title="凌迪 Style3D — 实习经历" 
-         data-detail="• 参与 3D 数字化服装解决方案的相关支撑工作&#10;• 协助优化内控与跨部门协同流程">
-      <span>Style3D</span>
-    </div>
-  </div>
+    <div class="tianjian-grid">
+      <!-- 项目一 -->
+      <div class="project-card">
+        <h3 class="project-title">项目一：某市属国企集团内部控制体系评估与优化项目</h3>
+        <ul class="task-list">
+          <li class="task-item">
+            <strong>1. 信息收集与访谈：</strong>参与访谈集团 5 大部门（人力、财务等）及子公司 20+ 员工，快速理解业务，梳理采购、薪酬、工程招标等核心流程，并撰写访谈纪要，为内控诊断提供关键输入。
+          </li>
+          <li class="task-item">
+            <strong>2. 穿行测试与合规检查：</strong>执行招投标全流程穿行测试，核查总规模逾 2.8 亿元的 6 类合同项目资料；抽查 4 家子公司 3000 余张财务凭证，验证业务真实性及审批合规性，发现潜在风险点。
+          </li>
+          <li class="task-item">
+            <strong>3. 底稿编制与分析：</strong>独立编制 6 家公司的《内部控制测试底稿》《人力资源调研底稿》，覆盖 50+ 控制环节；高效完成采购、付款等 3 个核心流程的测试，优化制度清单模板，提升项目组底稿整理效率约 30%。
+          </li>
+        </ul>
+      </div>
 
-  <!-- 详情弹窗 -->
+      <!-- 项目二 -->
+      <div class="project-card">
+        <h3 class="project-title">项目二：某芯片龙头企业 IPO 研发内控体系规范项目</h3>
+        <ul class="task-list">
+          <li class="task-item">
+            <strong>1. 历史数据穿行与核对：</strong>独立执行核心数据的多维度核对，包括梳理 2023-2025 年所有研发项目的全周期文档；将 OA/ERP 系统中的项目费用、研发人员薪酬与财务账面数据进行匹配验证；在进销存系统中导出台账，完成研发物料的账实核对。参加讨论并识别出系统间项目信息不匹配等内控缺陷，为优化方案提供依据。
+          </li>
+          <li class="task-item">
+            <strong>2. 支持研发内部控制流程搭建：</strong>完成 6 家主体、超过 500+ 名研发人员、跨 4 个核心项目的月度工时数据清洗、归集与分摊。通过建立标准化计算模型（基于法定工时与项目比例），确保超 6000+ 条工时记录的分配准确率 100%，为研发成本精确至“人-项目”维度提供可靠依据。
+          </li>
+          <li class="task-item">
+            <strong>3. 复核关键薪酬数据：</strong>独立执行 2023-2025 年间覆盖上海、杭州、西安等全国 6 地主体、超 500 名研发人员的薪酬福利专项审计。包括归集验算每位员工的月度工资、年终奖、公积金及社保数据，制作全套明细底稿，并与财务序时账进行穿行测试与总额核对。
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 凌迪 Style3D 实习模块 -->
+  <section class="section-container" id="style3d">
+    <div class="section-header">
+      <div class="section-tag">实习经历</div>
+      <h2 class="section-title">凌迪 Style3D</h2>
+      <p class="section-subtitle">3D 数字化服装与企业服务</p>
+    </div>
+
+    <div class="style3d-layout">
+      <!-- 居中截取 Style3D 的照片展示区 -->
+      <div class="photo-container">
+        <!-- 替换为你实际的照片文件名或路径 -->
+        <img src="style3d-photo.jpg" alt="Style3D 展厅与前台" id="style3d-img">
+      </div>
+
+      <div class="project-card">
+        <h3 class="project-title">实习核心贡献</h3>
+        <ul class="task-list">
+          <li class="task-item">
+            <strong>业务流程梳理：</strong>协助团队分析 3D 数字化建模与服装企业供应链对接流程，提升跨部门协同效率。
+          </li>
+          <li class="task-item">
+            <strong>数据支持与系统维护：</strong>参与项目运营数据的收集与规范化清洗，确保内部数据流转准确无误。
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 点击图标查看详情的弹窗 -->
   <div class="modal-overlay" id="modal">
     <div class="modal-card">
       <span class="close-btn" id="close-btn">&times;</span>
-      <h2 id="modal-title"></h2>
-      <div id="modal-body"></div>
+      <h3 id="modal-title"></h3>
+      <div class="content" id="modal-body"></div>
     </div>
   </div>
 
-  <script>
-    const icons = document.querySelectorAll('.intern-icon');
-    const radius = 220;    // 影响半径（像素）
-    const maxScale = 2.2;  // 最大放大幅度
+  <footer>
+    <p>© 2026 Personal Portfolio. All Rights Reserved.</p>
+  </footer>
 
-    // 1. 鼠标靠近临近放大算法（Proximity Scale Grid 核心 logic）
+  <!-- 7. 动态交互脚本 -->
+  <script>
+    // GSAP 靠近缩放算法 (Proximity Scale Grid)
+    const icons = document.querySelectorAll('.icon-item');
+    const radius = 220;   // 影响半径
+    const maxScale = 2.0; // 靠近最大放大倍数
+
     document.addEventListener('mousemove', (e) => {
       icons.forEach(icon => {
         const rect = icon.getBoundingClientRect();
         const iconX = rect.left + rect.width / 2;
         const iconY = rect.top + rect.height / 2;
 
-        // 计算鼠标与图标中心点的距离
         const dist = Math.hypot(e.clientX - iconX, e.clientY - iconY);
 
         if (dist < radius) {
-          // 越靠近放大倍数越大
           const scale = 1 + (maxScale - 1) * ((radius - dist) / radius);
-          gsap.to(icon, { scale: scale, duration: 0.25, ease: "power2.out", overwrite: "auto" });
+          gsap.to(icon, { scale: scale, duration: 0.2, ease: "power2.out", overwrite: "auto" });
         } else {
-          gsap.to(icon, { scale: 1, duration: 0.35, ease: "power2.out", overwrite: "auto" });
+          gsap.to(icon, { scale: 1, duration: 0.3, ease: "power2.out", overwrite: "auto" });
         }
       });
     });
 
-    // 2. 点击图标打开详情弹窗
+    // 弹窗控制逻辑
     const modal = document.getElementById('modal');
     const modalTitle = document.getElementById('modal-title');
     const modalBody = document.getElementById('modal-body');
@@ -143,7 +359,6 @@
       });
     });
 
-    // 关闭弹窗
     closeBtn.addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', (e) => {
       if (e.target === modal) modal.classList.remove('active');
