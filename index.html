@@ -734,7 +734,7 @@
         }
 
         /* -----------------------------------------
-           奖状与风采卡片悬停正面聚焦展示区
+           奖状与风采卡片：横向排布并增大尺寸
            ----------------------------------------- */
         .academic-highlight-section {
             margin-top: 10px;
@@ -753,20 +753,21 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* 3张图片卡片并排容器，支持悬停聚焦 */
+        /* 横向平铺容器，增大尺寸并让图片自然横向铺开 */
         .cert-focus-stage {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 24px;
             align-items: center;
-            min-height: 240px;
+            min-height: 220px;
             perspective: 1000px;
-            padding: 10px 0;
+            padding: 15px 0;
+            flex-wrap: wrap; /* 确保在小屏幕下也能换行显示 */
         }
 
         .cert-card {
-            width: 140px;
-            height: 190px;
+            width: 210px;    /* 增大宽度 */
+            height: 145px;   /* 调整为横向比例高度 */
             background: #ffffff;
             border-radius: 12px;
             padding: 8px 8px 12px 8px;
@@ -785,18 +786,18 @@
             display: block;
         }
 
-        /* 默认状态下左右两张略微倾斜、缩小、半透明背景衬托 */
+        /* 横向排列下的默认轻微立体错落感 */
         .cert-card:nth-child(1) {
-            transform: rotate(-6deg) translateY(4px) scale(0.9);
+            transform: rotate(-3deg) translateY(2px) scale(0.96);
         }
         .cert-card:nth-child(2) {
-            transform: translateY(0px) scale(0.95);
+            transform: translateY(-4px) scale(1);
         }
         .cert-card:nth-child(3) {
-            transform: rotate(6deg) translateY(4px) scale(0.9);
+            transform: rotate(3deg) translateY(2px) scale(0.96);
         }
 
-        /* 鼠标悬停在哪张图上，哪张图就立刻旋转归正、放大、跳到正面最上方聚焦 */
+        /* 鼠标悬停在哪张图上，哪张图就归正、放大、浮起聚焦 */
         .cert-focus-stage:hover .cert-card {
             opacity: 0.6;
             filter: grayscale(20%);
@@ -805,7 +806,7 @@
         .cert-card:hover {
             opacity: 1 !important;
             filter: grayscale(0%) !important;
-            transform: translateY(-8px) scale(1.3) rotate(0deg) !important;
+            transform: translateY(-8px) scale(1.12) rotate(0deg) !important;
             z-index: 50;
             box-shadow: 0 16px 35px rgba(217, 119, 6, 0.3);
             border-color: var(--accent-amber);
@@ -860,7 +861,7 @@
             .portfolio-card-airy { padding: 24px; }
             .photo-img { height: 280px; }
             .name-cn-badge { font-size: 1.15rem; padding: 2px 12px; }
-            .cert-card { width: 100px; height: 140px; }
+            .cert-card { width: 140px; height: 100px; }
         }
     </style>
 </head>
@@ -1062,7 +1063,7 @@
 
                     <div class="info-section">
                         <div class="bio-box-airy">
-                            <div class="bio-title">🌷 Hii, 这里是 Irene 王卓楠!</div>
+                            <div class="bio-title">🌷 Hii, 这里是 Irene!</div>
                             <p class="bio-text">
                                 兼具<b>严密商业逻辑</b>与<b>敏锐内容感官审美</b>的复合型选手。深耕财税底蕴与全球政治经济视野，擅长将纷繁现象降维结构化，并以深刻的消费者洞察与高质感审美打动人心。
                             </p>
@@ -1383,7 +1384,7 @@
                         </div>
                     </div>
 
-                    <!-- 奖状2、奖状9、风采1 悬停正面聚焦展示区 -->
+                    <!-- 奖状2、奖状9、风采1：横向铺开、尺寸增大展示区 -->
                     <div class="academic-highlight-section">
                         <div class="academic-highlight-title">🏆 ACADEMIC HIGHLIGHTS (学术风采)</div>
                         <div class="cert-focus-stage">
