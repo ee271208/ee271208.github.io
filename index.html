@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Irene Wang's Universe</title>
-    <!-- 引入 Playfair Display, Special Elite & 辅助手绘字体 -->
+    <!-- 引入字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Special+Elite&family=Gaegu:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Special+Elite&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --text-dark: #3a322f;
-            --text-sub: #73635c;
+            --text-dark: #4a3e3d;
+            --text-sub: #78645e;
             --accent-warm: #b45309;      /* 暖琥珀金 */
             --accent-amber: #d97706;     /* 亮琥珀色 */
-            --beige-bg: #fdfbf7;        /* 柔和米白色 */
-            --beige-card: #fefcf9;      /* 卡片米白 */
-            --border-beige: #ebd2c0;    /* 柔和米金边框 */
+            --beige-bg: #fefcf9;        /* 柔和米白色 */
+            --beige-card: #fffdfa;      /* 卡片米白 */
+            --border-beige: #f2e3c6;    /* 柔和米金边框 */
             --theme-primary: #9a3412;   /* 暖棕褐 */
         }
 
@@ -160,7 +160,7 @@
         #flower-life { top: 38%; right: 14%; animation-delay: 0.4s; }
         #flower-contact { top: 56%; right: 10%; animation-delay: 1.3s; }
 
-        /* 弹窗蒙版及卡片 */
+        /* 弹窗蒙版及卡片（米色/浅黄色/淡粉色结合的柔和主色调） */
         .modal-overlay, .sub-modal-overlay {
             position: fixed;
             top: 0;
@@ -188,17 +188,17 @@
 
         .portfolio-card-airy {
             position: relative;
-            background: rgba(253, 251, 247, 0.95);
+            background: linear-gradient(135deg, rgba(254, 252, 249, 0.96) 0%, rgba(255, 248, 242, 0.96) 100%);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
-            border: 1.5px solid rgba(255, 255, 255, 0.95);
+            border: 1.5px solid rgba(255, 230, 210, 0.8);
             border-radius: 28px;
             width: 100%;
             max-width: 1050px;
             max-height: 90vh;
             overflow-y: auto;
             padding: 36px 42px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 50px rgba(180, 100, 70, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
             color: var(--text-dark);
             animation: popAiry 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -214,8 +214,8 @@
             right: 24px;
             width: 32px;
             height: 32px;
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(210, 190, 170, 0.4);
+            background: rgba(255, 240, 230, 0.85);
+            border: 1px solid rgba(240, 200, 180, 0.5);
             color: var(--text-sub);
             border-radius: 50%;
             display: flex;
@@ -235,7 +235,7 @@
         }
 
         .card-header {
-            border-bottom: 1px dashed rgba(200, 180, 160, 0.4);
+            border-bottom: 1px dashed rgba(220, 190, 170, 0.4);
             padding-bottom: 16px;
             margin-bottom: 24px;
             position: relative;
@@ -320,8 +320,8 @@
 
         .bio-box-airy {
             position: relative;
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(235, 215, 195, 0.6);
+            background: rgba(255, 253, 250, 0.9);
+            border: 1px solid rgba(245, 220, 200, 0.7);
             border-radius: 16px;
             padding: 16px 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
@@ -361,8 +361,8 @@
         }
 
         .experience-card {
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(235, 215, 195, 0.6);
+            background: rgba(255, 253, 250, 0.85);
+            border: 1px solid rgba(245, 220, 200, 0.7);
             border-radius: 14px;
             padding: 16px 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.02);
@@ -371,7 +371,7 @@
             gap: 6px;
         }
 
-        /* 公司名称导航按钮 */
+        /* 实习卡片导航栏 */
         .clip-nav-bar {
             display: flex;
             gap: 12px;
@@ -380,8 +380,8 @@
         }
 
         .clip-nav-btn {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1.5px solid rgba(217, 119, 6, 0.25);
+            background: rgba(255, 250, 245, 0.9);
+            border: 1.5px solid rgba(240, 190, 150, 0.4);
             padding: 9px 20px;
             border-radius: 22px;
             font-size: 0.9rem;
@@ -395,7 +395,7 @@
 
         .clip-nav-btn:hover {
             transform: translateY(-4px) scale(1.02);
-            background: #fffdf7;
+            background: #fff8f2;
             color: var(--accent-warm);
             border-color: var(--accent-amber);
             box-shadow: 0 8px 18px rgba(217, 119, 6, 0.15);
@@ -409,7 +409,6 @@
             transform: translateY(-2px);
         }
 
-        /* 实习卡片主舞台 */
         .clip-stage-container {
             position: relative;
             min-height: 340px;
@@ -421,11 +420,11 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: #fefcf9;
-            border: 1.5px solid rgba(225, 205, 185, 0.6);
+            background: #fffdfa;
+            border: 1.5px solid rgba(240, 215, 190, 0.7);
             border-radius: 22px;
             padding: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(180, 100, 70, 0.05);
             display: grid;
             grid-template-columns: 1fr 240px;
             gap: 24px;
@@ -446,15 +445,13 @@
             position: relative;
         }
 
-        /* 右侧图片容器：通过添加上边距使其顶部与“职位/实习生”行平齐 */
         .clip-img-box {
             width: 100%;
             height: 380px; 
-            margin-top: 56px; /* 使图片整体往下沉，顶部与“...实习生”齐平 */
             border-radius: 14px;
             overflow: hidden;
             background: #fffdfa;
-            border: 1px solid rgba(225, 205, 185, 0.5);
+            border: 1px solid rgba(240, 215, 190, 0.6);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -468,14 +465,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; 
+            object-fit: cover;
             border-radius: 14px;
             z-index: 2;
-        }
-
-        /* 针对凌迪科技图片单独调整对齐，确保能看到完整的 Style3D 艺术字 */
-        .clip-img.lingdi-img {
-            object-position: 75% center; /* 靠右展示，让左侧的 Style3D 完整显露出来 */
         }
 
         .clip-info {
@@ -504,7 +496,6 @@
             font-weight: 700;
         }
 
-        /* 核心数据成果 */
         .metrics-section-label {
             font-size: 0.8rem;
             font-weight: 700;
@@ -528,8 +519,8 @@
         }
 
         .metric-item {
-            background: #fffdf8;
-            border: 1.5px solid #f2e3c6;
+            background: #fffaf5;
+            border: 1.5px solid #fce8d2;
             border-radius: 14px;
             padding: 10px 8px;
             text-align: center;
@@ -542,7 +533,7 @@
 
         .metric-item:hover {
             transform: translateY(-2px);
-            border-color: #ebd2c0;
+            border-color: #f6d2ad;
         }
 
         .metric-item .m-val {
@@ -559,7 +550,6 @@
             font-weight: 500;
         }
 
-        /* 实习主要职责与产出 */
         .duty-section-label {
             font-size: 0.8rem;
             font-weight: 700;
@@ -571,7 +561,7 @@
 
         .duty-block-card {
             background: #ffffff;
-            border: 1px solid #eee0ca;
+            border: 1px solid #f4e2d0;
             border-radius: 14px;
             padding: 14px 16px;
             margin-bottom: 10px;
@@ -586,10 +576,6 @@
             align-items: center;
             gap: 8px;
             margin-bottom: 8px;
-        }
-
-        .duty-block-icon {
-            font-size: 1.05rem;
         }
 
         .duty-bullet-list {
@@ -631,8 +617,8 @@
         }
 
         .tag-item-airy {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(225, 205, 185, 0.6);
+            background: rgba(255, 253, 250, 0.9);
+            border: 1px solid rgba(240, 215, 190, 0.7);
             color: var(--text-dark);
             padding: 6px 16px;
             border-radius: 20px;
@@ -662,170 +648,197 @@
             border-color: rgba(217, 119, 6, 0.3);
         }
 
-        /* 内容案例卡片 */
-        .article-card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 22px;
-            margin-top: 10px;
-        }
-
-        .article-card {
-            position: relative;
-            background: #ffffff;
-            border: 1.5px solid rgba(225, 205, 185, 0.6);
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
-            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none;
+        /* -----------------------------------------
+           My School 风格面板与全文字展示区
+           ----------------------------------------- */
+        .school-dashboard {
+            background: linear-gradient(135deg, rgba(255, 250, 245, 0.95) 0%, rgba(254, 245, 238, 0.95) 100%);
+            border: 1.5px solid rgba(245, 215, 190, 0.7);
+            border-radius: 22px;
+            padding: 28px;
             color: var(--text-dark);
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px) scale(1.015);
-            box-shadow: 0 16px 32px rgba(217, 119, 6, 0.15);
-            border-color: var(--accent-warm);
-        }
-
-        .article-cover-box {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-            background: #f3f4f6;
-        }
-
-        .article-cover-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-            transition: transform 0.5s ease;
-        }
-
-        .article-card:hover .article-cover-img {
-            transform: scale(1.08);
-        }
-
-        .platform-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(0, 0, 0, 0.68);
-            backdrop-filter: blur(8px);
-            color: #ffffff;
-            font-size: 0.75rem;
-            padding: 4px 11px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .article-body {
-            padding: 16px 18px 20px 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            flex-grow: 1;
-        }
-
-        .metrics-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(254, 243, 199, 0.85);
-            color: var(--accent-warm);
-            border: 1px solid rgba(217, 119, 6, 0.3);
-            font-size: 0.78rem;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 12px;
-            width: fit-content;
-        }
-
-        .article-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            line-height: 1.4;
-        }
-
-        .article-desc {
-            font-size: 0.83rem;
-            color: var(--text-sub);
-            line-height: 1.6;
-        }
-
-        .jump-btn-link {
-            margin-top: auto;
-            padding-top: 10px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent-warm);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* 二级相册弹窗 */
-        .gallery-container {
+            box-shadow: 0 14px 35px rgba(180, 100, 70, 0.08);
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        .gallery-header {
-            border-bottom: 1px dashed rgba(200, 180, 160, 0.4);
-            padding-bottom: 10px;
+        .school-dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid rgba(235, 205, 185, 0.4);
+            padding-bottom: 14px;
         }
 
-        .gallery-title {
+        .school-dash-title-area h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--theme-primary);
+            font-size: 1.6rem;
             font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
         }
 
-        .photo-gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 20px;
-            margin-top: 6px;
+        .school-dash-title-area p {
+            font-size: 0.85rem;
+            color: var(--text-sub);
         }
 
-        .polaroid-item {
-            position: relative;
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 10px 10px 16px 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+        /* 改为上下全部文字展示的卡片板块样式 */
+        .school-full-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .school-text-card {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(240, 215, 190, 0.7);
+            border-radius: 16px;
+            padding: 18px 22px;
+            box-shadow: 0 4px 12px rgba(180, 120, 90, 0.03);
+            border-left: 3.5px solid var(--accent-amber);
             transition: all 0.3s ease;
         }
 
-        .polaroid-item:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+        .school-text-card:hover {
+            background: #ffffff;
+            box-shadow: 0 6px 18px rgba(217, 119, 6, 0.1);
+            transform: translateY(-2px);
         }
 
-        .polaroid-img {
+        .school-text-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent-warm);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .school-text-card ul {
+            padding-left: 18px;
+            font-size: 0.88rem;
+            line-height: 1.75;
+            color: var(--text-dark);
+        }
+
+        .school-text-card li {
+            margin-bottom: 4px;
+        }
+
+        .school-text-card b {
+            color: var(--theme-primary);
+        }
+
+        /* -----------------------------------------
+           奖状 1、2、3 悬停正面聚焦展示区
+           ----------------------------------------- */
+        .academic-highlight-section {
+            margin-top: 10px;
+            background: rgba(255, 253, 250, 0.9);
+            border-radius: 18px;
+            padding: 20px;
+            border: 1px solid rgba(245, 215, 190, 0.6);
+        }
+
+        .academic-highlight-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-warm);
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* 3张奖状卡片并排容器，支持悬停聚焦 */
+        .cert-focus-stage {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+            min-height: 240px;
+            perspective: 1000px;
+            padding: 10px 0;
+        }
+
+        .cert-card {
+            width: 140px;
+            height: 190px;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 8px 8px 12px 8px;
+            box-shadow: 0 6px 18px rgba(180, 120, 90, 0.12);
+            border: 1.5px solid rgba(240, 210, 185, 0.6);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: center center;
+        }
+
+        .cert-card img {
             width: 100%;
-            height: 280px;
+            height: 100%;
             object-fit: cover;
             border-radius: 8px;
             display: block;
         }
 
-        .polaroid-caption {
-            font-family: 'Gaegu', cursive;
-            text-align: center;
-            font-size: 1rem;
+        /* 默认状态下左右两张略微倾斜、缩小、半透明背景衬托 */
+        .cert-card:nth-child(1) {
+            transform: rotate(-6deg) translateY(4px) scale(0.9);
+        }
+        .cert-card:nth-child(2) {
+            transform: translateY(0px) scale(0.95);
+        }
+        .cert-card:nth-child(3) {
+            transform: rotate(6deg) translateY(4px) scale(0.9);
+        }
+
+        /* 鼠标悬停在哪张图上，哪张图就立刻旋转归正、放大、跳到正面最上方聚焦 */
+        .cert-focus-stage:hover .cert-card {
+            opacity: 0.6;
+            filter: grayscale(20%);
+        }
+
+        .cert-card:hover {
+            opacity: 1 !important;
+            filter: grayscale(0%) !important;
+            transform: translateY(-8px) scale(1.3) rotate(0deg) !important;
+            z-index: 50;
+            box-shadow: 0 16px 35px rgba(217, 119, 6, 0.3);
+            border-color: var(--accent-amber);
+        }
+
+        /* 二级明细内容卡片容器样式（用于其他板块） */
+        .sub-content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            padding: 24px;
             color: var(--text-dark);
-            margin-top: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(245, 215, 190, 0.7);
+        }
+
+        .sub-content-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--theme-primary);
+            margin-bottom: 14px;
+            border-bottom: 1px dashed rgba(200, 180, 160, 0.4);
+            padding-bottom: 8px;
+        }
+
+        .sub-content-box ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .sub-content-box li {
+            margin-bottom: 8px;
         }
 
         footer {
@@ -847,12 +860,7 @@
             .portfolio-card-airy { padding: 24px; }
             .photo-img { height: 280px; }
             .name-cn-badge { font-size: 1.15rem; padding: 2px 12px; }
-            .photo-gallery-grid { grid-template-columns: 1fr; }
-            .article-card-grid { grid-template-columns: 1fr; }
-            .clip-card-panel { grid-template-columns: 1fr; }
-            .clip-img-box { height: 260px; margin-top: 16px; }
-            .metrics-grid-4 { grid-template-columns: repeat(2, 1fr); }
-            .metrics-grid-2 { grid-template-columns: 1fr; }
+            .cert-card { width: 100px; height: 140px; }
         }
     </style>
 </head>
@@ -1124,7 +1132,6 @@
                                     <span class="clip-role">财务分析 / 商业分析实习生</span>
                                 </div>
 
-                                <!-- 核心数据成果 (4宫格) -->
                                 <div style="margin-top: 4px;">
                                     <div class="metrics-section-label">核心数据成果</div>
                                     <div class="metrics-grid-4">
@@ -1147,7 +1154,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 实习主要职责与产出 -->
                                 <div style="margin-top: 2px;">
                                     <div class="duty-section-label">实习主要职责与产出</div>
 
@@ -1188,7 +1194,7 @@
                             </div>
 
                             <div class="clip-img-box">
-                                <img src="凌迪.png" alt="凌迪科技" class="clip-img lingdi-img" onerror="this.style.display='none';">
+                                <img src="凌迪.png" alt="凌迪科技" class="clip-img" onerror="this.style.display='none';">
                             </div>
                         </div>
 
@@ -1348,39 +1354,57 @@
             `,
 
             'school': `
-                <div class="inner-section">
-                    <div class="inner-title">🎓 Academic Background & Honors</div>
-
-                    <div class="experience-card">
-                        <div class="exp-header">
-                            <span class="exp-role">硕士：全球政治经济学 (Global Political Economy)</span>
-                            <span class="exp-company">香港中文大学 (CUHK)</span>
+                <div class="school-dashboard">
+                    <div class="school-dash-header">
+                        <div class="school-dash-title-area">
+                            <h2>Academic Excellence</h2>
+                            <p>我的学术背景、语言工具、资格证书与荣誉展示</p>
                         </div>
-                        <ul class="exp-bullet">
-                            <li><b>主修课程</b>：全球政治经济理论、国际关系理论、社会科学方法论、国际金融与投资政策等。具备全球化宏观视野与跨文化双语沟通基础。</li>
-                        </ul>
                     </div>
 
-                    <div class="experience-card">
-                        <div class="exp-header">
-                            <span class="exp-role">本科：税收学 (经济学学士)</span>
-                            <span class="exp-company">浙江财经大学 · 财政税务学院</span>
+                    <!-- 上方全部文字展示区域（参考您的图片排版） -->
+                    <div class="school-full-sections">
+                        <div class="school-text-card">
+                            <h3>🎓 学历背景</h3>
+                            <ul>
+                                <li><b>硕士：</b>香港中文大学 · 全球政治经济学 (CUHK MGPE) —— 升级打怪中</li>
+                                <li><b>本科：</b>浙江财经大学 · 税收学 | GPA：<b>4.51/5</b></li>
+                                <li><b>政治面貌：</b>中共党员</li>
+                            </ul>
                         </div>
-                        <ul class="exp-bullet">
-                            <li><b>学术成绩</b>：<b>GPA 4.48 / 5.0</b>，专业排名 <b>11 / 402 (前 3.2%)</b>。</li>
-                            <li><b>核心高分科目</b>：计量经济学 95、中国税制 95、纳税评估 95、中级财务会计 93、统计学 91。</li>
-                        </ul>
+
+                        <div class="school-text-card">
+                            <h3>🌐 语言、工具与技能</h3>
+                            <ul>
+                                <li><b>语言：</b>CET-6、CET-4、IELTS 7.0 (6.0) GRE 329</li>
+                                <li><b>工具：</b>EXCEL(xlookup，数据透视表)、stata、spss、eviews、visio、剪映、秀米</li>
+                            </ul>
+                        </div>
+
+                        <div class="school-text-card">
+                            <h3>📜 专业证书</h3>
+                            <ul>
+                                <li>初级会计师资格证书</li>
+                                <li>税务师：税法一、税法二（已过）</li>
+                                <li>普通话二级乙等证书</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="experience-card">
-                        <div class="exp-header">
-                            <span class="exp-role">🏆 荣誉奖项与专业证书</span>
-                            <span class="exp-company">荣誉与技能</span>
+                    <!-- 奖状1、2、3 悬停正面聚焦展示区 -->
+                    <div class="academic-highlight-section">
+                        <div class="academic-highlight-title">🏆 ACADEMIC HIGHLIGHTS (学术风采)</div>
+                        <div class="cert-focus-stage">
+                            <div class="cert-card" onclick="openSubModal('school_highlights')">
+                                <img src="奖状1.png" alt="奖状1" onerror="this.style.display='none';">
+                            </div>
+                            <div class="cert-card" onclick="openSubModal('school_highlights')">
+                                <img src="奖状2.png" alt="奖状2" onerror="this.style.display='none';">
+                            </div>
+                            <div class="cert-card" onclick="openSubModal('school_highlights')">
+                                <img src="奖状3.png" alt="奖状3" onerror="this.style.display='none';">
+                            </div>
                         </div>
-                        <ul class="exp-bullet">
-                            <li><b>奖项荣誉</b>：浙江省政府奖学金 × 2 | 国家级大学生创新创业训练计划立项 | 浙江省“建行杯”创新创业大赛银奖 | 校优秀团干部 / 三好学生 / 优秀学生干部。</li>
-                            <li><b>证书与语言</b>：雅思 7.0 | GRE 329 | 税务师 (税法一、税法二已通过) | 初级会计职称 | CPA与税务师在读。</li>
-                        </ul>
                     </div>
                 </div>
             `,
@@ -1405,7 +1429,7 @@
                             <span class="exp-company">内容运营负责人</span>
                         </div>
                         <ul class="exp-bullet">
-                            <li>统统 3 个部门约 30 名成员，组织 3 场技能培训并维持每周例会机制；运营官方公众号，独立产出 20+ 篇原创内容，带领社团获评“年度十佳社团”。</li>
+                            <li>统筹 3 个部门约 30 名成员，组织 3 场技能培训并维持每周例会机制；运营官方公众号，独立产出 20+ 篇原创内容，带领社团获评“年度十佳社团”。</li>
                         </ul>
                     </div>
                 </div>
@@ -1436,7 +1460,6 @@
                     </div>
 
                     <div class="article-card-grid">
-
                         <a href="https://mp.weixin.qq.com/s/bqBupSlAtyZzdV_wYEBNcA" target="_blank" class="article-card">
                             <div class="article-cover-box">
                                 <img src="海报2.jpg" alt="viva la vida 人生万岁" class="article-cover-img" onerror="this.onerror=null; this.src='推送1.jpg';">
@@ -1445,13 +1468,8 @@
                             <div class="article-body">
                                 <div class="metrics-pill">✨ 3,300+ 阅读 | 独立策划指导</div>
                                 <div class="article-title">viva la vida 人生万岁</div>
-                                <div class="article-desc">
-                                    抓取年轻亚文化流行语与韩剧情感共鸣，设计选题与图文转译逻辑，打破传统社团号阅读瓶颈，单篇达成 3,300+ 阅读。
-                                </div>
-                                <div class="jump-btn-link">
-                                    <span>阅读原文</span>
-                                    <span>➔</span>
-                                </div>
+                                <div class="article-desc">抓取年轻亚文化流行语与韩剧情感共鸣，设计选题与图文转译逻辑，打破传统社团号阅读瓶颈，单篇达成 3,300+ 阅读。</div>
+                                <div class="jump-btn-link"><span>阅读原文</span><span>➔</span></div>
                             </div>
                         </a>
 
@@ -1463,24 +1481,16 @@
                             <div class="article-body">
                                 <div class="metrics-pill">✨ 1,500+ 阅读 | 原创撰写</div>
                                 <div class="article-title">让我们从凌晨三点的梦境中逃离吧</div>
-                                <div class="article-desc">
-                                    精准洞察当代年轻人晚睡与“发疯文学”背后的情感避难需求，结合质感图文排版与叙事，引发高热度转发与评论。
-                                </div>
-                                <div class="jump-btn-link">
-                                    <span>阅读原文</span>
-                                    <span>➔</span>
-                                </div>
+                                <div class="article-desc">精准洞察当代年轻人晚睡与“发疯文学”背后的情感避难需求，结合质感图文排版与叙事，引发高热度转发与评论。</div>
+                                <div class="jump-btn-link"><span>阅读原文</span><span>➔</span></div>
                             </div>
                         </a>
-
                     </div>
                 </div>
             `,
             'cuhk': `
                 <div class="gallery-container">
-                    <div class="gallery-header">
-                        <div class="gallery-title">香港中文大学</div>
-                    </div>
+                    <div class="gallery-header"><div class="gallery-title">香港中文大学</div></div>
                     <div class="photo-gallery-grid">
                         <div class="polaroid-item"><img src="cuhk1.jpg" alt="CUHK 1" class="polaroid-img" onerror="this.style.display='none';"></div>
                         <div class="polaroid-item"><img src="cuhk2.jpg" alt="CUHK 2" class="polaroid-img" onerror="this.style.display='none';"></div>
@@ -1490,9 +1500,7 @@
             `,
             'zufe': `
                 <div class="gallery-container">
-                    <div class="gallery-header">
-                        <div class="gallery-title">浙江财经大学</div>
-                    </div>
+                    <div class="gallery-header"><div class="gallery-title">浙江财经大学</div></div>
                     <div class="photo-gallery-grid">
                         <div class="polaroid-item"><img src="zufe1.jpg" alt="ZUFE 1" class="polaroid-img" onerror="this.style.display='none';"></div>
                         <div class="polaroid-item"><img src="zufe2.jpg" alt="ZUFE 2" class="polaroid-img" onerror="this.style.display='none';"></div>
@@ -1502,40 +1510,30 @@
             `,
             'travel': `
                 <div class="gallery-container">
-                    <div class="gallery-header">
-                        <div class="gallery-title">✈️ Travel Memories</div>
-                    </div>
+                    <div class="gallery-header"><div class="gallery-title">✈️ Travel Memories</div></div>
                     <div class="photo-gallery-grid">
-                        <div class="polaroid-item">
-                            <img src="旅游2.jpg" alt="云南" class="polaroid-img" onerror="this.style.display='none';">
-                            <div class="polaroid-caption">云南 🌸</div>
-                        </div>
-                        <div class="polaroid-item">
-                            <img src="旅游3.jpg" alt="首尔" class="polaroid-img" onerror="this.style.display='none';">
-                            <div class="polaroid-caption">首尔 🇰🇷</div>
-                        </div>
-                        <div class="polaroid-item">
-                            <img src="旅游4.jpg" alt="镰仓" class="polaroid-img" onerror="this.style.display='none';">
-                            <div class="polaroid-caption">镰仓 🌊</div>
-                        </div>
-                        <div class="polaroid-item">
-                            <img src="旅游5.jpg" alt="北京" class="polaroid-img" onerror="this.style.display='none';">
-                            <div class="polaroid-caption">北京 ❄️</div>
-                        </div>
+                        <div class="polaroid-item"><img src="旅游2.jpg" alt="云南" class="polaroid-img" onerror="this.style.display='none';"><div class="polaroid-caption">云南 🌸</div></div>
+                        <div class="polaroid-item"><img src="旅游3.jpg" alt="首尔" class="polaroid-img" onerror="this.style.display='none';"><div class="polaroid-caption">首尔 🇰🇷</div></div>
+                        <div class="polaroid-item"><img src="旅游4.jpg" alt="镰仓" class="polaroid-img" onerror="this.style.display='none';"><div class="polaroid-caption">镰仓 🌊</div></div>
+                        <div class="polaroid-item"><img src="旅游5.jpg" alt="北京" class="polaroid-img" onerror="this.style.display='none';"><div class="polaroid-caption">北京 ❄️</div></div>
                     </div>
                 </div>
             `,
             'fitness': `
                 <div class="gallery-container">
-                    <div class="gallery-header">
-                        <div class="gallery-title">🏋️‍♀️ Fitness & Energy</div>
-                    </div>
+                    <div class="gallery-header"><div class="gallery-title">🏋️‍♀️ Fitness & Energy</div></div>
                     <div class="photo-gallery-grid" style="grid-template-columns: minmax(260px, 360px);">
-                        <div class="polaroid-item">
-                            <img src="运动1.jpg" alt="Fitness" class="polaroid-img" style="height: 360px;" onerror="this.style.display='none';">
-                            <div class="polaroid-caption">Keep Moving 🏋‍♀️</div>
-                        </div>
+                        <div class="polaroid-item"><img src="运动1.jpg" alt="Fitness" class="polaroid-img" style="height: 360px;" onerror="this.style.display='none';"><div class="polaroid-caption">Keep Moving 🏋‍♀️</div></div>
                     </div>
+                </div>
+            `,
+            'school_highlights': `
+                <div class="sub-content-box">
+                    <h3>🏆 荣誉奖项与学术风采</h3>
+                    <ul>
+                        <li><b>国家级/省级奖项：</b>斩获过多项国家级与省级大学生创新创业项目、专业竞赛银奖及奖学金。</li>
+                        <li><b>综合荣誉：</b>校级三好学生、优秀学生干部、优秀团干部。</li>
+                    </ul>
                 </div>
             `
         };
