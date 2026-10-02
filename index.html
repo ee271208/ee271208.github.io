@@ -684,7 +684,7 @@
             color: var(--text-sub);
         }
 
-        /* 改为上下全部文字展示的卡片板块样式 */
+        /* 上下全部文字展示的卡片板块样式 */
         .school-full-sections {
             display: flex;
             flex-direction: column;
@@ -734,7 +734,7 @@
         }
 
         /* -----------------------------------------
-           奖状 1、2、3 悬停正面聚焦展示区
+           奖状与风采卡片悬停正面聚焦展示区
            ----------------------------------------- */
         .academic-highlight-section {
             margin-top: 10px;
@@ -753,7 +753,7 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* 3张奖状卡片并排容器，支持悬停聚焦 */
+        /* 3张图片卡片并排容器，支持悬停聚焦 */
         .cert-focus-stage {
             display: flex;
             justify-content: center;
@@ -1362,7 +1362,7 @@
                         </div>
                     </div>
 
-                    <!-- 上方全部文字展示区域（参考您的图片排版） -->
+                    <!-- 上方全部文字展示区域 -->
                     <div class="school-full-sections">
                         <div class="school-text-card">
                             <h3>🎓 学历背景</h3>
@@ -1378,31 +1378,23 @@
                             <ul>
                                 <li><b>语言：</b>CET-6、CET-4、IELTS 7.0 (6.0) GRE 329</li>
                                 <li><b>工具：</b>EXCEL(XLOOKUP、数据透视表)、stata、spss、Visio、剪映、秀米</li>
-                            </ul>
-                        </div>
-
-                        <div class="school-text-card">
-                            <h3>📜 技能证书</h3>
-                            <ul>
-                                <li>初级会计师资格证书</li>
-                                <li>税务师：税法一、税法二（已过）</li>
-                                <li>普通话二级乙等证书</li>
+                                <li><b>证书：</b>初级会计师资格证书、税务师：税法一、税法二（已过）、普通话二乙证书</li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- 奖状1、2、3 悬停正面聚焦展示区 -->
+                    <!-- 奖状2、奖状9、风采1 悬停正面聚焦展示区 -->
                     <div class="academic-highlight-section">
                         <div class="academic-highlight-title">🏆 ACADEMIC HIGHLIGHTS (学术风采)</div>
                         <div class="cert-focus-stage">
                             <div class="cert-card" onclick="openSubModal('school_highlights')">
-                                <img src="奖状1.png" alt="奖状1" onerror="this.style.display='none';">
-                            </div>
-                            <div class="cert-card" onclick="openSubModal('school_highlights')">
                                 <img src="奖状2.png" alt="奖状2" onerror="this.style.display='none';">
                             </div>
                             <div class="cert-card" onclick="openSubModal('school_highlights')">
-                                <img src="奖状3.png" alt="奖状3" onerror="this.style.display='none';">
+                                <img src="奖状9.png" alt="奖状9" onerror="this.style.display='none';">
+                            </div>
+                            <div class="cert-card" onclick="openSubModal('school_highlights')">
+                                <img src="风采1.jpg" alt="风采1" onerror="this.style.display='none';">
                             </div>
                         </div>
                     </div>
