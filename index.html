@@ -405,6 +405,130 @@
             margin-bottom: 4px;
         }
 
+        /* --------------------------------------------------
+           实习经历：横向滑动卡片 (Scrollable Track)
+        -------------------------------------------------- */
+        .intern-scroll-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 8px 4px 18px 4px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .intern-scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .intern-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(244, 63, 94, 0.35);
+            border-radius: 10px;
+        }
+
+        .intern-card {
+            flex: 0 0 540px;
+            scroll-snap-align: start;
+            background: #ffffff;
+            border: 1.5px solid rgba(244, 63, 94, 0.22);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 18px;
+            align-items: start;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .intern-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(244, 63, 94, 0.14);
+            border-color: var(--theme-red);
+        }
+
+        .intern-img-box {
+            width: 100%;
+            height: 230px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #f8f8f8;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .intern-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .intern-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .intern-company {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.35;
+        }
+
+        .intern-role-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .intern-role {
+            font-size: 0.88rem;
+            color: var(--theme-red);
+            font-weight: 700;
+        }
+
+        .intern-time {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.78rem;
+            color: var(--text-sub);
+        }
+
+        .intern-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--theme-red);
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .intern-desc-list {
+            font-size: 0.83rem;
+            line-height: 1.6;
+            color: #4a3e3d;
+            margin-left: 14px;
+            list-style-type: disc;
+        }
+
+        .intern-desc-list li {
+            margin-bottom: 3px;
+        }
+
+        .intern-contribution-box {
+            background: rgba(254, 226, 226, 0.65);
+            border: 1px solid rgba(244, 63, 94, 0.28);
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: var(--theme-red);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
         .section-group {
             display: flex;
             flex-direction: column;
@@ -459,9 +583,7 @@
             border-color: rgba(244, 63, 94, 0.3);
         }
 
-        /* --------------------------------------------------
-           内容案例卡片 (弹窗内部样式，海报顶部对齐)
-        -------------------------------------------------- */
+        /* 内容案例卡片 */
         .article-card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -647,6 +769,8 @@
             .name-cn-badge { font-size: 1.15rem; padding: 2px 12px; }
             .photo-gallery-grid { grid-template-columns: 1fr; }
             .article-card-grid { grid-template-columns: 1fr; }
+            .intern-card { flex: 0 0 85vw; grid-template-columns: 1fr; }
+            .intern-img-box { height: 160px; }
         }
     </style>
 </head>
@@ -902,53 +1026,109 @@
 
             'internship': `
                 <div class="inner-section">
-                    <div class="inner-title">💼 My Internship Experience</div>
-                    
-                    <div class="experience-card">
-                        <div class="exp-header">
-                            <span class="exp-role">商业分析 / 财务实习生</span>
-                            <span class="exp-company">凌迪科技 (Style3D，拟IPO 3D时尚数字化软件)</span>
-                            <span class="exp-time">2026.04 - 2026.07</span>
-                        </div>
-                        <ul class="exp-bullet">
-                            <li><b>数据驱动与费用治理</b>：批量清洗多平台 2,500+ 条差旅明细，利用 MID/FIND 函数实现标准化；构建“报销单—平台账单—税务备查”证据链支撑 139 万元研发费用加计扣除。</li>
-                            <li><b>DeepSeek 智能稽核提效</b>：借助 DeepSeek 建立“标异—人工终审”比对机制交叉验证 CRM 与财务系统，替代全量复核，月度对账耗时降低约 40%。</li>
-                            <li><b>IPO 审计与收入确认</b>：配合 IPO 审计将 SaaS 合同按 CAS 14 重述为分期履约确认，整理 76 份穿行资料支撑尽调，深刻理解业务数据对经营与财务结果的驱动。</li>
-                        </ul>
+                    <div class="inner-title">
+                        💼 My Internship Experience
+                        <span style="font-size:0.85rem; font-weight:400; color:var(--text-sub); margin-left: auto;">👉 左右滑动查看更多卡片</span>
                     </div>
 
-                    <div class="experience-card">
-                        <div class="exp-header">
-                            <span class="exp-role">管理咨询（内控）实习生</span>
-                            <span class="exp-company">天健会计师事务所（杭州总所）</span>
-                            <span class="exp-time">2025.09 - 2025.12</span>
-                        </div>
-                        <ul class="exp-bullet">
-                            <li><b>芯片龙头 IPO 项目</b>：清洗归集 6 大主体、500+ 研发人员超 6,000 条跨项目工时记录，建立基于法定工时的标准化成本分摊模型，精细核算至“人-项目”维度（准确率100%）。</li>
-                            <li><b>国企内控与穿行测试</b>：访谈 5 大部门 20+ 员工梳理核心业务流，对某国企 2.8 亿元合同及 3,000+ 凭证执行全流程穿行测试；优化底稿模板使项目整理效率提效约 30%。</li>
-                        </ul>
-                    </div>
+                    <!-- 实习经历：横向滑动卡片轨道 -->
+                    <div class="intern-scroll-container">
 
-                    <div class="experience-card">
-                        <div class="exp-header">
-                            <span class="exp-role">审计实习生</span>
-                            <span class="exp-company">中汇会计师事务所（杭州）</span>
-                            <span class="exp-time">2025.01 - 2025.02</span>
-                        </div>
-                        <ul class="exp-bullet">
-                            <li>抽验某生物化工公司 200+ 张凭证并执行应收/应付账款截止性测试；赴福建实地参与 2 家子公司现场盘点与在建工程审计底稿编制。</li>
-                        </ul>
-                    </div>
+                        <!-- 卡片 1：凌迪科技 -->
+                        <div class="intern-card">
+                            <div class="intern-img-box">
+                                <img src="凌迪.png" alt="凌迪科技" class="intern-img" onerror="this.onerror=null; console.log('凌迪.png 未找到');">
+                            </div>
+                            <div class="intern-info">
+                                <div class="intern-company">凌迪科技 (Style3D)</div>
+                                <div class="intern-role-row">
+                                    <span class="intern-role">商业分析 / 财务实习生</span>
+                                    <span class="intern-time">2026.04 - 2026.07</span>
+                                </div>
 
-                    <div class="experience-card">
-                        <div class="exp-header">
-                            <span class="exp-role">财税内容运营实习生</span>
-                            <span class="exp-company">杭州市果然财税科技有限公司</span>
-                            <span class="exp-time">2024.07 - 2024.08</span>
+                                <div class="intern-label">📌 核心工作内容</div>
+                                <ul class="intern-desc-list">
+                                    <li>清洗多平台 2,500+ 条差旅明细，建立“报销单—账单—备查”标准化证据链。</li>
+                                    <li>借助 DeepSeek 智能稽核建立对账机制，支撑 IPO 审计按 CAS 14 重述 SaaS 合同及整理穿行资料。</li>
+                                </ul>
+
+                                <div class="intern-contribution-box">
+                                    🌟 <b>成果/贡献：</b>支撑 <b>139 万元</b>研发费用加计扣除；月度对账耗时降低约 <b>40%</b>。
+                                </div>
+                            </div>
                         </div>
-                        <ul class="exp-bullet">
-                            <li>收录整理 2024 杭州公积金指南并在公众号发布 5 篇干货长文，剪辑 3 支涉税短视频，将专业政策精准转译为通俗表达。</li>
-                        </ul>
+
+                        <!-- 卡片 2：天健会计师事务所 -->
+                        <div class="intern-card">
+                            <div class="intern-img-box">
+                                <img src="天健.jpg" alt="天健会计师事务所" class="intern-img" onerror="this.onerror=null; console.log('天健.jpg 未找到');">
+                            </div>
+                            <div class="intern-info">
+                                <div class="intern-company">天健会计师事务所（杭州总所）</div>
+                                <div class="intern-role-row">
+                                    <span class="intern-role">管理咨询（内控）实习生</span>
+                                    <span class="intern-time">2025.09 - 2025.12</span>
+                                </div>
+
+                                <div class="intern-label">📌 核心工作内容</div>
+                                <ul class="intern-desc-list">
+                                    <li>清洗归集 6 大主体、500+ 研发人员超 6,000 条跨项目工时，建立成本分摊模型。</li>
+                                    <li>访谈 5 大部门 20+ 员工梳理业务流，对 2.8 亿元合同及 3,000+ 凭证进行全流程穿行测试。</li>
+                                </ul>
+
+                                <div class="intern-contribution-box">
+                                    🌟 <b>成果/贡献：</b>实现“人-项目”精细核算<b>准确率 100%</b>；优化底稿模板使项目整理<b>提效 30%</b>。
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 卡片 3：中汇会计师事务所 -->
+                        <div class="intern-card">
+                            <div class="intern-img-box">
+                                <img src="中汇.jpg" alt="中汇会计师事务所" class="intern-img" onerror="this.onerror=null; console.log('中汇.jpg 未找到');">
+                            </div>
+                            <div class="intern-info">
+                                <div class="intern-company">中汇会计师事务所（杭州）</div>
+                                <div class="intern-role-row">
+                                    <span class="intern-role">审计实习生</span>
+                                    <span class="intern-time">2025.01 - 2025.02</span>
+                                </div>
+
+                                <div class="intern-label">📌 核心工作内容</div>
+                                <ul class="intern-desc-list">
+                                    <li>抽验某生物化工公司 200+ 张凭证，执行应收/应付账款截止性测试。</li>
+                                    <li>赴福建实地参与 2 家子公司现场盘点与在建工程审计底稿编制。</li>
+                                </ul>
+
+                                <div class="intern-contribution-box">
+                                    🌟 <b>成果/贡献：</b><b>100% 高效按时</b>交付现场盘点与底稿编制，助力团队零误差完成复核。
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 卡片 4：果然财税科技 -->
+                        <div class="intern-card">
+                            <div class="intern-img-box">
+                                <img src="果然.jpg" alt="果然财税科技" class="intern-img" onerror="this.onerror=null; console.log('果然.jpg 未找到');">
+                            </div>
+                            <div class="intern-info">
+                                <div class="intern-company">杭州市果然财税科技有限公司</div>
+                                <div class="intern-role-row">
+                                    <span class="intern-role">财税内容运营实习生</span>
+                                    <span class="intern-time">2024.07 - 2024.08</span>
+                                </div>
+
+                                <div class="intern-label">📌 核心工作内容</div>
+                                <ul class="intern-desc-list">
+                                    <li>收录整理 2024 杭州公积金指南，发布干货长文，剪辑涉税科普短视频。</li>
+                                </ul>
+
+                                <div class="intern-contribution-box">
+                                    🌟 <b>成果/贡献：</b>独立发布 <b>5 篇</b>长文与 <b>3 支</b>视频，将专业政策精准转译为通俗表达。
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             `,
@@ -1037,7 +1217,7 @@
             `
         };
 
-        /* 二级弹窗内容 (完全精准打通：viva la vida -> bqB... | 逃离梦境 -> jd0...) */
+        /* 二级弹窗内容 */
         const subContentMap = {
             'articles': `
                 <div class="gallery-container">
@@ -1047,7 +1227,7 @@
 
                     <div class="article-card-grid">
 
-                        <!-- 卡片 1：viva la vida -> 海报2 -> 链接精准指向 vivalavida 原文 -->
+                        <!-- viva la vida -> 海报2 -> 链接精准匹配 -->
                         <a href="https://mp.weixin.qq.com/s/bqBupSlAtyZzdV_wYEBNcA" target="_blank" class="article-card">
                             <div class="article-cover-box">
                                 <img src="海报2.jpg" alt="viva la vida 人生万岁" class="article-cover-img" onerror="this.onerror=null; this.src='推送1.jpg';">
@@ -1066,7 +1246,7 @@
                             </div>
                         </a>
 
-                        <!-- 卡片 2：原创逃离梦境 -> 海报1 -> 链接精准指向逃离梦境原文 -->
+                        <!-- 原创逃离梦境 -> 海报1 -> 链接精准匹配 -->
                         <a href="https://mp.weixin.qq.com/s/jd0SWaArm-3E_xZ61jtehg" target="_blank" class="article-card">
                             <div class="article-cover-box">
                                 <img src="海报1.jpg" alt="让我们从凌晨三点的梦境中逃离吧" class="article-cover-img" onerror="this.onerror=null; this.src='推送2.jpg';">
