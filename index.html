@@ -11,7 +11,6 @@
 
     <style>
         :root {
-            /* 还原高级温润米色主调 */
             --text-dark: #3a322f;
             --text-sub: #73635c;
             --accent-warm: #b45309;      /* 暖琥珀金 */
@@ -64,7 +63,6 @@
             gap: 18px;
         }
 
-        /* 纯白色五片花瓣简笔画 SVG (更大、更灵动，花心白色实心) */
         .white-flower-svg {
             width: 50px;
             height: 50px;
@@ -162,7 +160,7 @@
         #flower-life { top: 38%; right: 14%; animation-delay: 0.4s; }
         #flower-contact { top: 56%; right: 10%; animation-delay: 1.3s; }
 
-        /* 弹窗蒙版及卡片（米色风格） */
+        /* 弹窗蒙版及卡片 */
         .modal-overlay, .sub-modal-overlay {
             position: fixed;
             top: 0;
@@ -190,7 +188,7 @@
 
         .portfolio-card-airy {
             position: relative;
-            background: rgba(253, 251, 247, 0.95); /* 柔和暖米色 */
+            background: rgba(253, 251, 247, 0.95);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             border: 1.5px solid rgba(255, 255, 255, 0.95);
@@ -373,9 +371,7 @@
             gap: 6px;
         }
 
-        /* --------------------------------------------------
-           公司名称导航按钮 - 弹起与动效优化
-        -------------------------------------------------- */
+        /* 公司名称导航按钮 */
         .clip-nav-bar {
             display: flex;
             gap: 12px;
@@ -392,12 +388,11 @@
             font-weight: 600;
             color: var(--text-dark);
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* 小幅弹起回弹效果 */
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             box-shadow: 0 2px 8px rgba(0,0,0,0.03);
             position: relative;
         }
 
-        /* 鼠标悬停公司名称：小小弹起上移 */
         .clip-nav-btn:hover {
             transform: translateY(-4px) scale(1.02);
             background: #fffdf7;
@@ -414,9 +409,7 @@
             transform: translateY(-2px);
         }
 
-        /* --------------------------------------------------
-           实习内容卡片弹出区：从下方流畅小幅弹出
-        -------------------------------------------------- */
+        /* 实习卡片主舞台 */
         .clip-stage-container {
             position: relative;
             min-height: 340px;
@@ -428,7 +421,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: #fefcf9; /* 米白色微亮底 */
+            background: #fefcf9;
             border: 1.5px solid rgba(225, 205, 185, 0.6);
             border-radius: 22px;
             padding: 24px;
@@ -436,9 +429,8 @@
             display: grid;
             grid-template-columns: 1fr 240px;
             gap: 24px;
-            align-items: stretch;
+            align-items: start; /* 改为顶部对齐，防止图片过长影响整体 */
 
-            /* 下方小幅弹出动画配置 */
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
@@ -454,12 +446,11 @@
             position: relative;
         }
 
-        /* 右侧图片容器 */
+        /* 右侧图片容器：调整高度为更修长的比例（例如 380px），视觉上更加大气优雅 */
         .clip-img-box {
             width: 100%;
-            height: 100%;
-            min-height: 240px;
-            border-radius: 16px;
+            height: 380px; 
+            border-radius: 14px;
             overflow: hidden;
             background: #fffdfa;
             border: 1px solid rgba(225, 205, 185, 0.5);
@@ -467,6 +458,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
         .clip-img {
@@ -475,8 +467,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 16px;
+            object-fit: cover; /* 保证图片在区域内优雅填充 */
+            border-radius: 14px;
             z-index: 2;
         }
 
@@ -506,9 +498,7 @@
             font-weight: 700;
         }
 
-        /* --------------------------------------------------
-           核心数据成果 (米黄 Ins 风格)
-        -------------------------------------------------- */
+        /* 核心数据成果 */
         .metrics-section-label {
             font-size: 0.8rem;
             font-weight: 700;
@@ -517,7 +507,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* 4宫格网格 */
         .metrics-grid-4 {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -525,7 +514,6 @@
             margin-bottom: 12px;
         }
 
-        /* 2宫格网格 */
         .metrics-grid-2 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -565,9 +553,7 @@
             font-weight: 500;
         }
 
-        /* --------------------------------------------------
-           实习主要职责与产出
-        -------------------------------------------------- */
+        /* 实习主要职责与产出 */
         .duty-section-label {
             font-size: 0.8rem;
             font-weight: 700;
@@ -858,7 +844,7 @@
             .photo-gallery-grid { grid-template-columns: 1fr; }
             .article-card-grid { grid-template-columns: 1fr; }
             .clip-card-panel { grid-template-columns: 1fr; }
-            .clip-img-box { height: 200px; min-height: 200px; }
+            .clip-img-box { height: 260px; }
             .metrics-grid-4 { grid-template-columns: repeat(2, 1fr); }
             .metrics-grid-2 { grid-template-columns: 1fr; }
         }
@@ -866,7 +852,7 @@
 </head>
 <body>
 
-    <!-- 顶栏标题（两边花朵花心改为白色实心） -->
+    <!-- 顶栏标题 -->
     <header>
         <h1 class="universe-title">
             <svg class="white-flower-svg" viewBox="0 0 100 100">
@@ -1062,7 +1048,7 @@
 
                     <div class="info-section">
                         <div class="bio-box-airy">
-                            <div class="bio-title">🌷 Hii, 这里是 Irene 王卓楠!</div>
+                            <div class="bio-title">🌷 Hii, 这里是 Irene!</div>
                             <p class="bio-text">
                                 兼具<b>严密商业逻辑</b>与<b>敏锐内容感官审美</b>的复合型选手。深耕财税底蕴与全球政治经济视野，擅长将纷繁现象降维结构化，并以深刻的消费者洞察与高质感审美打动人心。
                             </p>
@@ -1124,12 +1110,12 @@
 
                     <div class="clip-stage-container">
 
-                        <!-- 卡片 1：浙江凌迪科技 (图片直接替换) -->
+                        <!-- 卡片 1：浙江凌迪科技 -->
                         <div class="clip-card-panel active" id="clip-panel-0">
                             <div class="clip-info">
                                 <div class="clip-company">浙江凌迪科技有限公司 (Style3D)</div>
                                 <div class="clip-role-row">
-                                    <span class="clip-role">财务实习生 / 商业分析</span>
+                                    <span class="clip-role">财务分析 / 商业分析实习生</span>
                                 </div>
 
                                 <!-- 核心数据成果 (4宫格) -->
@@ -1200,7 +1186,7 @@
                             </div>
                         </div>
 
-                        <!-- 卡片 2：天健会计师事务所 (图片直接替换) -->
+                        <!-- 卡片 2：天健会计师事务所 -->
                         <div class="clip-card-panel" id="clip-panel-1">
                             <div class="clip-info">
                                 <div class="clip-company">天健会计师事务所</div>
@@ -1208,7 +1194,6 @@
                                     <span class="clip-role">管理咨询（内控）实习生</span>
                                 </div>
 
-                                <!-- 核心数据成果 (4宫格) -->
                                 <div style="margin-top: 4px;">
                                     <div class="metrics-section-label">核心数据成果</div>
                                     <div class="metrics-grid-4">
@@ -1231,7 +1216,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 实习主要职责与产出 -->
                                 <div style="margin-top: 2px;">
                                     <div class="duty-section-label">实习主要职责与产出</div>
 
@@ -1266,7 +1250,7 @@
                             </div>
                         </div>
 
-                        <!-- 卡片 3：中汇会计师事务所 (图片直接替换) -->
+                        <!-- 卡片 3：中汇会计师事务所 -->
                         <div class="clip-card-panel" id="clip-panel-2">
                             <div class="clip-info">
                                 <div class="clip-company">中汇会计师事务所</div>
@@ -1274,7 +1258,6 @@
                                     <span class="clip-role">审计实习生</span>
                                 </div>
 
-                                <!-- 核心数据成果 (2宫格) -->
                                 <div style="margin-top: 4px;">
                                     <div class="metrics-section-label">核心数据成果</div>
                                     <div class="metrics-grid-2">
@@ -1289,7 +1272,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 实习主要职责与产出 -->
                                 <div style="margin-top: 2px;">
                                     <div class="duty-section-label">实习主要职责与产出</div>
 
@@ -1312,7 +1294,7 @@
                             </div>
                         </div>
 
-                        <!-- 卡片 4：果然财税科技 (图片直接替换) -->
+                        <!-- 卡片 4：果然财税科技 -->
                         <div class="clip-card-panel" id="clip-panel-3">
                             <div class="clip-info">
                                 <div class="clip-company">果然财税科技有限公司</div>
@@ -1320,7 +1302,6 @@
                                     <span class="clip-role">财税内容运营实习生</span>
                                 </div>
 
-                                <!-- 核心数据成果 (2宫格) -->
                                 <div style="margin-top: 4px;">
                                     <div class="metrics-section-label">核心数据成果</div>
                                     <div class="metrics-grid-2">
@@ -1335,7 +1316,6 @@
                                     </div>
                                 </div>
 
-                                <!-- 实习主要职责与产出 -->
                                 <div style="margin-top: 2px;">
                                     <div class="duty-section-label">实习主要职责与产出</div>
 
@@ -1442,7 +1422,6 @@
             `
         };
 
-        /* 二级弹窗内容 */
         const subContentMap = {
             'articles': `
                 <div class="gallery-container">
