@@ -649,6 +649,86 @@
         }
 
         /* -----------------------------------------
+           My School 风格导航主页 (仿照参考图的 4 个卡片布局)
+           ----------------------------------------- */
+        .school-hub-container {
+            background: linear-gradient(135deg, rgba(255, 250, 245, 0.96) 0%, rgba(254, 245, 238, 0.96) 100%);
+            border: 1.5px solid rgba(245, 215, 190, 0.7);
+            border-radius: 24px;
+            padding: 32px;
+            color: var(--text-dark);
+            box-shadow: 0 14px 35px rgba(180, 100, 70, 0.08);
+            text-align: center;
+        }
+
+        .hub-title-area {
+            margin-bottom: 28px;
+        }
+
+        .hub-title-area h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .hub-title-area p {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            font-family: 'Special Elite', monospace;
+        }
+
+        .hub-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        .hub-card {
+            background: rgba(255, 253, 250, 0.9);
+            border: 1.5px solid rgba(240, 210, 185, 0.7);
+            border-radius: 18px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(180, 120, 90, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .hub-card:hover {
+            transform: translateY(-5px);
+            background: #ffffff;
+            border-color: var(--accent-amber);
+            box-shadow: 0 12px 30px rgba(217, 119, 6, 0.15);
+        }
+
+        .hub-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 4px;
+        }
+
+        .hub-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-warm);
+        }
+
+        .hub-card-desc {
+            font-size: 0.84rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
+        /* -----------------------------------------
            My School 风格面板与全文字展示区
            ----------------------------------------- */
         .school-dashboard {
@@ -666,9 +746,26 @@
         .school-dash-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             border-bottom: 1px solid rgba(235, 205, 185, 0.4);
             padding-bottom: 14px;
+        }
+
+        .back-to-hub-btn {
+            background: rgba(255, 240, 230, 0.8);
+            border: 1px solid rgba(217, 119, 6, 0.3);
+            color: var(--accent-warm);
+            padding: 6px 14px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .back-to-hub-btn:hover {
+            background: var(--accent-warm);
+            color: #ffffff;
         }
 
         .school-dash-title-area h2 {
@@ -799,6 +896,40 @@
             transform: translateY(-6px) scale(1.08) rotate(0deg) !important;
             z-index: 50;
             box-shadow: 0 14px 30px rgba(217, 119, 6, 0.25);
+            border-color: var(--accent-amber);
+        }
+
+        /* -----------------------------------------
+           竞赛与荣誉专属奖状陈列区 (仿照图2的网格下沉效果)
+           ----------------------------------------- */
+        .competitions-cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .comp-cert-item {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 8px 8px 12px 8px;
+            box-shadow: 0 6px 18px rgba(180, 120, 90, 0.1);
+            border: 1.5px solid rgba(240, 210, 185, 0.6);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .comp-cert-item img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .comp-cert-item:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(217, 119, 6, 0.2);
             border-color: var(--accent-amber);
         }
 
@@ -1050,6 +1181,7 @@
             .name-cn-badge { font-size: 1.15rem; padding: 2px 12px; }
             .cert-card { width: 130px; height: 95px; }
             .travel-img { height: 260px; }
+            .hub-grid-4 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1543,15 +1675,40 @@
             `,
 
             'school': `
-                <div class="school-dashboard">
+                <div class="school-hub-container" id="schoolHub">
+                    <div class="hub-title-area">
+                        <h2>🏛️ My School Journey</h2>
+                        <p>点击下方模块，探索 Irene 的校园学术、荣誉与实践探索</p>
+                    </div>
+                    <div class="hub-grid-4">
+                        <div class="hub-card" onclick="switchSchoolTab('academic')">
+                            <div class="hub-card-icon">🎓</div>
+                            <div class="hub-card-title">Academic Excellence</div>
+                            <div class="hub-card-desc">香港中文大学与浙江财经大学学术背景、语言工具、资格证书及学术风采。</div>
+                        </div>
+                        <div class="hub-card" onclick="switchSchoolTab('competitions')">
+                            <div class="hub-card-icon">🏆</div>
+                            <div class="hub-card-title">Competitions & Honors</div>
+                            <div class="hub-card-desc">各学年浙江省政府奖学金、创新大赛银奖、挑战杯及奖学金荣誉与证书展示。</div>
+                        </div>
+                        <div class="hub-card" onclick="switchSchoolTab('leadership')">
+                            <div class="hub-card-icon">⭐</div>
+                            <div class="hub-card-title">Leadership & Volunteering</div>
+                            <div class="hub-card-desc">校园创业协会、学生干部、社团组织管理与志愿服务经历。</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1. Academic Experiences 详情页（保留原样不东动） -->
+                <div class="school-dashboard" id="school-tab-academic" style="display:none;">
                     <div class="school-dash-header">
                         <div class="school-dash-title-area">
                             <h2>Academic Excellence</h2>
                             <p>我的学术背景、语言工具、资格证书与荣誉展示</p>
                         </div>
+                        <button class="back-to-hub-btn" onclick="switchSchoolTab('hub')">返回导航 ➔</button>
                     </div>
 
-                    <!-- 上方全部文字展示区域 -->
                     <div class="school-full-sections">
                         <div class="school-text-card">
                             <h3>🎓 学历背景</h3>
@@ -1572,7 +1729,6 @@
                         </div>
                     </div>
 
-                    <!-- 学术部分的奖状与风采图片横向铺开展示区 -->
                     <div class="academic-highlight-section">
                         <div class="academic-highlight-title">🏆 ACADEMIC HIGHLIGHTS (学术风采)</div>
                         <div class="cert-focus-stage">
@@ -1585,6 +1741,79 @@
                             <div class="cert-card" onclick="openSubModal('school_highlights')">
                                 <img src="风采1.jpg" alt="风采1" onerror="this.style.display='none';">
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Competitions & Honors 详情页 -->
+                <div class="school-dashboard" id="school-tab-competitions" style="display:none;">
+                    <div class="school-dash-header">
+                        <div class="school-dash-title-area">
+                            <h2>Competitions & Honors</h2>
+                            <p>荣誉与奖项概览及证书展示</p>
+                        </div>
+                        <button class="back-to-hub-btn" onclick="switchSchoolTab('hub')">返回导航 ➔</button>
+                    </div>
+
+                    <div class="school-full-sections">
+                        <div class="school-text-card">
+                            <h3>🏆 荣誉与奖项概览</h3>
+                            <ul>
+                                <li>2025-2026学年 浙江省政府奖学金</li>
+                                <li>2024-2025学年 浙江省政府奖学金</li>
+                                <li>2024年浙江省“建行杯”国际大学生创新大赛银奖</li>
+                                <li>2024年国家级大学生创新创业训练计划立项</li>
+                                <li>2024年浙江财经大学第十四届挑战杯大学生创业计划竞赛校二等奖</li>
+                                <li>2024年浙江财经大学第十届大学生创新大赛校二等奖</li>
+                                <li>2023-2024学年浙江财经大学一等奖学金</li>
+                                <li>2023-2024学年浙江财经大学优秀团干部</li>
+                                <li>2023-2024学年浙江财经大学三好学生</li>
+                                <li>2022-2023学年浙江财经大学二等奖学金</li>
+                                <li>2022-2023学年全国大学生英语能力竞赛三等奖</li>
+                                <li>2023“外研社 国才杯”英语阅读能力大赛校三等奖</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="academic-highlight-section">
+                        <div class="academic-highlight-title">🎖️ COMPETITION CERTIFICATES & HONORS (竞赛荣誉证书展示)</div>
+                        <div class="competitions-cert-grid">
+                            <div class="comp-cert-item"><img src="奖状1.png" alt="奖状1" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖状3.png" alt="奖状3" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖状4.png" alt="奖状4" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖状6.png" alt="奖状6" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖状7.png" alt="奖状7" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖状8.JPG" alt="奖状8" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖项10.JPG" alt="奖项10" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖项11.JPG" alt="奖项11" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖项12.JPG" alt="奖项12" onerror="this.style.display='none';"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Leadership & Volunteering 详情页 -->
+                <div class="school-dashboard" id="school-tab-leadership" style="display:none;">
+                    <div class="school-dash-header">
+                        <div class="school-dash-title-area">
+                            <h2>Leadership & Volunteering</h2>
+                            <p>校园领导力与志愿服务经历</p>
+                        </div>
+                        <button class="back-to-hub-btn" onclick="switchSchoolTab('hub')">返回导航 ➔</button>
+                    </div>
+
+                    <div class="school-full-sections">
+                        <div class="school-text-card">
+                            <h3>🌟 浙财创业者协会 · “创趣汇”内容运营负责人</h3>
+                            <ul>
+                                <li>统筹 3 个部门约 30 名成员，组织 3 场技能培训并维持每周例会机制。</li>
+                                <li>运营官方公众号，独立产出 20+ 篇原创内容，带领社团获评<b>“年度十佳社团”</b>。</li>
+                            </ul>
+                        </div>
+                        <div class="school-text-card">
+                            <h3>🤝 志愿服务与实践</h3>
+                            <ul>
+                                <li>积极参与校内外各项志愿活动与社会实践，奉献青春力量，具备出色的团队协作与沟通协调能力。</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1768,6 +1997,30 @@
             panels.forEach((panel, idx) => {
                 panel.classList.toggle('active', idx === index);
             });
+        }
+
+        function switchSchoolTab(tabName) {
+            const hub = document.getElementById('schoolHub');
+            const academic = document.getElementById('school-tab-academic');
+            const competitions = document.getElementById('school-tab-competitions');
+            const leadership = document.getElementById('school-tab-leadership');
+
+            if (!hub) return;
+
+            hub.style.display = 'none';
+            if (academic) academic.style.display = 'none';
+            if (competitions) competitions.style.display = 'none';
+            if (leadership) leadership.style.display = 'none';
+
+            if (tabName === 'hub') {
+                hub.style.display = 'block';
+            } else if (tabName === 'academic') {
+                academic.style.display = 'flex';
+            } else if (tabName === 'competitions') {
+                competitions.style.display = 'flex';
+            } else if (tabName === 'leadership') {
+                leadership.style.display = 'flex';
+            }
         }
     </script>
 </body>
