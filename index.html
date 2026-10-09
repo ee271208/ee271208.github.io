@@ -363,7 +363,7 @@
 
         .experience-card {
             background: rgba(255, 253, 250, 0.85);
-            border: 1px solid rgba(245, 220, 200, 0.7);
+            border: 1.5px solid rgba(245, 220, 200, 0.7);
             border-radius: 14px;
             padding: 16px 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.02);
@@ -901,94 +901,68 @@
         }
 
         /* -----------------------------------------
-           竞赛与荣誉专属奖状陈列区
+           苹果经典 Coverflow（封面流）3D 透视视效核心样式
            ----------------------------------------- */
-        .competitions-cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 16px;
-            margin-top: 14px;
-        }
-
-        .comp-cert-item {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 8px 8px 12px 8px;
-            box-shadow: 0 6px 18px rgba(180, 120, 90, 0.1);
-            border: 1.5px solid rgba(240, 210, 185, 0.6);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .comp-cert-item img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 8px;
-            display: block;
-        }
-
-        .comp-cert-item:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(217, 119, 6, 0.2);
-            border-color: var(--accent-amber);
-        }
-
-        /* -----------------------------------------
-           Leadership & Volunteering 板块专属横向滚动流（仿参考图）
-           ----------------------------------------- */
-        .leadership-horizontal-scroll {
+        .coverflow-container {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             overflow-x: auto;
-            padding: 12px 4px 20px 4px;
+            padding: 30px 10px 40px 10px;
             scroll-behavior: smooth;
             scrollbar-width: thin;
             scrollbar-color: var(--border-beige) transparent;
+            perspective: 1200px; /* 3D 景深透视 */
+            align-items: center;
         }
 
-        .leadership-horizontal-scroll::-webkit-scrollbar {
+        .coverflow-container::-webkit-scrollbar {
             height: 6px;
         }
 
-        .leadership-horizontal-scroll::-webkit-scrollbar-thumb {
+        .coverflow-container::-webkit-scrollbar-thumb {
             background: var(--border-beige);
             border-radius: 10px;
         }
 
-        .lead-scroll-item {
-            flex: 0 0 180px;
-            height: 240px;
+        .coverflow-item {
+            flex: 0 0 170px;
+            height: 230px;
             background: #ffffff;
             border-radius: 14px;
             padding: 8px 8px 12px 8px;
-            box-shadow: 0 8px 24px rgba(180, 120, 90, 0.1);
+            box-shadow: -15px 10px 30px rgba(0, 0, 0, 0.15);
             border: 1.5px solid rgba(240, 210, 185, 0.7);
-            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            cursor: pointer;
             position: relative;
+            transform-style: preserve-3d;
+            /* 默认非中间卡片带有 Coverflow 经典的向后倾斜与透明度降低 */
+            transform: rotateY(35deg) scale(0.85) translateZ(-40px);
+            opacity: 0.55;
+            filter: grayscale(25%);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .lead-scroll-item img {
+        .coverflow-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
             display: block;
-            transition: transform 0.4s ease;
         }
 
-        .lead-scroll-item:hover {
-            transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 14px 35px rgba(217, 119, 6, 0.22);
+        /* 当鼠标悬停在特定某张卡片时，该卡片转为正对镜头（Coverflow 焦点卡片效果） */
+        .coverflow-item:hover {
+            transform: rotateY(0deg) scale(1.15) translateZ(50px) translateY(-8px) !important;
+            opacity: 1 !important;
+            filter: grayscale(0%) !important;
+            z-index: 100;
+            box-shadow: 0 20px 45px rgba(217, 119, 6, 0.35);
             border-color: var(--accent-amber);
         }
 
-        .lead-scroll-item:hover img {
-            transform: scale(1.05);
+        /* 让左侧的卡片自动向反方向倾斜（营造完美封面流曲线） */
+        .coverflow-item:nth-child(-n+4) {
+            transform: rotateY(40deg) scale(0.85) translateZ(-50px);
         }
 
         /* -----------------------------------------
@@ -1788,17 +1762,12 @@
                     </div>
 
                     <div class="academic-highlight-section">
-                        <div class="academic-highlight-title">🏆 ACADEMIC HIGHLIGHTS (学术风采)</div>
-                        <div class="cert-focus-stage">
-                            <div class="cert-card" onclick="openSubModal('school_highlights')">
-                                <img src="奖状2.png" alt="奖状2" onerror="this.style.display='none';">
-                            </div>
-                            <div class="cert-card" onclick="openSubModal('school_highlights')">
-                                <img src="奖状9.png" alt="奖状9" onerror="this.style.display='none';">
-                            </div>
-                            <div class="cert-card" onclick="openSubModal('school_highlights')">
-                                <img src="风采1.jpg" alt="风采1" onerror="this.style.display='none';">
-                            </div>
+                        <div class="academic-highlight-title">🏆 ACADEMIC HIGHLIGHTS (学术风采 - Coverflow 视效)</div>
+                        <!-- 学术风采改用 Coverflow 效果 -->
+                        <div class="coverflow-container">
+                            <div class="coverflow-item" onclick="openSubModal('school_highlights')"><img src="奖状2.png" alt="奖状2" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item" onclick="openSubModal('school_highlights')"><img src="奖状9.png" alt="奖状9" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item" onclick="openSubModal('school_highlights')"><img src="风采1.jpg" alt="风采1" onerror="this.style.display='none';"></div>
                         </div>
                     </div>
                 </div>
@@ -1834,22 +1803,23 @@
                     </div>
 
                     <div class="academic-highlight-section">
-                        <div class="academic-highlight-title">🎖️ COMPETITION CERTIFICATES & HONORS (竞赛荣誉证书展示)</div>
-                        <div class="competitions-cert-grid">
-                            <div class="comp-cert-item"><img src="奖状1.png" alt="奖状1" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状3.png" alt="奖状3" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状4.png" alt="奖状4" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状6.png" alt="奖状6" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状7.png" alt="奖状7" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状8.JPG" alt="奖状8" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖项10.JPG" alt="奖项10" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状11.JPG" alt="奖状11" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖项12.JPG" alt="奖项12" onerror="this.style.display='none';"></div>
+                        <div class="academic-highlight-title">🎖️ COMPETITION CERTIFICATES & HONORS </div>
+                        <!-- 竞赛奖状下方改用 Coverflow 效果 -->
+                        <div class="coverflow-container">
+                            <div class="coverflow-item"><img src="奖状1.png" alt="奖状1" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="奖状3.png" alt="奖状3" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="奖状4.png" alt="奖状4" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="奖状6.png" alt="奖状6" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="奖状7.png" alt="奖状7" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="奖状8.JPG" alt="奖状8" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="奖项10.JPG" alt="奖项10" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="奖状11.JPG" alt="奖状11" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="奖项12.JPG" alt="奖项12" onerror="this.style.display='none';"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3. Leadership & Volunteering 详情页（优化排版与量化数据，加入横向滑动展台） -->
+                <!-- 3. Leadership & Volunteering 详情页 -->
                 <div class="school-dashboard" id="school-tab-leadership" style="display:none;">
                     <div class="school-dash-header">
                         <div class="school-dash-title-area">
@@ -1890,25 +1860,25 @@
                         </div>
                     </div>
 
-                    <!-- 下方横向滚动图片流（鼠标右滑/左滑逐个滚动） -->
+                    <!-- Leadership 下方改用标准 Coverflow 封面流 3D 透视效果 -->
                     <div class="academic-highlight-section">
-                        <div class="academic-highlight-title">✨ LEADERSHIP & VOLUNTEERING MOMENTS (领导力与风采瞬间)</div>
-                        <div class="leadership-horizontal-scroll">
-                            <div class="lead-scroll-item"><img src="风采2.jpg" alt="风采2" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团1.jpg" alt="社团1" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团2.jpg" alt="社团2" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团3.jpg" alt="社团3" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团4.jpg" alt="社团4" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团5.jpg" alt="社团5" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团6.jpg" alt="社团6" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团7.jpg" alt="社团7" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团8.jpg" alt="社团8" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团9.jpg" alt="社团9" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团10.jpg" alt="社团10" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团11.jpg" alt="社团11" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团12.jpg" alt="社团12" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团13.jpg" alt="社团13" onerror="this.style.display='none';"></div>
-                            <div class="lead-scroll-item"><img src="社团14.jpg" alt="社团14" onerror="this.style.display='none';"></div>
+                        <div class="academic-highlight-title">✨ LEADERSHIP & VOLUNTEERING MOMENTS </div>
+                        <div class="coverflow-container">
+                            <div class="coverflow-item"><img src="风采2.jpg" alt="风采2" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团1.jpg" alt="社团1" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团2.jpg" alt="社团2" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团3.jpg" alt="社团3" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团4.jpg" alt="社团4" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团5.jpg" alt="社团5" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团6.jpg" alt="社团6" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团7.jpg" alt="社团7" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团8.jpg" alt="社团8" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团9.jpg" alt="社团9" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团10.jpg" alt="社团10" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团11.jpg" alt="社团11" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团12.jpg" alt="社团12" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团13.jpg" alt="社团13" onerror="this.style.display='none';"></div>
+                            <div class="coverflow-item"><img src="社团14.jpg" alt="社团14" onerror="this.style.display='none';"></div>
                         </div>
                     </div>
                 </div>
