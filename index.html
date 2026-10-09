@@ -850,76 +850,32 @@
             font-family: 'Playfair Display', serif;
         }
 
-        .cert-focus-stage {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            align-items: center;
-            min-height: 150px;
-            perspective: 1000px;
-            padding: 10px 0;
-            flex-wrap: wrap;
-        }
-
-        .cert-card {
-            width: 175px;    
-            height: 120px;   
-            background: #ffffff;
-            border-radius: 10px;
-            padding: 6px 6px 10px 6px;
-            box-shadow: 0 6px 18px rgba(180, 120, 90, 0.12);
-            border: 1.5px solid rgba(240, 210, 185, 0.6);
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-origin: center center;
-        }
-
-        .cert-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 6px;
-            display: block;
-        }
-
-        .cert-card:nth-child(1) { transform: rotate(-2deg) translateY(1px) scale(0.98); }
-        .cert-card:nth-child(2) { transform: translateY(-2px) scale(1); }
-        .cert-card:nth-child(3) { transform: rotate(2deg) translateY(1px) scale(0.98); }
-
-        .cert-focus-stage:hover .cert-card {
-            opacity: 0.6;
-            filter: grayscale(20%);
-        }
-
-        .cert-card:hover {
-            opacity: 1 !important;
-            filter: grayscale(0%) !important;
-            transform: translateY(-6px) scale(1.08) rotate(0deg) !important;
-            z-index: 50;
-            box-shadow: 0 14px 30px rgba(217, 119, 6, 0.25);
-            border-color: var(--accent-amber);
-        }
-
         /* -----------------------------------------
-           苹果经典 Coverflow（封面流）3D 透视视效核心样式
+           依照第一张图组件化思路构建的 CoverFlow 样式
            ----------------------------------------- */
-        .coverflow-container {
+        .coverflow-viewport {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0 30px 0;
+        }
+
+        .coverflow-track {
             display: flex;
-            gap: 16px;
+            gap: 20px;
             overflow-x: auto;
-            padding: 30px 10px 40px 10px;
             scroll-behavior: smooth;
+            padding: 20px 40px;
+            perspective: 1000px;
             scrollbar-width: thin;
             scrollbar-color: var(--border-beige) transparent;
-            perspective: 1200px; /* 3D 景深透视 */
-            align-items: center;
         }
 
-        .coverflow-container::-webkit-scrollbar {
+        .coverflow-track::-webkit-scrollbar {
             height: 6px;
         }
 
-        .coverflow-container::-webkit-scrollbar-thumb {
+        .coverflow-track::-webkit-scrollbar-thumb {
             background: var(--border-beige);
             border-radius: 10px;
         }
@@ -930,39 +886,41 @@
             background: #ffffff;
             border-radius: 14px;
             padding: 8px 8px 12px 8px;
-            box-shadow: -15px 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             border: 1.5px solid rgba(240, 210, 185, 0.7);
             cursor: pointer;
             position: relative;
             transform-style: preserve-3d;
-            /* 默认非中间卡片带有 Coverflow 经典的向后倾斜与透明度降低 */
-            transform: rotateY(35deg) scale(0.85) translateZ(-40px);
-            opacity: 0.55;
-            filter: grayscale(25%);
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+            transform: rotateY(25deg) scale(0.9) translateZ(-30px);
+            opacity: 0.6;
         }
 
         .coverflow-item img {
             width: 100%;
-            height: 100%;
+            height: 165px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 8px;
             display: block;
         }
 
-        /* 当鼠标悬停在特定某张卡片时，该卡片转为正对镜头（Coverflow 焦点卡片效果） */
-        .coverflow-item:hover {
-            transform: rotateY(0deg) scale(1.15) translateZ(50px) translateY(-8px) !important;
-            opacity: 1 !important;
-            filter: grayscale(0%) !important;
-            z-index: 100;
-            box-shadow: 0 20px 45px rgba(217, 119, 6, 0.35);
-            border-color: var(--accent-amber);
+        .coverflow-item .coverflow-caption {
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--text-dark);
+            margin-top: 8px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        /* 让左侧的卡片自动向反方向倾斜（营造完美封面流曲线） */
-        .coverflow-item:nth-child(-n+4) {
-            transform: rotateY(40deg) scale(0.85) translateZ(-50px);
+        .coverflow-item:hover {
+            transform: rotateY(0deg) scale(1.1) translateZ(30px) translateY(-6px) !important;
+            opacity: 1 !important;
+            z-index: 10;
+            box-shadow: 0 16px 35px rgba(217, 119, 6, 0.25);
+            border-color: var(--accent-amber);
         }
 
         /* -----------------------------------------
@@ -1089,7 +1047,7 @@
             color: var(--accent-warm);
         }
 
-        /* 学校等普通宝丽来相册网格比例（与健身板块照片长宽一致） */
+        /* 学校等普通宝丽来相册网格比例 */
         .photo-gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1111,7 +1069,7 @@
 
         .polaroid-img {
             width: 100%;
-            height: 360px; /* 统一修改为与健身板块高度一致的竖长图比例 */
+            height: 360px;
             object-fit: cover;
             border-radius: 8px;
             display: block;
@@ -1762,12 +1720,17 @@
                     </div>
 
                     <div class="academic-highlight-section">
-                        <div class="academic-highlight-title">🏆 ACADEMIC HIGHLIGHTS (学术风采 - Coverflow 视效)</div>
-                        <!-- 学术风采改用 Coverflow 效果 -->
-                        <div class="coverflow-container">
-                            <div class="coverflow-item" onclick="openSubModal('school_highlights')"><img src="奖状2.png" alt="奖状2" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item" onclick="openSubModal('school_highlights')"><img src="奖状9.png" alt="奖状9" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item" onclick="openSubModal('school_highlights')"><img src="风采1.jpg" alt="风采1" onerror="this.style.display='none';"></div>
+                        <div class="academic-highlight-title">🏆 ACADEMIC HIGHLIGHTS (学术风采)</div>
+                        <div class="cert-focus-stage" style="display:flex; justify-content:center; gap:20px; align-items:center;">
+                            <div class="cert-card" style="width:175px; height:120px; background:#fff; border-radius:10px; padding:6px; cursor:pointer;" onclick="openSubModal('school_highlights')">
+                                <img src="奖状2.png" alt="奖状2" style="width:100%; height:100%; object-fit:cover; border-radius:6px;" onerror="this.style.display='none';">
+                            </div>
+                            <div class="cert-card" style="width:175px; height:120px; background:#fff; border-radius:10px; padding:6px; cursor:pointer;" onclick="openSubModal('school_highlights')">
+                                <img src="奖状9.png" alt="奖状9" style="width:100%; height:100%; object-fit:cover; border-radius:6px;" onerror="this.style.display='none';">
+                            </div>
+                            <div class="cert-card" style="width:175px; height:120px; background:#fff; border-radius:10px; padding:6px; cursor:pointer;" onclick="openSubModal('school_highlights')">
+                                <img src="风采1.jpg" alt="风采1" style="width:100%; height:100%; object-fit:cover; border-radius:6px;" onerror="this.style.display='none';">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1803,23 +1766,22 @@
                     </div>
 
                     <div class="academic-highlight-section">
-                        <div class="academic-highlight-title">🎖️ COMPETITION CERTIFICATES & HONORS </div>
-                        <!-- 竞赛奖状下方改用 Coverflow 效果 -->
-                        <div class="coverflow-container">
-                            <div class="coverflow-item"><img src="奖状1.png" alt="奖状1" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="奖状3.png" alt="奖状3" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="奖状4.png" alt="奖状4" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="奖状6.png" alt="奖状6" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="奖状7.png" alt="奖状7" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="奖状8.JPG" alt="奖状8" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="奖项10.JPG" alt="奖项10" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="奖状11.JPG" alt="奖状11" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="奖项12.JPG" alt="奖项12" onerror="this.style.display='none';"></div>
+                        <div class="academic-highlight-title">🎖️ COMPETITION CERTIFICATES & HONORS (竞赛荣誉证书展示)</div>
+                        <div class="competitions-cert-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:16px;">
+                            <div class="comp-cert-item"><img src="奖状1.png" alt="奖状1" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖状3.png" alt="奖状3" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖状4.png" alt="奖状4" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖状6.png" alt="奖状6" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖状7.png" alt="奖状7" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖状8.JPG" alt="奖状8" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖项10.JPG" alt="奖项10" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖状11.JPG" alt="奖状11" onerror="this.style.display='none';"></div>
+                            <div class="comp-cert-item"><img src="奖项12.JPG" alt="奖项12" onerror="this.style.display='none';"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3. Leadership & Volunteering 详情页 -->
+                <!-- 3. Leadership & Volunteering 详情页（已按照图1 CoverFlow 结构与您的图片修改完成） -->
                 <div class="school-dashboard" id="school-tab-leadership" style="display:none;">
                     <div class="school-dash-header">
                         <div class="school-dash-title-area">
@@ -1860,25 +1822,13 @@
                         </div>
                     </div>
 
-                    <!-- Leadership 下方改用标准 Coverflow 封面流 3D 透视效果 -->
+                    <!-- 按照图1组件化结构呈现的 CoverFlow 模块（包含社团1-14 + 风采2） -->
                     <div class="academic-highlight-section">
-                        <div class="academic-highlight-title">✨ LEADERSHIP & VOLUNTEERING MOMENTS </div>
-                        <div class="coverflow-container">
-                            <div class="coverflow-item"><img src="风采2.jpg" alt="风采2" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团1.jpg" alt="社团1" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团2.jpg" alt="社团2" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团3.jpg" alt="社团3" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团4.jpg" alt="社团4" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团5.jpg" alt="社团5" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团6.jpg" alt="社团6" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团7.jpg" alt="社团7" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团8.jpg" alt="社团8" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团9.jpg" alt="社团9" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团10.jpg" alt="社团10" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团11.jpg" alt="社团11" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团12.jpg" alt="社团12" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团13.jpg" alt="社团13" onerror="this.style.display='none';"></div>
-                            <div class="coverflow-item"><img src="社团14.jpg" alt="社团14" onerror="this.style.display='none';"></div>
+                        <div class="academic-highlight-title">✨ LEADERSHIP & VOLUNTEERING MOMENTS (CoverFlow 展示)</div>
+                        <div class="coverflow-viewport">
+                            <div class="coverflow-track" id="leadershipCoverFlow">
+                                <!-- 动态通过 JS 挂载对应 items 数据，完美对齐图1组件化配置 -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1901,7 +1851,7 @@
                     <div class="experience-card">
                         <div class="exp-header">
                             <span class="exp-role">🌟 浙财创业者协会 · “创趣汇”</span>
-                            <span class="exp-company">内容运营负责人</span>
+                            <span class="exp-company">Content Operations Lead</span>
                         </div>
                         <ul class="exp-bullet">
                             <li>统筹 3 个部门约 30 名成员，组织 3 场技能培训并维持每周例会机制；运营官方公众号，独立产出 20+ 篇原创内容，带领社团获评“年度十佳社团”。</li>
@@ -2025,9 +1975,44 @@
             `
         };
 
+        // 对应图1中的 items 数据结构定义（包含社团1-14及风采2）
+        const coverFlowItems = [
+            { kicker: "Cover 01", image: "风采2.jpg" },
+            { kicker: "Cover 02", image: "社团1.jpg" },
+            { kicker: "Cover 03", image: "社团2.jpg" },
+            { kicker: "Cover 04", image: "社团3.jpg" },
+            { kicker: "Cover 05", image: "社团4.jpg" },
+            { kicker: "Cover 06", image: "社团5.jpg" },
+            { kicker: "Cover 07", image: "社团6.jpg" },
+            { kicker: "Cover 08", image: "社团7.jpg" },
+            { kicker: "Cover 09", image: "社团8.jpg" },
+            { kicker: "Cover 10", image: "社团9.jpg" },
+            { kicker: "Cover 11", image: "社团10.jpg" },
+            { kicker: "Cover 12", image: "社团11.jpg" },
+            { kicker: "Cover 13", image: "社团12.jpg" },
+            { kicker: "Cover 14", image: "社团13.jpg" },
+            { kicker: "Cover 15", image: "社团14.jpg" }
+        ];
+
+        function initCoverFlow() {
+            const track = document.getElementById('leadershipCoverFlow');
+            if (!track) return;
+            
+            track.innerHTML = coverFlowItems.map(item => `
+                <div class="coverflow-item" onclick="console.log('${item.title}')">
+                    <div style="font-size: 0.65rem; color: var(--accent-warm); font-family: 'Special Elite', monospace; margin-bottom: 4px;">${item.kicker}</div>
+                    <img src="${item.image}" alt="${item.title}" onerror="this.style.display='none';">
+                    <div class="coverflow-caption">${item.title}</div>
+                </div>
+            `).join('');
+        }
+
         function openModal(type) {
             document.getElementById('modalContent').innerHTML = contentMap[type] || '';
             document.getElementById('modalOverlay').classList.add('active');
+            if (type === 'school') {
+                setTimeout(initCoverFlow, 50);
+            }
         }
 
         function closeModal() {
@@ -2085,6 +2070,7 @@
                 competitions.style.display = 'flex';
             } else if (tabName === 'leadership') {
                 leadership.style.display = 'flex';
+                setTimeout(initCoverFlow, 50);
             }
         }
     </script>
