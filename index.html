@@ -19,6 +19,7 @@
             --beige-card: #fffdfa;      /* 卡片米白 */
             --border-beige: #f2e3c6;    /* 柔和米金边框 */
             --theme-primary: #9a3412;   /* 暖棕褐 */
+            --soft-pink: #e0a899;       /* 裸粉色点缀 */
         }
 
         * {
@@ -649,7 +650,7 @@
         }
 
         /* -----------------------------------------
-           My School 风格导航主页 (仿照参考图的 4 个卡片布局)
+           My School 风格导航主页
            ----------------------------------------- */
         .school-hub-container {
             background: linear-gradient(135deg, rgba(255, 250, 245, 0.96) 0%, rgba(254, 245, 238, 0.96) 100%);
@@ -900,7 +901,7 @@
         }
 
         /* -----------------------------------------
-           竞赛与荣誉专属奖状陈列区 (仿照图2的网格下沉效果)
+           竞赛与荣誉专属奖状陈列区
            ----------------------------------------- */
         .competitions-cert-grid {
             display: grid;
@@ -931,6 +932,63 @@
             transform: translateY(-4px) scale(1.03);
             box-shadow: 0 10px 25px rgba(217, 119, 6, 0.2);
             border-color: var(--accent-amber);
+        }
+
+        /* -----------------------------------------
+           Leadership & Volunteering 板块专属横向滚动流（仿参考图）
+           ----------------------------------------- */
+        .leadership-horizontal-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 12px 4px 20px 4px;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-beige) transparent;
+        }
+
+        .leadership-horizontal-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .leadership-horizontal-scroll::-webkit-scrollbar-thumb {
+            background: var(--border-beige);
+            border-radius: 10px;
+        }
+
+        .lead-scroll-item {
+            flex: 0 0 180px;
+            height: 240px;
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 8px 8px 12px 8px;
+            box-shadow: 0 8px 24px rgba(180, 120, 90, 0.1);
+            border: 1.5px solid rgba(240, 210, 185, 0.7);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lead-scroll-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .lead-scroll-item:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 14px 35px rgba(217, 119, 6, 0.22);
+            border-color: var(--accent-amber);
+        }
+
+        .lead-scroll-item:hover img {
+            transform: scale(1.05);
         }
 
         /* -----------------------------------------
@@ -1057,7 +1115,7 @@
             color: var(--accent-warm);
         }
 
-        /* 学校等普通宝丽来相册网格比例 */
+        /* 学校等普通宝丽来相册网格比例（与健身板块照片长宽一致） */
         .photo-gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1079,7 +1137,7 @@
 
         .polaroid-img {
             width: 100%;
-            height: 240px;
+            height: 360px; /* 统一修改为与健身板块高度一致的竖长图比例 */
             object-fit: cover;
             border-radius: 8px;
             display: block;
@@ -1115,7 +1173,7 @@
 
         .travel-img {
             width: 100%;
-            height: 320px; /* 调整为长方形比例 */
+            height: 320px;
             object-fit: cover;
             border-radius: 14px;
             display: block;
@@ -1699,7 +1757,7 @@
                     </div>
                 </div>
 
-                <!-- 1. Academic Experiences 详情页（保留原样不东动） -->
+                <!-- 1. Academic Experiences 详情页 -->
                 <div class="school-dashboard" id="school-tab-academic" style="display:none;">
                     <div class="school-dash-header">
                         <div class="school-dash-title-area">
@@ -1791,7 +1849,7 @@
                     </div>
                 </div>
 
-                <!-- 3. Leadership & Volunteering 详情页 -->
+                <!-- 3. Leadership & Volunteering 详情页（优化排版与量化数据，加入横向滑动展台） -->
                 <div class="school-dashboard" id="school-tab-leadership" style="display:none;">
                     <div class="school-dash-header">
                         <div class="school-dash-title-area">
@@ -1803,17 +1861,54 @@
 
                     <div class="school-full-sections">
                         <div class="school-text-card">
-                            <h3>🌟 浙财创业者协会 · “创趣汇”内容运营负责人</h3>
+                            <h3>🌟 创业者协会 · 社团副会长</h3>
                             <ul>
-                                <li>统筹 3 个部门约 30 名成员，组织 3 场技能培训并维持每周例会机制。</li>
-                                <li>运营官方公众号，独立产出 20+ 篇原创内容，带领社团获评<b>“年度十佳社团”</b>。</li>
+                                <li>组织策划多项校院级社团活动（累计覆盖 <b>300+</b> 人次），赋能校园双创氛围，助力社团荣获校<b>“十佳社团”</b>荣誉称号。</li>
+                                <li>独立统筹并制作 4 篇高质量官方微信推送，深度运营社团公众号，单篇阅读量突破 <b>3,300+</b>。</li>
                             </ul>
                         </div>
+
                         <div class="school-text-card">
-                            <h3>🤝 志愿服务与实践</h3>
+                            <h3>⭐ 校团委办公室核心成员</h3>
                             <ul>
-                                <li>积极参与校内外各项志愿活动与社会实践，奉献青春力量，具备出色的团队协作与沟通协调能力。</li>
+                                <li>作为核心骨干组织策划第 35 届校园文化艺术节，全面统筹现场管控及礼仪规范指导，保障大型校级活动圆满落地。</li>
                             </ul>
+                        </div>
+
+                        <div class="school-text-card">
+                            <h3>🎯 22财税4班组织委员</h3>
+                            <ul>
+                                <li>高效组织并参与班级团日风采展系列活动，凭借出色的班级凝聚力与创新创意，荣获 <b>2024 年团日风采展三等奖</b>。</li>
+                            </ul>
+                        </div>
+
+                        <div class="school-text-card">
+                            <h3>🤝 志愿服务与社会实践</h3>
+                            <ul>
+                                <li>热心公益实践，累计志愿服务时长达 <b>53+ 小时</b>，作为骨干深度参与 6 项校/院级重点志愿服务及社会实践活动。</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 下方横向滚动图片流（鼠标右滑/左滑逐个滚动） -->
+                    <div class="academic-highlight-section">
+                        <div class="academic-highlight-title">✨ LEADERSHIP & VOLUNTEERING MOMENTS (领导力与风采瞬间)</div>
+                        <div class="leadership-horizontal-scroll">
+                            <div class="lead-scroll-item"><img src="风采2.jpg" alt="风采2" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团1.jpg" alt="社团1" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团2.jpg" alt="社团2" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团3.jpg" alt="社团3" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团4.jpg" alt="社团4" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团5.jpg" alt="社团5" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团6.jpg" alt="社团6" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团7.jpg" alt="社团7" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团8.jpg" alt="社团8" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团9.jpg" alt="社团9" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团10.jpg" alt="社团10" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团11.jpg" alt="社团11" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团12.jpg" alt="社团12" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团13.jpg" alt="社团13" onerror="this.style.display='none';"></div>
+                            <div class="lead-scroll-item"><img src="社团14.jpg" alt="社团14" onerror="this.style.display='none';"></div>
                         </div>
                     </div>
                 </div>
