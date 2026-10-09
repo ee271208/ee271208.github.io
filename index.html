@@ -851,13 +851,18 @@
         }
 
         /* -----------------------------------------
-           依照第一张图组件化思路构建的 CoverFlow 样式
+           CoverFlow 3D 透视视效组件样式（完美适配鼠标滑动、无多余文字）
            ----------------------------------------- */
         .coverflow-viewport {
             position: relative;
             width: 100%;
             overflow: hidden;
             padding: 20px 0 30px 0;
+            cursor: grab;
+        }
+
+        .coverflow-viewport:active {
+            cursor: grabbing;
         }
 
         .coverflow-track {
@@ -869,6 +874,7 @@
             perspective: 1000px;
             scrollbar-width: thin;
             scrollbar-color: var(--border-beige) transparent;
+            user-select: none;
         }
 
         .coverflow-track::-webkit-scrollbar {
@@ -882,10 +888,10 @@
 
         .coverflow-item {
             flex: 0 0 170px;
-            height: 230px;
+            height: 220px;
             background: #ffffff;
             border-radius: 14px;
-            padding: 8px 8px 12px 8px;
+            padding: 8px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             border: 1.5px solid rgba(240, 210, 185, 0.7);
             cursor: pointer;
@@ -894,25 +900,18 @@
             transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
             transform: rotateY(25deg) scale(0.9) translateZ(-30px);
             opacity: 0.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .coverflow-item img {
             width: 100%;
-            height: 165px;
+            height: 100%;
             object-fit: cover;
             border-radius: 8px;
             display: block;
-        }
-
-        .coverflow-item .coverflow-caption {
-            text-align: center;
-            font-size: 0.78rem;
-            color: var(--text-dark);
-            margin-top: 8px;
-            font-weight: 600;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            pointer-events: none;
         }
 
         .coverflow-item:hover {
@@ -1765,23 +1764,18 @@
                         </div>
                     </div>
 
+                    <!-- 奖状展示区采用与 Leadership 一致的 CoverFlow 3D 滑动格式 -->
                     <div class="academic-highlight-section">
-                        <div class="academic-highlight-title">🎖️ COMPETITION CERTIFICATES & HONORS (竞赛荣誉证书展示)</div>
-                        <div class="competitions-cert-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:16px;">
-                            <div class="comp-cert-item"><img src="奖状1.png" alt="奖状1" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状3.png" alt="奖状3" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状4.png" alt="奖状4" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状6.png" alt="奖状6" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状7.png" alt="奖状7" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状8.JPG" alt="奖状8" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖项10.JPG" alt="奖项10" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖状11.JPG" alt="奖状11" onerror="this.style.display='none';"></div>
-                            <div class="comp-cert-item"><img src="奖项12.JPG" alt="奖项12" onerror="this.style.display='none';"></div>
+                        <div class="academic-highlight-title">🎖️ COMPETITION CERTIFICATES & HONORS (证书滑动展示)</div>
+                        <div class="coverflow-viewport" id="competitionsViewport">
+                            <div class="coverflow-track" id="competitionsCoverFlow">
+                                <!-- 动态通过 JS 挂载对应奖状图片 -->
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3. Leadership & Volunteering 详情页（已按照图1 CoverFlow 结构与您的图片修改完成） -->
+                <!-- 3. Leadership & Volunteering 详情页 -->
                 <div class="school-dashboard" id="school-tab-leadership" style="display:none;">
                     <div class="school-dash-header">
                         <div class="school-dash-title-area">
@@ -1822,12 +1816,12 @@
                         </div>
                     </div>
 
-                    <!-- 按照图1组件化结构呈现的 CoverFlow 模块（包含社团1-14 + 风采2） -->
+                    <!-- 完美支持鼠标拖拽与滚轮滑动的 CoverFlow 模块 -->
                     <div class="academic-highlight-section">
                         <div class="academic-highlight-title">✨ LEADERSHIP & VOLUNTEERING MOMENTS (CoverFlow 展示)</div>
-                        <div class="coverflow-viewport">
+                        <div class="coverflow-viewport" id="leadershipViewport">
                             <div class="coverflow-track" id="leadershipCoverFlow">
-                                <!-- 动态通过 JS 挂载对应 items 数据，完美对齐图1组件化配置 -->
+                                <!-- 动态通过 JS 挂载对应图片 -->
                             </div>
                         </div>
                     </div>
@@ -1975,43 +1969,76 @@
             `
         };
 
-        // 对应图1中的 items 数据结构定义（包含社团1-14及风采2）
-        const coverFlowItems = [
-            { kicker: "Cover 01", image: "风采2.jpg" },
-            { kicker: "Cover 02", image: "社团1.jpg" },
-            { kicker: "Cover 03", image: "社团2.jpg" },
-            { kicker: "Cover 04", image: "社团3.jpg" },
-            { kicker: "Cover 05", image: "社团4.jpg" },
-            { kicker: "Cover 06", image: "社团5.jpg" },
-            { kicker: "Cover 07", image: "社团6.jpg" },
-            { kicker: "Cover 08", image: "社团7.jpg" },
-            { kicker: "Cover 09", image: "社团8.jpg" },
-            { kicker: "Cover 10", image: "社团9.jpg" },
-            { kicker: "Cover 11", image: "社团10.jpg" },
-            { kicker: "Cover 12", image: "社团11.jpg" },
-            { kicker: "Cover 13", image: "社团12.jpg" },
-            { kicker: "Cover 14", image: "社团13.jpg" },
-            { kicker: "Cover 15", image: "社团14.jpg" }
+        // Leadership 图片数据集
+        const leadershipImages = [
+            "风采2.jpg", "社团1.jpg", "社团2.jpg", "社团3.jpg", "社团4.jpg", 
+            "社团5.jpg", "社团6.jpg", "社团7.jpg", "社团8.jpg", "社团9.jpg", 
+            "社团10.jpg", "社团11.jpg", "社团12.jpg", "社团13.jpg", "社团14.jpg"
         ];
 
-        function initCoverFlow() {
-            const track = document.getElementById('leadershipCoverFlow');
+        // 奖状证书图片数据集
+        const competitionImages = [
+            "奖状1.png", "奖状3.png", "奖状4.png", "奖状6.png", "奖状7.png", 
+            "奖状8.JPG", "奖项10.JPG", "奖状11.JPG", "奖项12.JPG"
+        ];
+
+        function initCoverFlow(trackId, viewportId, imagesArray) {
+            const track = document.getElementById(trackId);
             if (!track) return;
             
-            track.innerHTML = coverFlowItems.map(item => `
-                <div class="coverflow-item" onclick="console.log('${item.title}')">
-                    <div style="font-size: 0.65rem; color: var(--accent-warm); font-family: 'Special Elite', monospace; margin-bottom: 4px;">${item.kicker}</div>
-                    <img src="${item.image}" alt="${item.title}" onerror="this.style.display='none';">
-                    <div class="coverflow-caption">${item.title}</div>
+            track.innerHTML = imagesArray.map(img => `
+                <div class="coverflow-item">
+                    <img src="${img}" alt="Certificate/Moment" onerror="this.style.display='none';">
                 </div>
             `).join('');
+
+            // 绑定鼠标拖拽与滚轮横向滚动
+            const viewport = document.getElementById(viewportId);
+            if (viewport && !viewport.dataset.dragInitialized) {
+                viewport.dataset.dragInitialized = "true";
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                viewport.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    startX = e.pageX - viewport.offsetLeft;
+                    scrollLeft = track.scrollLeft;
+                });
+
+                viewport.addEventListener('mouseleave', () => {
+                    isDown = false;
+                });
+
+                viewport.addEventListener('mouseup', () => {
+                    isDown = false;
+                });
+
+                viewport.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - viewport.offsetLeft;
+                    const walk = (x - startX) * 1.5;
+                    track.scrollLeft = scrollLeft - walk;
+                });
+
+                viewport.addEventListener('wheel', (e) => {
+                    if (e.deltaY !== 0) {
+                        e.preventDefault();
+                        track.scrollLeft += e.deltaY;
+                    }
+                }, { passive: false });
+            }
         }
 
         function openModal(type) {
             document.getElementById('modalContent').innerHTML = contentMap[type] || '';
             document.getElementById('modalOverlay').classList.add('active');
             if (type === 'school') {
-                setTimeout(initCoverFlow, 50);
+                setTimeout(() => {
+                    initCoverFlow('leadershipCoverFlow', 'leadershipViewport', leadershipImages);
+                    initCoverFlow('competitionsCoverFlow', 'competitionsViewport', competitionImages);
+                }, 50);
             }
         }
 
@@ -2068,9 +2095,14 @@
                 academic.style.display = 'flex';
             } else if (tabName === 'competitions') {
                 competitions.style.display = 'flex';
+                setTimeout(() => {
+                    initCoverFlow('competitionsCoverFlow', 'competitionsViewport', competitionImages);
+                }, 50);
             } else if (tabName === 'leadership') {
                 leadership.style.display = 'flex';
-                setTimeout(initCoverFlow, 50);
+                setTimeout(() => {
+                    initCoverFlow('leadershipCoverFlow', 'leadershipViewport', leadershipImages);
+                }, 50);
             }
         }
     </script>
