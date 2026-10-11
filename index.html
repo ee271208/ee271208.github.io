@@ -650,7 +650,7 @@
         }
 
         /* -----------------------------------------
-           My School 风格导航主页
+           My School 风格导航主页 (4个模块网格)
            ----------------------------------------- */
         .school-hub-container {
             background: linear-gradient(135deg, rgba(255, 250, 245, 0.96) 0%, rgba(254, 245, 238, 0.96) 100%);
@@ -900,7 +900,6 @@
             display: block;
         }
 
-        /* 3D 轮播位置状态 */
         .carousel-card.center {
             transform: translateX(0) translateZ(120px) scale(1.15);
             z-index: 10;
@@ -951,7 +950,6 @@
             filter: blur(5px);
         }
 
-        /* 左右切换按钮 */
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -981,6 +979,176 @@
 
         .carousel-btn.prev { left: 10px; }
         .carousel-btn.next { right: 10px; }
+
+        /* -----------------------------------------
+           My Life 照片转轴专属 3D 样式
+           ----------------------------------------- */
+        .axis-carousel-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1400px;
+            margin: 20px 0;
+        }
+
+        .axis-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+        }
+
+        .axis-card {
+            position: absolute;
+            width: 210px;
+            height: 270px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 10px 10px 16px 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+            border: 1.5px solid rgba(240, 210, 185, 0.8);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .axis-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .axis-caption {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .axis-card.center {
+            transform: translateX(0) translateZ(140px) scale(1.15);
+            z-index: 10;
+            opacity: 1;
+            pointer-events: auto;
+            filter: blur(0px);
+            box-shadow: 0 25px 45px rgba(217, 119, 6, 0.35);
+            border-color: var(--accent-amber);
+        }
+
+        .axis-card.prev-1 {
+            transform: translateX(-180px) translateZ(50px) scale(0.9) rotateY(20deg);
+            z-index: 5;
+            opacity: 0.75;
+            pointer-events: auto;
+            filter: blur(1.5px);
+        }
+
+        .axis-card.next-1 {
+            transform: translateX(180px) translateZ(50px) scale(0.9) rotateY(-20deg);
+            z-index: 5;
+            opacity: 0.75;
+            pointer-events: auto;
+            filter: blur(1.5px);
+        }
+
+        .axis-card.prev-2 {
+            transform: translateX(-330px) translateZ(-40px) scale(0.7) rotateY(35deg);
+            z-index: 2;
+            opacity: 0.35;
+            pointer-events: none;
+            filter: blur(3.5px);
+        }
+
+        .axis-card.next-2 {
+            transform: translateX(330px) translateZ(-40px) scale(0.7) rotateY(-35deg);
+            z-index: 2;
+            opacity: 0.35;
+            pointer-events: none;
+            filter: blur(3.5px);
+        }
+
+        .axis-card.hidden {
+            transform: translateX(0) translateZ(-120px) scale(0.4);
+            z-index: 0;
+            opacity: 0;
+            pointer-events: none;
+            filter: blur(6px);
+        }
+
+        /* -----------------------------------------
+           Contact Me 专属精致方框卡片排版
+           ----------------------------------------- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .contact-card-box {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1.5px solid rgba(240, 215, 190, 0.8);
+            border-radius: 16px;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(180, 120, 90, 0.04);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card-box:hover {
+            transform: translateY(-4px);
+            background: #ffffff;
+            border-color: var(--accent-amber);
+            box-shadow: 0 10px 25px rgba(217, 119, 6, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 1.6rem;
+            margin-bottom: 2px;
+        }
+
+        .contact-platform {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-warm);
+        }
+
+        .contact-desc {
+            font-size: 0.82rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
+        .contact-link-tag {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--theme-primary);
+            margin-top: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
 
         /* -----------------------------------------
            常规网格与公众号图文比例
@@ -1727,9 +1895,9 @@
                 <div class="school-hub-container" id="schoolHub">
                     <div class="hub-title-area">
                         <h2>🏛️ My School Journey</h2>
-                        <p>点击下方模块，探索 Irene 的校园学术、荣誉与实践探索</p>
+                        <p>点击下方模块，探索 Irene 的校园学术、荣誉、领导力与商业实战</p>
                     </div>
-                    <div class="hub-grid-4">
+                    <div class="hub-grid-4" style="grid-template-columns: repeat(2, 1fr);">
                         <div class="hub-card" onclick="switchSchoolTab('academic')">
                             <div class="hub-card-icon">🎓</div>
                             <div class="hub-card-title">Academic Excellence</div>
@@ -1744,6 +1912,11 @@
                             <div class="hub-card-icon">⭐</div>
                             <div class="hub-card-title">Leadership & Volunteering</div>
                             <div class="hub-card-desc">校园创业协会、学生干部、社团组织管理与志愿服务经历。</div>
+                        </div>
+                        <div class="hub-card" onclick="switchSchoolTab('enterprise')">
+                            <div class="hub-card-icon">🍡</div>
+                            <div class="hub-card-title">Campus Enterprise & Sales</div>
+                            <div class="hub-card-desc">“菜园淘宝”校园市场实战、热奶宝选品创新与商业闭环。</div>
                         </div>
                     </div>
                 </div>
@@ -1824,7 +1997,6 @@
                         </div>
                     </div>
 
-                    <!-- 奖状展示区采用 3D 轮播卡片效果 -->
                     <div class="academic-highlight-section">
                         <div class="academic-highlight-title">🎖️ COMPETITION CERTIFICATES & HONORS </div>
                         <div class="carousel-container" id="competitionsCarousel">
@@ -1876,7 +2048,6 @@
                         </div>
                     </div>
 
-                    <!-- Leadership 展示区采用 3D 轮播卡片效果 -->
                     <div class="academic-highlight-section">
                         <div class="academic-highlight-title">✨ LEADERSHIP & VOLUNTEERING MOMENTS </div>
                         <div class="carousel-container" id="leadershipCarousel">
@@ -1886,30 +2057,61 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 4. Campus Enterprise & Sales (菜园淘宝) 详情页 -->
+                <div class="school-dashboard" id="school-tab-enterprise" style="display:none;">
+                    <div class="school-dash-header">
+                        <div class="school-dash-title-area">
+                            <h2>Campus Enterprise & Sales</h2>
+                            <p>“菜园淘宝”校园市场实战与商业闭环</p>
+                        </div>
+                        <button class="back-to-hub-btn" onclick="switchSchoolTab('hub')">返回导航 ➔</button>
+                    </div>
+
+                    <div class="school-full-sections">
+                        <div class="school-text-card">
+                            <h3>🍡 校园趋势选品与爆款矩阵构建</h3>
+                            <ul>
+                                <li><b>捕捉冬季流量：</b>精准洞察小红书爆款冬季校园潮流，敏锐锁定制胜品类，推出“血糯米 + 浓郁奶油 + 饼干脆 + DIY”差异化组合“热奶宝”产品。</li>
+                                <li><b>量化销售业绩：</b>在为期 4 天的“菜园淘宝”校园市集中，创下社团单次活动最高营收纪录 <b>1,600+ 元</b>，单品复购率达到 <b>45%</b>。</li>
+                            </ul>
+                        </div>
+
+                        <div class="school-text-card">
+                            <h3>📊 供应链协同、组合定价与利润率优化</h3>
+                            <ul>
+                                <li><b>精细成本核算：</b>严格核算单件原材料成本与工时损耗，通过批量集采压缩采购成本。</li>
+                                <li><b>策略组合销售：</b>推行“糖葫芦 + 热奶宝”暖心套餐包，有效提升客单价，带动整体利润率环比提升 <b>28%</b>。</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="academic-highlight-section">
+                        <div class="academic-highlight-title">🛍️ CAMPUS MARKET MOMENTS </div>
+                        <div class="carousel-container" id="enterpriseCarousel">
+                            <button class="carousel-btn prev" onclick="moveCarousel('enterpriseCarousel', -1)">❮</button>
+                            <div class="carousel-track" id="enterpriseTrack"></div>
+                            <button class="carousel-btn next" onclick="moveCarousel('enterpriseCarousel', 1)">❯</button>
+                        </div>
+                    </div>
+                </div>
             `,
 
             'life': `
                 <div class="inner-section">
                     <div class="inner-title">📷 Life, Trend & Persona</div>
 
-                    <div class="experience-card">
-                        <div class="exp-header">
-                            <span class="exp-role">🍡 校园趋势选品与增长实战</span>
-                            <span class="exp-company">“热奶宝” 商业闭环</span>
-                        </div>
-                        <ul class="exp-bullet">
-                            <li>捕捉小红书“热奶宝”冬季校园潮流，设计“血糯米+奶油+饼干脆+DIY”差异化组合，4天创社团单次活动最高营收纪录 1,600 元，验证从趋势洞察到落地的闭环。</li>
-                        </ul>
+                    <div class="experience-card" style="margin-bottom: 10px;">
+                        <p style="font-size: 0.9rem; color: var(--text-sub);">
+                            捕捉生活中的美好瞬间与审美灵感。
+                        </p>
                     </div>
 
-                    <div class="experience-card">
-                        <div class="exp-header">
-                            <span class="exp-role">🌟 浙财创业者协会 · “创趣汇”</span>
-                            <span class="exp-company">Content Operations Lead</span>
-                        </div>
-                        <ul class="exp-bullet">
-                            <li>统筹 3 个部门约 30 名成员，组织 3 场技能培训并维持每周例会机制；运营官方公众号，独立产出 20+ 篇原创内容，带领社团获评“年度十佳社团”。</li>
-                        </ul>
+                    <!-- My Life 专属 3D 照片转轴组件 -->
+                    <div class="axis-carousel-container" id="lifeCarouselAxis">
+                        <button class="carousel-btn prev" onclick="moveLifeAxis(-1)">❮</button>
+                        <div class="axis-track" id="lifeAxisTrack"></div>
+                        <button class="carousel-btn next" onclick="moveLifeAxis(1)">❯</button>
                     </div>
                 </div>
             `,
@@ -1918,13 +2120,41 @@
                 <div class="inner-section">
                     <div class="inner-title">✉️ Contact Irene Wang</div>
 
-                    <div class="experience-card" style="gap: 12px; padding: 20px;">
-                        <p style="font-size:1.05rem;"><b>📞 电话 / 微信：</b> 190 3225 5732</p>
-                        <p style="font-size:1.05rem;"><b>📧 电子邮箱：</b> 13732221972@163.com</p>
-                        <p style="font-size:1.05rem;"><b>📍 意向城市：</b> 深圳 / 香港 / 上海</p>
-                        <p style="font-size:1.05rem;"><b>🎯 求职意向：</b> 市场管理培训生（品牌策略 / 消费者洞察） / 商业分析 / 财务控制管培生</p>
-                        <div style="margin-top: 10px; padding-top: 12px; border-top: 1px dashed #d1d5db; color: #6b7280; font-size: 0.9rem;">
-                            "带着清晰的逻辑、扎实的品质与出色的审美按部就班前行，欢迎随时与我联系！"
+                    <div class="experience-card" style="gap: 12px; padding: 18px;">
+                        <p style="font-size:1.02rem;"><b>📞 电话 / 微信：</b> 190 3225 5732</p>
+                        <p style="font-size:1.02rem;"><b>☎️ 香港备用电话：</b> 84912230</p>
+                        <p style="font-size:1.02rem;"><b>📧 电子邮箱：</b> 13732221972@163.com</p>
+                        <p style="font-size:1.02rem;"><b>📍 意向城市：</b> 深圳 / 香港 / 上海</p>
+                        <p style="font-size:1.02rem;"><b>🎯 求职意向：</b> 市场管理培训生（品牌策略 / 消费者洞察） / 商业分析 / 财务管培生</p>
+                    </div>
+
+                    <div style="margin-top: 4px;">
+                        <div class="section-label" style="margin-bottom: 8px;">🌐 SOCIAL MEDIA & PROFESSIONAL PROFILES</div>
+                        
+                        <div class="contact-grid">
+                            <!-- 领英 -->
+                            <a href="https://www.linkedin.com/in/irene-wang-b3396b42b" target="_blank" class="contact-card-box">
+                                <div class="contact-icon">💼</div>
+                                <div class="contact-platform">LinkedIn</div>
+                                <div class="contact-desc">查看我的职业经历、教育背景与学术项目完整档案。</div>
+                                <div class="contact-link-tag">点击访问主页 ➔</div>
+                            </a>
+
+                            <!-- 小红书 -->
+                            <a href="https://xhslink.cn/o/45gaQLbEhUk" target="_blank" class="contact-card-box">
+                                <div class="contact-icon">📖</div>
+                                <div class="contact-platform">小红书 (RED)</div>
+                                <div class="contact-desc">收获 <b>3,433次赞与收藏</b>，分享图文排版、校园创业与生活审美。</div>
+                                <div class="contact-link-tag">点击查看主页 ➔</div>
+                            </a>
+
+                            <!-- 抖音 -->
+                            <a href="https://v.douyin.com/cMqFbaeVMnY/" target="_blank" class="contact-card-box">
+                                <div class="contact-icon">🎬</div>
+                                <div class="contact-platform">抖音 (Douyin)</div>
+                                <div class="contact-desc">记录校园活动视频剪辑、涉税科普与精彩生活剪影作品。</div>
+                                <div class="contact-link-tag">点击查看主页 ➔</div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -2029,26 +2259,39 @@
             `
         };
 
-        // Leadership 图片数据集
+        // 各大板块图片数据集
         const leadershipImages = [
             "风采2.jpg", "社团1.jpg", "社团2.jpg", "社团3.jpg", "社团4.jpg", 
             "社团5.jpg", "社团6.jpg", "社团7.jpg", "社团8.jpg", "社团9.jpg", 
             "社团10.jpg", "社团11.jpg", "社团12.jpg", "社团13.jpg", "社团14.jpg"
         ];
 
-        // 奖状证书图片数据集
         const competitionImages = [
             "奖状1.png", "奖状3.png", "奖状4.png", "奖状6.png", "奖状7.png", 
             "奖状8.JPG", "奖项10.JPG", "奖状11.JPG", "奖项12.JPG"
         ];
 
-        // 存储各个轮播组件的当前索引状态
-        const carouselStates = {};
+        const enterpriseImages = [
+            "社团1.jpg", "社团3.jpg", "社团5.jpg", "社团7.jpg", "社团9.jpg"
+        ];
+
+        // My Life 转轴照片数据集
+        const lifeAxisImages = [
+            { src: "旅游2.jpg", caption: "云南 🌸" },
+            { src: "旅游3.jpg", caption: "首尔 🇰🇷" },
+            { src: "旅游4.jpg", caption: "镰仓 🌊" },
+            { src: "旅游5.jpg", caption: "北京 ❄️" },
+            { src: "运动1.jpg", caption: "Fitness 🏋️‍♀️" },
+            { src: "风采1.jpg", caption: "Aesthetic Moment ✦" }
+        ];
+
+        let lifeAxisIndex = 0;
 
         function initCarousel(containerId, imagesArray) {
             const track = document.getElementById(containerId.replace('Carousel', 'Track'));
             if (!track) return;
 
+            carouselStates = carouselStates || {};
             carouselStates[containerId] = {
                 currentIndex: 0,
                 images: imagesArray
@@ -2063,6 +2306,8 @@
             updateCarouselView(containerId);
         }
 
+        let carouselStates = {};
+
         function updateCarouselView(containerId) {
             const state = carouselStates[containerId];
             if (!state) return;
@@ -2073,11 +2318,8 @@
             const current = state.currentIndex;
 
             cards.forEach((card, idx) => {
-                card.className = 'carousel-card'; // 重置类名
-
-                // 计算相对当前索引的距离
+                card.className = 'carousel-card';
                 let diff = idx - current;
-                // 处理循环滚动逻辑
                 if (diff > total / 2) diff -= total;
                 if (diff < -total / 2) diff += total;
 
@@ -2111,6 +2353,60 @@
             updateCarouselView(containerId);
         }
 
+        // 初始化 My Life 照片转轴
+        function initLifeAxis() {
+            const track = document.getElementById('lifeAxisTrack');
+            if (!track) return;
+
+            track.innerHTML = lifeAxisImages.map((item, idx) => `
+                <div class="axis-card" data-index="${idx}" onclick="jumpLifeAxis(${idx})">
+                    <img src="${item.src}" alt="Life Photo" onerror="this.style.display='none';">
+                    <div class="axis-caption">${item.caption}</div>
+                </div>
+            `).join('');
+
+            updateLifeAxisView();
+        }
+
+        function updateLifeAxisView() {
+            const track = document.getElementById('lifeAxisTrack');
+            if (!track) return;
+            const cards = track.querySelectorAll('.axis-card');
+            const total = lifeAxisImages.length;
+            const current = lifeAxisIndex;
+
+            cards.forEach((card, idx) => {
+                card.className = 'axis-card';
+                let diff = idx - current;
+                if (diff > total / 2) diff -= total;
+                if (diff < -total / 2) diff += total;
+
+                if (diff === 0) {
+                    card.classList.add('center');
+                } else if (diff === -1) {
+                    card.classList.add('prev-1');
+                } else if (diff === 1) {
+                    card.classList.add('next-1');
+                } else if (diff === -2) {
+                    card.classList.add('prev-2');
+                } else if (diff === 2) {
+                    card.classList.add('next-2');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        function moveLifeAxis(direction) {
+            lifeAxisIndex = (lifeAxisIndex + direction + lifeAxisImages.length) % lifeAxisImages.length;
+            updateLifeAxisView();
+        }
+
+        function jumpLifeAxis(index) {
+            lifeAxisIndex = index;
+            updateLifeAxisView();
+        }
+
         function openModal(type) {
             document.getElementById('modalContent').innerHTML = contentMap[type] || '';
             document.getElementById('modalOverlay').classList.add('active');
@@ -2118,6 +2414,12 @@
                 setTimeout(() => {
                     initCarousel('leadershipCarousel', leadershipImages);
                     initCarousel('competitionsCarousel', competitionImages);
+                    initCarousel('enterpriseCarousel', enterpriseImages);
+                }, 50);
+            }
+            if (type === 'life') {
+                setTimeout(() => {
+                    initLifeAxis();
                 }, 50);
             }
         }
@@ -2161,6 +2463,7 @@
             const academic = document.getElementById('school-tab-academic');
             const competitions = document.getElementById('school-tab-competitions');
             const leadership = document.getElementById('school-tab-leadership');
+            const enterprise = document.getElementById('school-tab-enterprise');
 
             if (!hub) return;
 
@@ -2168,6 +2471,7 @@
             if (academic) academic.style.display = 'none';
             if (competitions) competitions.style.display = 'none';
             if (leadership) leadership.style.display = 'none';
+            if (enterprise) enterprise.style.display = 'none';
 
             if (tabName === 'hub') {
                 hub.style.display = 'block';
@@ -2182,6 +2486,11 @@
                 leadership.style.display = 'flex';
                 setTimeout(() => {
                     initCarousel('leadershipCarousel', leadershipImages);
+                }, 50);
+            } else if (tabName === 'enterprise') {
+                enterprise.style.display = 'flex';
+                setTimeout(() => {
+                    initCarousel('enterpriseCarousel', enterpriseImages);
                 }, 50);
             }
         }
