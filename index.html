@@ -372,6 +372,66 @@
             gap: 6px;
         }
 
+        /* -----------------------------------------
+           实习板块：完全复刻水彩插画手绘风格圆桌工作台
+           ----------------------------------------- */
+        .workspace-desk-container {
+            background: #fbf9f5;
+            border-radius: 28px;
+            padding: 24px 20px;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(180, 150, 120, 0.08);
+        }
+
+        .workspace-title-area {
+            margin-bottom: 12px;
+        }
+
+        .workspace-title-area h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            letter-spacing: 0.5px;
+        }
+
+        .workspace-title-area p {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-top: 4px;
+        }
+
+        /* 包含手绘水彩圆桌与物品的 SVG 阶段容器 */
+        .illustration-stage {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .illustration-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 桌面交互物品发光和 hover 效果优化 */
+        .desk-interactive-item {
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+            transform-origin: center;
+            filter: drop-shadow(0 4px 10px rgba(217, 119, 6, 0.35));
+        }
+
+        .desk-interactive-item:hover {
+            transform: scale(1.12) translateY(-6px);
+            filter: drop-shadow(0 0 18px rgba(217, 119, 6, 0.8)) drop-shadow(0 6px 14px rgba(180, 130, 100, 0.4));
+        }
+
         /* 实习卡片导航栏 */
         .clip-nav-bar {
             display: flex;
@@ -851,7 +911,7 @@
         }
 
         /* -----------------------------------------
-           3D 堆叠轮播组件样式（按钮控制、中间放大清晰、两边缩小模糊）
+           3D 堆叠轮播组件样式
            ----------------------------------------- */
         .carousel-container {
             position: relative;
@@ -1649,21 +1709,127 @@
 
             'internship': `
                 <div class="inner-section">
-                    <div class="inner-title">
-                        <span>💼 My Internship Experience</span>
+                    <!-- 工作台主页区：精细平涂水彩手绘风圆桌插画 -->
+                    <div class="workspace-desk-container" id="workspaceDesk">
+                        <div class="workspace-title-area">
+                            <h2>Interactive Workspace</h2>
+                            <p>点击散落在插画圆桌上的发光线索，探索对应实习历程！</p>
+                        </div>
+                        
+                        <div class="illustration-stage">
+                            <svg class="illustration-svg" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+                                        <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#a88c7d" flood-opacity="0.18"/>
+                                    </filter>
+                                </defs>
+
+                                <!-- 卷曲浅绿色艺术桌腿 -->
+                                <g stroke="#8cbba9" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                    <path d="M 400 390 C 370 430, 310 470, 340 500 C 360 515, 400 480, 400 430"/>
+                                    <path d="M 400 390 C 430 430, 490 470, 460 500 C 440 515, 400 480, 400 430"/>
+                                    <path d="M 400 410 L 400 480" stroke-width="10"/>
+                                </g>
+
+                                <!-- 椭圆形软垫桌面与粉色边缘 (俯视偏斜视角) -->
+                                <g filter="url(#softShadow)">
+                                    <!-- 桌面底侧厚度感/粉色边缘 -->
+                                    <ellipse cx="400" cy="272" rx="360" ry="145" fill="#f4c2c2"/>
+                                    <!-- 桌面上表皮米白暖奶油质感 -->
+                                    <ellipse cx="400" cy="260" rx="356" ry="142" fill="#fffef7" stroke="#ebd6ca" stroke-width="4"/>
+                                </g>
+
+                                <!-- 1. 打开的笔记本电脑 (点击触发：浙江凌迪科技) -->
+                                <g class="desk-interactive-item" onclick="selectWorkspaceItem(0)">
+                                    <title>浙江凌迪科技 (Style3D)</title>
+                                    <!-- 屏幕 -->
+                                    <polygon points="180,210 280,185 285,250 185,280" fill="#a8c5cd" stroke="#4a5d6e" stroke-width="3" stroke-linejoin="round"/>
+                                    <polygon points="188,216 272,195 277,244 193,267" fill="#f48b88" opacity="0.85"/>
+                                    <!-- 键盘底座 -->
+                                    <polygon points="185,280 285,250 350,295 240,335" fill="#d0d7de" stroke="#4a5d6e" stroke-width="3" stroke-linejoin="round"/>
+                                    <!-- 键盘按键与触控板刻画 -->
+                                    <polygon points="200,280 280,256 315,282 235,310" fill="#8b9aac" opacity="0.5"/>
+                                </g>
+
+                                <!-- 2. 翻开的人物插画书 (点击触发：天健会计师事务所) -->
+                                <g class="desk-interactive-item" onclick="selectWorkspaceItem(1)">
+                                    <title>天健会计师事务所</title>
+                                    <!-- 左半页粉色封面与页面 -->
+                                    <polygon points="220,130 310,100 290,170 190,200" fill="#f1a7b9" stroke="#6e4a52" stroke-width="2.5"/>
+                                    <!-- 右半页插画内容 -->
+                                    <polygon points="310,100 370,125 350,195 290,170" fill="#fffdfa" stroke="#6e4a52" stroke-width="2.5"/>
+                                    <!-- 书页里的小插画人物 -->
+                                    <circle cx="330" cy="140" r="12" fill="#d99b82"/>
+                                    <path d="M 320 162 C 320 150, 340 150, 340 162" fill="#ab7588"/>
+                                </g>
+
+                                <!-- 3. 复古胶片相机 (点击触发：中汇会计师事务所) -->
+                                <g class="desk-interactive-item" onclick="selectWorkspaceItem(2)">
+                                    <title>中汇会计师事务所</title>
+                                    <!-- 相机机身 -->
+                                    <rect x="380" y="185" width="85" height="55" rx="8" fill="#e8a8b8" stroke="#4a3e3d" stroke-width="3"/>
+                                    <rect x="380" y="185" width="85" height="15" fill="#78645e"/>
+                                    <!-- 镜头 -->
+                                    <circle cx="422" cy="218" r="18" fill="#6e5a58" stroke="#4a3e3d" stroke-width="3"/>
+                                    <circle cx="422" cy="218" r="10" fill="#a8c5cd"/>
+                                    <!-- 快门按钮 -->
+                                    <rect x="395" y="178" width="12" height="7" fill="#4a3e3d"/>
+                                </g>
+
+                                <!-- 高脚杯 (装饰水彩元素) -->
+                                <g>
+                                    <!-- 薄荷蓝色高脚杯与樱桃饮料 -->
+                                    <ellipse cx="450" cy="115" rx="20" ry="8" fill="#b0e0e6" stroke="#5a8b94" stroke-width="2"/>
+                                    <path d="M 430 115 C 430 155, 470 155, 470 115 Z" fill="#b0e0e6" opacity="0.8" stroke="#5a8b94" stroke-width="2"/>
+                                    <line x1="450" y1="150" x2="450" y2="180" stroke="#5a8b94" stroke-width="3"/>
+                                    <ellipse cx="450" cy="180" rx="14" ry="5" fill="#b0e0e6" stroke="#5a8b94" stroke-width="2"/>
+                                    <!-- 顶部樱桃 -->
+                                    <circle cx="450" cy="100" r="6" fill="#e65a65"/>
+                                </g>
+
+                                <!-- 4. 浅蓝托盘与两块玛芬蛋糕 (点击触发：果然财税科技) -->
+                                <g class="desk-interactive-item" onclick="selectWorkspaceItem(3)">
+                                    <title>果然财税科技有限公司</title>
+                                    <!-- 浅蓝底托盘 -->
+                                    <ellipse cx="480" cy="285" rx="65" ry="28" fill="#b8e2e6" stroke="#5a8b94" stroke-width="3"/>
+                                    <!-- 玛芬蛋糕 1 -->
+                                    <path d="M 440 280 L 445 260 C 445 250, 465 250, 465 260 L 470 280 Z" fill="#a3765e" stroke="#4a3e3d" stroke-width="2"/>
+                                    <!-- 玛芬蛋糕 2 -->
+                                    <path d="M 480 280 L 485 260 C 485 250, 505 250, 505 260 L 510 280 Z" fill="#a3765e" stroke="#4a3e3d" stroke-width="2"/>
+                                </g>
+
+                                <!-- 桌面右侧：趴着的白棕花色猫咪 (温馨插画元素) -->
+                                <g>
+                                    <!-- 猫咪身体 -->
+                                    <ellipse cx="610" cy="250" rx="35" ry="22" fill="#fffdfa" stroke="#8c786a" stroke-width="2.5" transform="rotate(-15 610 250)"/>
+                                    <!-- 猫咪头部与棕斑 -->
+                                    <circle cx="580" cy="235" r="18" fill="#fffdfa" stroke="#8c786a" stroke-width="2.5"/>
+                                    <path d="M 570 222 C 580 220, 590 225, 592 235 Z" fill="#c49a78"/>
+                                    <!-- 猫咪耳朵与惬意睡眼 -->
+                                    <polygon points="568,223 573,210 580,220" fill="#c49a78"/>
+                                    <path d="M 572 238 C 575 242, 580 242, 582 238" stroke="#4a3e3d" stroke-width="2" fill="none"/>
+                                    <!-- 垂下的慵懒尾巴 -->
+                                    <path d="M 640 258 C 655 270, 645 295, 638 310" stroke="#c49a78" stroke-width="8" stroke-linecap="round" fill="none"/>
+                                </g>
+                            </svg>
+                        </div>
                     </div>
 
-                    <div class="clip-nav-bar">
-                        <button class="clip-nav-btn active" onclick="switchClipIntern(0)">浙江凌迪科技 (Style3D)</button>
-                        <button class="clip-nav-btn" onclick="switchClipIntern(1)">天健会计师事务所</button>
-                        <button class="clip-nav-btn" onclick="switchClipIntern(2)">中汇会计师事务所</button>
-                        <button class="clip-nav-btn" onclick="switchClipIntern(3)">果然财税科技</button>
-                    </div>
+                    <!-- 实习卡片展示与切换导航栏 -->
+                    <div id="internshipCardsArea" style="display:none;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <div class="inner-title" style="border:none; padding:0; margin:0;">
+                                <span>💼 Internship Detail Card</span>
+                            </div>
+                            <button class="back-to-hub-btn" onclick="backToWorkspace()">返回圆桌工作台 ➔</button>
+                        </div>
 
-                    <div class="clip-stage-container">
+                        <div class="clip-nav-bar" id="clipNavBar"></div>
+
+                        <div class="clip-stage-container">
 
                         <!-- 卡片 1：浙江凌迪科技 -->
-                        <div class="clip-card-panel active" id="clip-panel-0">
+                        <div class="clip-card-panel" id="clip-panel-0">
                             <div class="clip-info">
                                 <div class="clip-company">浙江凌迪科技有限公司 (Style3D)</div>
                                 <div class="clip-role-row">
@@ -1888,6 +2054,7 @@
                         </div>
 
                     </div>
+                    </div>
                 </div>
             `,
 
@@ -2081,7 +2248,7 @@
                             <h3>📊 供应链协同、组合定价与利润率优化</h3>
                             <ul>
                                 <li><b>精细成本核算：</b>严格核算单件原材料成本与工时损耗，通过批量集采压缩采购成本。</li>
-                                <li><b>策略组合销售：</b>推行“糖葫芦 + 热奶宝”暖心套餐包，有效提升客单价，带动整体利润率环比提升 <b>28%</b>。</li>
+                                <li><b>策略组合销售：</b>推行“糖葫芦 + 热奶宝”暖心套餐包，有效提升客单价，带动利润率环比提升 <b>28%</b>。</li>
                             </ul>
                         </div>
                     </div>
@@ -2271,16 +2438,14 @@
             "奖状8.JPG", "奖项10.JPG", "奖状11.JPG", "奖项12.JPG"
         ];
 
-        // 菜园淘宝板块仅放 菜园淘宝1.jpg 和 菜园淘宝2.jpg
         const enterpriseImages = [
             "菜园淘宝1.jpg", "菜园淘宝2.jpg"
         ];
 
-        // My Life 转轴照片数据集：仅保留做饭、打球、看赛马三张图片
         const lifeAxisImages = [
-            { src: "做饭.jpg", caption: "烹饪时光 🍳" },
-            { src: "打球.jpg", caption: "运动时刻 🎾" },
-            { src: "看赛马.png", caption: "观赛体验 🐎" }
+            { src: "做饭.jpg", caption: "烹饪 🍳" },
+            { src: "打球.jpg", caption: "运动 🎾" },
+            { src: "看赛马.png", caption: "观赛 🐎" }
         ];
 
         let lifeAxisIndex = 0;
@@ -2351,7 +2516,6 @@
             updateCarouselView(containerId);
         }
 
-        // 初始化 My Life 照片转轴
         function initLifeAxis() {
             const track = document.getElementById('lifeAxisTrack');
             if (!track) return;
@@ -2443,12 +2607,49 @@
             if (event.target.id === 'subModalOverlay') closeSubModal();
         }
 
+        // 实习公司列表与名称数据定义
+        const internshipCompanies = [
+            "浙江凌迪科技 (Style3D)",
+            "天健会计师事务所",
+            "中汇会计师事务所",
+            "果然财税科技"
+        ];
+
+        /* 实习工作台桌面点击联动函数：点击对应物品直接独立切换到对应的实习内页卡片，并仅渲染当前公司的专属单标签按钮 */
+        function selectWorkspaceItem(index) {
+            const desk = document.getElementById('workspaceDesk');
+            const cardsArea = document.getElementById('internshipCardsArea');
+            const navBar = document.getElementById('clipNavBar');
+            
+            if (desk && cardsArea && navBar) {
+                desk.style.display = 'none';
+                cardsArea.style.display = 'block';
+
+                // 仅渲染当前点击对应的单个公司标签
+                navBar.innerHTML = `
+                    <button class="clip-nav-btn active" onclick="switchClipIntern(${index})">${internshipCompanies[index]}</button>
+                `;
+
+                switchClipIntern(index);
+            }
+        }
+
+        function backToWorkspace() {
+            const desk = document.getElementById('workspaceDesk');
+            const cardsArea = document.getElementById('internshipCardsArea');
+            if (desk && cardsArea) {
+                cardsArea.style.display = 'none';
+                desk.style.display = 'block';
+            }
+        }
+
         function switchClipIntern(index) {
             const btns = document.querySelectorAll('.clip-nav-btn');
             const panels = document.querySelectorAll('.clip-card-panel');
 
             btns.forEach((btn, idx) => {
-                btn.classList.toggle('active', idx === index);
+                // 如果是动态单标签按钮，保证其激活状态
+                if(btn) btn.classList.toggle('active', true);
             });
 
             panels.forEach((panel, idx) => {
